@@ -73,6 +73,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereMobileType($value)
  * @property string|null $apple_id
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereAppleId($value)
+ * @property string|null $alternative_phone
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereAlternativePhone($value)
  * @mixin \Eloquent
  */
 class Client extends \Illuminate\Foundation\Auth\User implements JWTSubject, \OwenIt\Auditing\Contracts\Auditable

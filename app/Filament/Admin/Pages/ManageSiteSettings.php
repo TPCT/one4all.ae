@@ -75,7 +75,7 @@ class ManageSiteSettings extends SettingsPage
                             ->label(__("Email"))
                             ->email(),
                         TextInput::make("phone")
-                            ->label(__("Phone"))
+                            ->label(__("Phone")),
                     ])
             ]);
         }
@@ -99,6 +99,11 @@ class ManageSiteSettings extends SettingsPage
                                         ->label(__("Linkedin")),
                                     TextInput::make('youtube_link')
                                         ->label(__("Youtube")),
+                                    TextInput::make("contact_us_whatsapp_number")
+                                        ->label(__("Contact Us Whatsapp Number"))
+                                        ->required(),
+                                    TextInput::make('telegram_link')
+                                        ->label(__("Telegram")),
                                 ])
                                 ->columnSpan(1)
                                 ->columns(1)

@@ -73,11 +73,13 @@ class Dropdown extends Model implements \OwenIt\Auditing\Contracts\Auditable
     use HasFactory, HasAuthor, Translatable, Auditable, HasStatus, \App\Helpers\HasTranslations, HasMedia, HasSlug, ApiResponse;
 
 
-    public const ADVANCED_SEARCH_KEYWORD = "Advanced Search Keyword";
+    public const BLOCK_CATEGORY = "Block Category";
+    public const CONSULTATION_CATEGORY = "Consultation Category";
     public static function getCategories(): array
     {
         return [
-            self::ADVANCED_SEARCH_KEYWORD => __(self::ADVANCED_SEARCH_KEYWORD),
+            self::BLOCK_CATEGORY => __(self::BLOCK_CATEGORY),
+            self::CONSULTATION_CATEGORY => __(self::CONSULTATION_CATEGORY),
         ];
     }
 

@@ -61,8 +61,6 @@ class BlockResource extends Resource
         return self::$model::count();
     }
 
-    protected static bool $shouldRegisterNavigation = false;
-
     public static function form(Form $form): Form
     {
         return $form
@@ -171,10 +169,10 @@ class BlockResource extends Resource
                                     ->localeTabSchema(fn (TranslatableTab $tab) => [
                                         TextInput::make($tab->makeName('youtube_video_id'))
                                             ->maxLength(255)
-                                            ->label(__('Youtube Vide ID')),
+                                            ->label(__('Youtube Video')),
                                     ])
                                     ->visible(function (Forms\Get $get){
-                                        return $get('data.dropdown_id', true) == Dropdown::whereSlug('student-life-summer-camp-top-section')?->first()?->id;
+                                        return $get('data.dropdown_id', true) == Dropdown::whereSlug('homepage-about-us-section')?->first()?->id;
                                     })
                                     ->columnSpanFull(),
 
@@ -192,9 +190,6 @@ class BlockResource extends Resource
                                     ->preload()
                                     ->default(null)
                                     ->options(self::$model::getCategoryList()),
-
-                                Forms\Components\Checkbox::make('promote_to_homepage')
-                                    ->label(__('Promote To Homepage')),
 
                                 Forms\Components\DatePicker::make('published_at')
                                     ->label(__("Published At"))
@@ -239,6 +234,9 @@ class BlockResource extends Resource
                         return $query->whereTranslationLike('title', '%'.$search.'%');
                     })
                     ->label(__("Title")),
+                Tables\Columns\TextColumn::make('dropdown.title')
+                    ->toggleable()
+                    ->label(__("Category")),
                 Tables\Columns\TextColumn::make('status')
                     ->toggleable()
                     ->label(__("Status"))

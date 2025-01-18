@@ -62,7 +62,7 @@ class TranslationCategory extends Model implements Auditable
                 ->map(function(Translation $translation) use ($locale){
                     return \Arr::undot([
                         'key' => $translation->key,
-                        'text' => $translation->translate($locale)?->content ?? $translation->key
+                        'text' => $translation->translate($locale)?->content ?? ''
                     ]);
                 })
                 ->pluck('text', 'key')

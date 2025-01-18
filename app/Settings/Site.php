@@ -32,11 +32,13 @@ class Site extends Settings
 
     public ?string $email;
     public ?string $phone;
+    public ?string $contact_us_whatsapp_number;
 
     public ?string $facebook_link;
     public ?string $instagram_link;
     public ?string $twitter_link;
     public ?string $linkedin_link;
+    public ?string $telegram_link;
     public ?string $youtube_link;
     public ?int $default_page_size;
     public ?string $contact_us_mailing_list;

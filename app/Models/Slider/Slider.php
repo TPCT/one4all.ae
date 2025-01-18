@@ -74,12 +74,14 @@ class Slider extends Model implements \OwenIt\Auditing\Contracts\Auditable
     use HasFactory, HasAuthor, Auditable, HasStatus, Translatable, \App\Helpers\HasTranslations, HasSlug, ApiResponse;
 
     public const HERO_SECTION_SLIDER = "Hero Section Slider";
+    public const SERVICE_SLIDER = "Service Slider";
 
     public $translationModel = SliderLang::class;
 
     public static function getCategories(){
         return [
             self::HERO_SECTION_SLIDER => __(self::HERO_SECTION_SLIDER),
+            self::SERVICE_SLIDER => __(self::SERVICE_SLIDER),
         ];
     }
 
@@ -88,7 +90,7 @@ class Slider extends Model implements \OwenIt\Auditing\Contracts\Auditable
     ];
 
     public array $translatedAttributes = [
-        'title'
+        'title', 'description'
     ];
 
     public function slides(){

@@ -12,18 +12,17 @@
                 <p class="m-0">@lang('site.DARK_MODE')</p>
             </div>
         </div>
-        <div class="lang-join-btn d-flex align-items-center gap-2">
-            <a
-                    href="./login.html"
-                    class="d-flex align-items-center gap-2 sec-btn"
-            >
-                <i class="fa-brands fa-telegram"></i>
-                <p class="m-0">@lang('site.JOIN_TELEGRAM_GROUP')</p>
-            </a>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>AR</option>
-                <option value="En">EN</option>
-            </select>
-        </div>
+            <div class="lang-join-btn d-flex align-items-center gap-2">
+                @if($telegram_link)
+                    <a
+                            href="{{$telegram_link}}"
+                            class="d-flex align-items-center gap-2 sec-btn"
+                    >
+                        <i class="fa-brands fa-telegram"></i>
+                        <p class="m-0">@lang('site.JOIN_TELEGRAM_GROUP')</p>
+                    </a>
+                @endif
+                <x-layout.language-switcher></x-layout.language-switcher>
+            </div>
     </div>
 </section>

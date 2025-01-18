@@ -76,6 +76,9 @@ class SliderResource extends Resource
                                         ->multiLingual()
                                         ->unique(ignoreRecord: true)
                                         ->required(),
+                                    TinyEditor::make($tab->makeName('description'))
+                                        ->maxLength(255)
+                                        ->required()
                             ]),
                             Forms\Components\Repeater::make('slides')
                                 ->relationship()
@@ -109,6 +112,10 @@ class SliderResource extends Resource
                                                         ->label(__("Description"))
                                                         ->required()
                                                 ])->visible(fn (Forms\Get $get) => $get('data.category', true) == Slider::HERO_SECTION_SLIDER),
+                                                Forms\Components\Group::make()->schema([
+                                                    FileUpload::make("image_id")
+                                                        ->label(__("Image")),
+                                                ])->visible(fn (Forms\Get $get) => $get('data.category', true) == Slider::SERVICE_SLIDER),
                                             ]);
                                         }
                                         return $tabs;

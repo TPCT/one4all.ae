@@ -62,6 +62,8 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property-read \Awcodes\Curator\Models\Media|null $cover_image
  * @property-read Merchant|null $merchant
  * @method static \Illuminate\Database\Eloquent\Builder|SliderSlide whereMerchantId($value)
+ * @property string|null $slide_url
+ * @method static \Illuminate\Database\Eloquent\Builder|SliderSlide whereSlideUrl($value)
  * @mixin \Eloquent
  */
 class SliderSlide extends Model implements Auditable

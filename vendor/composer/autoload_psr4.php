@@ -182,6 +182,7 @@ return array(
     'Codeat3\\BladeGoogleMaterialDesignIcons\\' => array($vendorDir . '/codeat3/blade-google-material-design-icons/src'),
     'Codeat3\\BladeEosIcons\\' => array($vendorDir . '/codeat3/blade-eos-icons/src'),
     'Codeat3\\BladeClarityIcons\\' => array($vendorDir . '/codeat3/blade-clarity-icons/src'),
+    'Codeat3\\BladeCarbonIcons\\' => array($vendorDir . '/codeat3/blade-carbon-icons/src'),
     'Carbon\\Doctrine\\' => array($vendorDir . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'CactusGalaxy\\FilamentAstrotomic\\' => array($vendorDir . '/cactus-galaxy/filament-astrotomic/src'),

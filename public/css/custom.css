@@ -1,0 +1,42 @@
+#whatsapp{
+    padding-right: 0;
+    padding-left: 54px;
+}
+.arabic-version #whatsapp{
+    padding-right: 54px;
+    padding-left: 0;
+}
+.iti--allow-dropdown .iti__flag-container, .iti--separate-dial-code .iti__flag-container{
+    left: 0;
+    right: auto;
+}
+
+.arabic-version .iti--allow-dropdown .iti__flag-container, .arabic-version .iti--separate-dial-code .iti__flag-container{
+    left: auto;
+    right: 0;
+}
+
+.auth input[type="tel"]{
+    text-align: left;
+}
+.arabic-version .auth input[type="tel"]{
+    text-align: right !important;
+}
+
+
+@media (min-width: 992px) {
+    .arabic-version .iti__country-list {
+        right: 0;
+        left: auto;
+    }
+
+    .arabic-version .iti__country{
+        direction: ltr !important;
+    }
+}
+
+.home-3rd-section-slider .home-3rd-section-slide > picture img{
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}

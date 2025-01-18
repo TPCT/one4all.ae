@@ -73,6 +73,14 @@
         <main id="@yield('id')" class="@yield('class')">
             <x-layout.header></x-layout.header>
             <div id="readspeakerDiv">
+                @if ($contact_us_whatsapp_number = app(\App\Settings\Site::class)->contact_us_whatsapp_number)
+                    <a href="{{$contact_us_whatsapp_number}}" class="floating-wa">
+                        <picture>
+                            <img src="{{asset('/assets/icons/logos_whatsapp-icon.png')}}" alt="" />
+                        </picture>
+                        <p>@lang('site.WHATSAPP_BUTTON')</p>
+                    </a>
+                @endif
                 @yield('content')
             </div>
             <x-layout.footer></x-layout.footer>

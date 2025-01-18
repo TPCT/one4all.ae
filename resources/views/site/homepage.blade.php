@@ -8,12 +8,6 @@
 @endpush
 
 @section('content')
-    <a href="#" class="floating-wa">
-        <picture>
-            <img src="{{asset('/assets/icons/logos_whatsapp-icon.png')}}" alt="" />
-        </picture>
-        <p>@lang('site.WHATSAPP_BUTTON')</p>
-    </a>
     @if ($hero_slider)
         <section class="hero-section">
             <div class="container">
@@ -60,6 +54,82 @@
             </div>
         </section>
     @endif
+    @if ($about_us_section)
+        <section class="home-2nd-section overflow-hidden">
+            <div class="container">
+                <div
+                        class="home-2nd-section-content wow fadeInRight"
+                        data-wow-duration="2s"
+                >
+                    <div class="Home-section-heading">
+                        <h2>{{$about_us_section->title}}</h2>
+                    </div>
+                    {!! $about_us_section->description !!}
+                    @foreach ($about_us_section->buttons as $button)
+                        <a href="{{$button['url'][$language]}}">
+                            {{$button['text'][$language]}}
+                            <picture>
+                                <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt="" />
+                            </picture>
+                        </a>
+                    @endforeach
+                </div>
+
+                <iframe
+                        width="100%"
+                        height="315"
+                        src="{{$about_us_section->youtube_video_id}}"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+    @endif
+    @if ($services->count())
+        <section class="home-3rd-section overflow-hidden">
+            <div class="container home-3rd-main-container">
+                <picture class="floating-coin-up">
+                    <img src="{{asset('/assets/imgs/home/bg-coin.png')}}" alt="" srcset="" />
+                </picture>
+                <picture class="floating-coin-down">
+                    <img src="{{asset('/assets/imgs/home/bg-coin.png')}}" alt="" srcset="" />
+                </picture>
+                <div class="Home-section-heading align-items-center wow fadeInUp">
+                    <h2>@lang('site.SERVICES_SECTION_TITLE')</h2>
+                    <p>@lang('site.SERVICES_SECTION_DESCRIPTION')</p>
+                </div>
+                <div
+                        class="home-3rd-section-slider wow fadeInUp"
+                        data-wow-delay=".5s"
+                >
+                    @foreach($services as $service)
+                        <div class="home-3rd-section-slide">
+                            <picture>
+                                <x-curator-glider
+                                    :media="$service->image_id"
+                                />
+                            </picture>
+                            <div class="home-3rd-section-slide-content">
+                                <div>
+                                    <h3>{{$service->title}}</h3>
+                                    {!! $service->description !!}
+                                </div>
+                                <a href="{{route('services.show', ['service' => $service])}}">
+                                    @lang('site.SHOW_SERVICE')
+                                    <picture>
+                                        <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt="" />
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 @endsection
 
 @push('script')
@@ -73,7 +143,7 @@
                 slidesToScroll: 1,
                 dots: true,
                 arrows: true,
-                rtl: true,
+                rtl: {{$language == "en"}},
                 prevArrow: $(".hero-arrows-prev"),
                 nextArrow: $(".hero-arrows-next"),
                 appendDots: $(".hero-dots-container"),
@@ -91,7 +161,7 @@
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 centerMode: false,
-                rtl: true,
+                rtl: {{$language == "en"}},
                 responsive: [
                     {
                         breakpoint: 991.88888,
@@ -114,8 +184,7 @@
             $(".clints-reviews-slider").slick({
                 infinite: true,
                 dots: false,
-                rtl: true,
-                arrows: false,
+                rtl: {{$language == "en"}},
                 slidesToShow: 2.5,
                 slidesToScroll: 1,
                 arrows: true,
