@@ -1,0 +1,198 @@
+.navbar {
+  z-index: 10000;
+  height: 100px;
+  padding-block: 0.5rem;
+}
+.navbar .navbar-brand img {
+  width: 60px !important;
+}
+@media (max-width: 991px) {
+  .navbar .navbar-brand img {
+    max-width: 50px !important;
+  }
+}
+
+.navbar-nav .active,
+.navbar-nav .nav-link:hover {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+}
+.navbar-nav .active a {
+  color: #fff !important;
+}
+.navbar-nav .nav-link {
+  font-weight: 700;
+  color: #000;
+  font-size: 16;
+}
+.navbar-expand-lg .navbar-nav {
+  gap: 8px !important;
+}
+.arabic-version .navbar-expand-lg .navbar-nav {
+  gap: 15px !important;
+}
+.navbar .main-btn {
+  font-size: 16;
+}
+.navbar-nav {
+  margin-top: 0 !important;
+}
+.navbar-nav .nav-item {
+  margin-bottom: 0 !important;
+}
+.navbar-nav-two .nav-item {
+  display: flex;
+  align-items: center;
+}
+.navbar-nav-two .nav-item:hover,
+.navbar-nav-two .nav-item a:hover {
+  background-color: #fff !important;
+}
+.navbar-nav-two .nav-item a:hover {
+  color: var(--main-color) !important;
+}
+.navbar-nav-two {
+  position: relative;
+  z-index: 1040;
+}
+.navbar-nav-two .nav-item .nav-link {
+  color: var(--primary-color) !important;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-nav .nav-link,
+  .navbar .main-btn {
+    font-size: 12px;
+  }
+  .navbar-expand-lg .navbar-nav {
+    gap: 10px !important;
+  }
+}
+@media (max-width: 991px) {
+  .offcanvas-body {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .offcanvas-body .navbar-nav {
+    margin: unset !important;
+    margin-right: auto !important;
+  }
+  .arabic-version .offcanvas-body .navbar-nav {
+    margin-left: auto !important;
+    margin-right: unset !important;
+  }
+}
+.toolbar .sec-btn i {
+  font-size: 20px;
+}
+.toolbar .sec-btn p {
+  color: #000;
+}
+.toolbar .sec-btn:hover p {
+  color: #fff;
+}
+.toolbar .main-btn p,
+.toolbar .sec-btn p,
+.toolbar .third-btn p,
+.toolbar .main-btn i,
+.toolbar .sec-btn i,
+.toolbar .third-btn i,
+.form-select {
+  font-weight: 600;
+  border: 0;
+}
+.form-select:focus {
+  border: 0;
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  .dark-light-btn p {
+    display: none;
+  }
+  .dark-light-btn .main-btn,
+  .dark-light-btn .third-btn {
+    padding: 12px 25px;
+  }
+}
+@media (max-width: 425px) {
+  .sec-btn p {
+    display: none;
+  }
+}
+/* Dark Mode */
+.dark-mode .toolbar,
+.dark-mode .navbar {
+  background-color: #020f19 !important;
+}
+.dark-mode .toolbar .main-btn {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+.dark-mode .toolbar .main-btn:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
+}
+.dark-mode .toolbar .third-btn {
+  background-color: #000;
+  color: #fff;
+  border-color: #fff;
+}
+.dark-mode .toolbar .third-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+.dark-mode .toolbar .sec-btn {
+  background-color: #000 !important;
+  border-color: var(--main-color);
+}
+.dark-mode .toolbar .sec-btn p {
+  color: #fff;
+}
+.dark-mode .toolbar .sec-btn i {
+  color: var(--main-color);
+}
+.dark-mode .toolbar .form-select {
+  background-color: inherit !important;
+  color: #fff;
+}
+.dark-mode .toolbar .form-select option {
+  background-color: #000;
+  color: #fff;
+}
+.dark-mode .navbar .nav-link {
+  color: #fff !important;
+}
+.dark-mode .navbar-nav-two .nav-item {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.dark-mode .navbar-nav-two .nav-item a {
+  background-color: #fff !important;
+  border-radius: 5px;
+  color: #000 !important;
+}
+.dark-mode .offcanvas.show,
+.dark-mode .offcanvas.show:not(.hiding),
+.dark-mode .offcanvas.showing {
+  background-color: #020f19 !important;
+}
+.dark-mode .offcanvas-header .btn-close {
+  color: #fff !important;
+}
+.dark-mode .navbar-toggler {
+  border: 1px solid #fff;
+}
+.dark-mode .navbar-toggler i {
+  color: #fff;
+}
+.dark-mode .btn-close {
+  background-image: url("../assets/imgs/close-svgrepo-com.svg");
+  background-size: 20px;
+}
+.arabic-version .offcanvas-header {
+  justify-content: flex-end;
+}

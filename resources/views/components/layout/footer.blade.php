@@ -1,0 +1,68 @@
+<footer class="main-footer-container">
+    <div class="container footer-section">
+        <div class="footer-item">
+            <div class="footer-item-header">
+                <a href="./index.html">
+                    <x-curator-glider :media="$logo" class="mw-100 mb-5" />
+                </a>
+            </div>
+            <div>
+                {!! $footer_description !!}
+            </div>
+        </div>
+        @foreach($menu->links as $index => $child)
+            @continue(!$child->status || !$child->has_children())
+            <div class="footer-item">
+                <div class="footer-item-header">
+                    <h5>{{$child->title}}</h5>
+                    <button
+                            class="toggleButton mobile-responsive"
+                            data-target="footer-link-{{$index}}"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-minus" style="display: none"></i>
+                    </button>
+                </div>
+                <ul id="footer-link-{{$index}}">
+                    @foreach($child->children as $grandson)
+                        <li>
+                            <a href="{{$grandson->link}}">{{$grandson->title}}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endforeach
+    </div>
+    <div class="footer-copyright-container">
+        <div class="footer-copyright-container-centered">
+            <p>@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year])</p>
+            <div class="social-media-icons">
+                @if ($twitter)
+                    <a href="{{$twitter}}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                @endif
+                @if ($linkedin)
+                    <a href="{{$linkedin}}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                @endif
+                @if ($instagram)
+                    <a href="{{$instagram}}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                @endif
+                @if ($youtube)
+                    <a href="{{$youtube}}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                @endif
+                @if ($facebook)
+                    <a href="{{$facebook}}" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
+    </div>
+</footer>

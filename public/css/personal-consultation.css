@@ -1,0 +1,56 @@
+.personal-consultation {
+  background-color: #f5f7fc;
+}
+.main-stars-header {
+  margin-bottom: 0 !important;
+}
+.personal-consultation form {
+  width: 100%;
+  padding: 0;
+  margin-top: 0 !important;
+  padding-top: 1.5rem;
+}
+.personal-consultation form textarea.form-control {
+  height: auto;
+}
+.personal-consultation .head-form h1 {
+  background-color: #2aabee;
+  color: #fff;
+}
+.personal-consultation .head-form p {
+  color: #000;
+}
+.dark-mode .personal-consultation {
+  background-color: #00121b;
+}
+.dark-mode .personal-consultation .head-form p {
+  color: #fff;
+}
+.recommendations-1st-section .container h2:first-child {
+  color: #2aabee;
+}
+.recommendations-1st-section .container h2:last-child {
+  color: #fff;
+  padding: 0 40px;
+}
+.personal-consultation .form-check-input:checked {
+  background-color: #2aabee;
+  border-color: #2aabee;
+}
+.personal-consultation .floating-up {
+  top: 65px;
+  left: 67px;
+}
+.personal-consultation .floating-down {
+  top: 662px;
+  right: 0;
+}
+@media (max-width: 575px) {
+  .personal-consultation .floating-up {
+    left: 0;
+  }
+  .personal-consultation .floating-down {
+    top: 99%;
+    right: 0;
+  }
+}

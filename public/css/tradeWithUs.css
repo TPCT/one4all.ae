@@ -1,0 +1,199 @@
+.tradeWithUs-1st-section {
+  padding-block: 9rem;
+}
+.tradeWithUs-1st-section .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  text-align: center;
+}
+.tradeWithUs-1st-section .container h2 {
+  color: var(--main-color);
+  background-color: #0000000d;
+}
+.copy-code-box {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.copy-code-box h2 {
+  background-color: #fca930 !important;
+  padding: 0.2rem 0.5rem;
+  color: white !important;
+  text-align: center;
+  width: fit-content;
+  margin-bottom: 0;
+}
+.copy-code-box button {
+  background-color: #f1f1f1;
+  height: 63px;
+  border: none;
+  padding: 0 0.8rem;
+}
+.floating-coin-up {
+  top: -10rem !important;
+}
+.floating-coin-down {
+  bottom: -5rem !important;
+}
+@media (max-width: 768.888888px) {
+  .floating-coin-up {
+    top: -11rem !important;
+  }
+}
+.tradeWithUs-2nd-section {
+  padding-block: 3rem;
+}
+.tradeWithUs-2nd-section h2 {
+  color: white;
+  background-color: var(--main-color);
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+.tradeWithUs-2nd-section p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.tradeWithUs-2nd-section .container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.trade-accounts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  position: relative;
+}
+.trade-accounts::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-color: #d9d9d9;
+
+  z-index: -1;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+}
+.trade-accounts::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #d9d9d9;
+  z-index: -1;
+  top: 50%;
+  left: 49.9%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  top: 0;
+}
+.trade-accounts h4 {
+  background-color: #0000000d;
+  width: fit-content;
+}
+.standerd-account,
+.ultralan-account {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+.standerd-account p,
+.ultralan-account p {
+  margin-bottom: 1rem;
+}
+.standerd-account::after,
+.ultralan-account::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--main-color);
+  bottom: 0.5rem;
+  z-index: -1;
+}
+.ultralan-account::after {
+  background-color: #fee114;
+}
+@media (max-width: 767.888888px) {
+  .trade-accounts {
+    grid-template-columns: 1fr;
+  }
+  .trade-accounts::before,
+  .trade-accounts::after {
+    display: none;
+  }
+}
+.tradeWithUs-3rd-section {
+  padding-block: 5rem;
+}
+.tradeWithUs-3rd-section h2 {
+  color: white;
+  background-color: var(--main-color);
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+.tradeWithUs-3rd-section p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+/* =========== */
+.standerd-account div,
+.ultralan-account div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.standerd-account div .price-cash,
+.ultralan-account div .price-cash {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-color);
+  width: 120px;
+  height: 50px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding-inline: 10px;
+  background-color: #9eecfa;
+  transition: 0.3s ease-in-out;
+  font-family: "NotoKufiArabic";
+}
+.ultralan-account div .price-cash {
+  background-color: #fee1148f !important;
+}
+.standerd-account div:hover svg path {
+  fill: var(--main-color);
+}
+.ultralan-account div:hover svg path {
+  fill: #fee114;
+}
+.standerd-account div:hover .price-cash,
+.ultralan-account div:hover .price-cash {
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+@media (max-width: 767px) {
+  .standerd-account div .price-cash,
+  .ultralan-account div .price-cash {
+    width: 100px;
+    top: 150%;
+  }
+}

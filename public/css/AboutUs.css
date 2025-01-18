@@ -1,0 +1,39 @@
+.about-us-video iframe {
+  width: 100%;
+  height: 500px;
+}
+@media (max-width: 767px) {
+  .about-us-video iframe {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media (max-width: 375px) {
+  .about-us-video iframe {
+    width: 100%;
+    height: auto;
+  }
+}
+/* #AboutUs {
+  background-color: var(--main-section-bg) !important;
+} */
+#AboutUs .toolbar {
+  background-color: #fff;
+}
+@media (min-width: 992px) {
+  #AboutUs .navigation-container {
+    position: absolute;
+    top: 11%;
+    background-color: var(--main-section-bg);
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+  }
+  #AboutUs .recommendations-1st-section {
+    background-color: var(--main-section-bg);
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+  }
+  #AboutUs .about-us-video {
+    background-color: var(--main-section-bg);
+  }
+}

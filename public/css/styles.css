@@ -1,0 +1,441 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-card-shadow: 0px 4px 20px 0px #0000001a;
+  --main-color: #0cc1e0;
+  --main-section-bg: #f2f2f7;
+  --main-font-color: #141414;
+  /* --primary-color: #818188; */
+  /* --secondary-color: #0CC1E0; */
+  --primary-white-color: #fff;
+  --gray-color: #f7f8fa;
+  --dark-gray-color: #c4c4c2;
+  --gray-text-color: #8f8e8e;
+  --rounded-sm: 0.5rem;
+  --line-border-fill: #0c5adb;
+  --line-border-empty: #eaecf0;
+  --accordion-button-background-color: #015184;
+  --director-card-background-color: #01518412;
+  --navigaion-active-color: #c9ac80;
+  --navigation-hover: #c9ac802c;
+  --search-btn-flying-navbar-hover: #fff;
+  --searchBarOpen-btn: #c9ac80;
+  --searchBarOpen-bg-color: rgba(0, 46, 97, 0.4);
+  --navigation-scrolled-background: #ffffff;
+  --navigation-boxshadow: 0px 20px 20px 0px #b6b6b640;
+  --animation-transition: all 0.3s ease-out;
+  --navbar-border-color: rgba(20, 20, 20, 0.3);
+}
+.dark-mode {
+  --main-section-bg: #00121b;
+  --main-font-color: #fff;
+}
+body {
+  color: var(--main-font-color) !important;
+}
+ul li {
+  font-size: 0.95rem;
+  line-height: 1.8rem;
+}
+.arabic-version ul li {
+  font-size: 0.9rem;
+  line-height: 1.8rem;
+}
+
+ul li::marker {
+  color: var(--main-color);
+  font-size: 22px;
+}
+ul {
+  padding-inline-start: 1.5rem;
+}
+@media (min-width: 2030px) {
+  html {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1800px) and (max-width: 2030px) {
+  html {
+    font-size: 19px;
+  }
+}
+@media (max-width: 991.888888889px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 576px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (min-width: 1600px) {
+  .container,
+  .container-fluid {
+    max-width: 80%;
+  }
+  .container .container,
+  .container .container-fluid,
+  .container-fluid .container,
+  .container-fluid .container-fluid {
+    max-width: 100%;
+  }
+}
+/* english fonts  */
+
+* {
+  font-family: "open sans";
+}
+h1 {
+  font-size: 3.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+h2 {
+  font-size: 2.1875rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+h5 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+a {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+th {
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+td {
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+/* arabic fonts  */
+.arabic-version h1 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version h2 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version h3 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version h4 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version h5 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version h6 {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version p {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version span {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version label {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version th {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version td {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version a {
+  font-family: "NotoKufiArabic";
+}
+.arabic-version li {
+  font-family: "NotoKufiArabic";
+}
+/* ar */
+
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Thin.ttf");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-ExtraLight.ttf");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-ExtraBold.ttf");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoKufiArabic";
+  src: url("../assets/Fonts/static/NotoKufiArabic-Black.ttf");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+*.arabic-version {
+  font-family: "NotoKufiArabic";
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
+}
+.arabic-version {
+  direction: rtl;
+}
+.dark-mode {
+  background-color: #000b15;
+  color: #fff;
+}
+/* ============================================================ */
+.main-btn {
+  background-color: #229ed9;
+  color: #fff;
+  border: 1px solid #229ed9;
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.main-btn:hover {
+  background-color: #fff;
+  color: #229ed9;
+}
+.sec-btn {
+  background-color: #fff;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sec-btn:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.third-btn {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid var(--Color11, #e9f2f8);
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.third-btn:hover {
+  background-color: #e6edfb;
+  color: #000;
+}
+.form-select {
+  width: fit-content;
+  padding: 9px 15px;
+  background-position: 5%;
+}
+.arabic-version .form-select,
+.arabic-version .form-select option {
+  font-family: "NotoKufiArabic";
+}
+.main-stars-header {
+  min-height: 200px;
+  background-image: url(../assets/imgs/Login-pag-banner-en.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 2rem;
+  position: relative;
+  background-color: black;
+}
+.arabic-version .main-stars-header {
+  background-image: url(../assets/imgs/Login-pag-banner-ar.png);
+}
+.main-stars-header-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+.main-stars-header h1 {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.main-stars-header .breadcrumb-item a {
+  color: white;
+  text-decoration: none;
+}
+.main-stars-header li.active {
+  color: black;
+}
+.main-stars-header .breadcrumb-item + .breadcrumb-item::before {
+  color: white;
+}
+.floating-coin-up {
+  position: absolute;
+  top: -4rem;
+  inset-inline-end: 0;
+  z-index: 100;
+}
+.floating-coin-down {
+  position: absolute;
+  bottom: 0rem;
+  left: 6rem;
+  z-index: 100;
+}
+.floating-wa {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  background-color: #34c759;
+  border-radius: 14px;
+  position: fixed;
+  inset-inline-start: 0rem;
+  top: 92%;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  z-index: 999999;
+  text-decoration: none;
+  right: 2%;
+}
+.floating-wa p {
+  margin-bottom: 0;
+}
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+/* ============================================================ */
+.popup-section {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  position: fixed; /* Fixed position to cover the entire viewport */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex; /* Center the container */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-section .container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Maximum width */
+  padding: 20px; /* Padding for inner content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1001;
+  position: relative;
+}
+
+.popup-section .popup-close-btn {
+  cursor: pointer;
+  stroke: black;
+}
+.no-scroll {
+  overflow: hidden;
+}
+.popup-section .container a {
+  text-decoration: none;
+  color: black;
+}
+.dark-mode .popup-section .container h1,
+.dark-mode .popup-section .container p {
+  color: black;
+}
+.dark-mode .popup-section .container {
+  background: #bababa;
+}

@@ -1,0 +1,28 @@
+.personal-login,
+.mobile-personal {
+  width: 30%;
+  background-color: #fff;
+  justify-content: space-around;
+}
+.dark-mode .personal-login,
+.dark-mode .mobile-personal {
+  background-color: #00121b;
+}
+.personal-login p,
+.mobile-personal p {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+@media (min-width: 992px) {
+  .mobile-personal {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .personal-login {
+    display: none !important;
+  }
+  .mobile-personal {
+    width: 50%;
+  }
+}

@@ -1,0 +1,209 @@
+.recommendations-1st-section {
+  padding-block: 6rem;
+}
+.recommendations-1st-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 5rem;
+}
+.recommendations-img-box {
+  position: relative;
+}
+.recommendations-img-box img {
+  width: 100%;
+}
+.floating-recommendations-img-box-top {
+  background-color: #ffffffe5;
+  position: absolute;
+  padding: 0.7rem 1rem;
+  border-radius: 1rem;
+  top: -3rem;
+  inset-inline-start: -5rem;
+  box-shadow: 40px 40px 60px 0px #051e360d;
+}
+.floating-recommendations-img-box-top h2 {
+  color: var(--main-color);
+  background-color: transparent !important;
+  margin-bottom: 0;
+  line-height: 1;
+}
+.floating-recommendations-img-box-top p {
+  margin-bottom: 0;
+}
+.floating-recommendations-img-box-bottom {
+  background-color: #ffffffe5;
+  position: absolute;
+  padding: 0.7rem 1rem;
+  border-radius: 1rem;
+  bottom: -3rem;
+  inset-inline-end: -5rem;
+  box-shadow: 40px 40px 60px 0px #051e360d;
+}
+.floating-recommendations-img-box-bottom h2 {
+  color: var(--main-color);
+  background-color: transparent !important;
+  margin-bottom: 0;
+  line-height: 1;
+}
+.floating-recommendations-img-box-bottom p {
+  margin-bottom: 0;
+}
+.recommendations-1st-section .container h2 {
+  background-color: #fca930;
+  width: fit-content;
+  padding-inline: 0.2rem;
+}
+.recommendations-1st-section .container h2:first-child {
+  background-color: #e6edfb;
+  width: fit-content;
+}
+.recommendations-1st-section a {
+  text-decoration: none;
+  color: black;
+  background-color: #e6edfb;
+  padding: 0.5rem 0.8rem;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: flex;
+  width: fit-content;
+}
+
+.recommendations-1st-section a img {
+  transform: scaleX(-1);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  width: 0;
+  margin-inline-start: 0.5rem;
+}
+.recommendations-1st-section a:hover {
+  color: white;
+  background-color: var(--main-color);
+}
+.recommendations-1st-section a:hover img {
+  visibility: visible;
+  opacity: 1;
+  width: 11px;
+}
+@media (max-width: 1100px) {
+  .floating-recommendations-img-box-top {
+    inset-inline-start: 0;
+  }
+  .floating-recommendations-img-box-bottom {
+    inset-inline-end: 0;
+  }
+}
+@media (max-width: 767.888888888px) {
+  .recommendations-1st-section .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*  */
+.recommendations-2nd-section {
+  background-color: var(--main-section-bg);
+  padding-block: 5rem;
+}
+.recommendations-2nd-section h2 {
+  background-color: var(--main-color);
+  color: white;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+}
+.recommendations-2nd-section p {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: block;
+  margin-top: 1rem;
+}
+.recommendations-btn-main {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+.recommendations-btn-main i {
+  font-size: 1.1rem;
+}
+.recommendations-btn-main:hover {
+  color: white;
+  background-color: var(--main-color);
+}
+.recommendations-arrows-container {
+  position: absolute;
+  top: 50%;
+  width: 113%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+.arabic-version .recommendations-arrows-container {
+  flex-direction: row-reverse;
+}
+.slick-slide img {
+  width: 100%;
+}
+@media (max-width: 1500px) {
+  .recommendations-arrows-container {
+    width: 107%;
+  }
+}
+@media (max-width: 1420px) {
+  .recommendations-arrows-container {
+    width: 106%;
+  }
+}
+@media (max-width: 1400px) {
+  .recommendations-arrows-container {
+    width: 107%;
+  }
+}
+@media (max-width: 1400px) {
+  .recommendations-arrows-container {
+    width: 95%;
+  }
+}
+
+/* dark-mode */
+.dark-mode .recommendations-btn-main {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.dark-mode .recommendations-btn-main i {
+  font-size: 1.1rem;
+}
+.dark-mode .recommendations-btn-main:hover {
+  color: white;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+.dark-mode .floating-recommendations-img-box-top p {
+  color: #000b15;
+}
+.dark-mode .floating-recommendations-img-box-bottom p {
+  color: #000b15;
+}
+.dark-mode .recommendations-1st-section .container h2:first-child {
+  color: #000b15;
+}
+.dark-mode .floating-recommendations-img-box-top h2 {
+  color: var(--main-color) !important;
+}
+.dark-mode .floating-recommendations-img-box-bottom h2 {
+  color: var(--main-color) !important;
+}
+.arabic-version .recommendations-1st-section a picture {
+  display: flex;
+  transform: scaleX(-1);
+  margin-inline-start: 0.7rem;
+}
