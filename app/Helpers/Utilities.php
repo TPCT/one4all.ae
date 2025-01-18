@@ -28,23 +28,34 @@ class Utilities
         return preg_replace($re, "<ol class='{$class}'>", $data);
     }
 
-    public static function getActiveLink($link): string
+    private static function removeLocale($link){
+        $segments = explode('/', $link);
+        if (in_array($segments[0], array_keys(config('app.locales')))){
+            unset($segments[0]);
+            $link = implode('/', $segments);
+        }
+        return $link;
+    }
+    public static function getActiveLink($child): string
     {
-        $link_url = trim($link, '/');
-        $request_url = trim(implode('/', \request()->segments()), '/');
+        $link_url = trim($child->link, '/');
+        $link_url = self::removeLocale($link_url);
+
+        $request_url = trim(implode('/', request()->segments()), '/');
+        $request_url = self::removeLocale($request_url);
 
         if ($link_url == $request_url)
             return "active";
 
-        if (request()->route()?->isFallback){
-            foreach($link->children ?? [] as $child){
-                if (!isset($child->link))
-                    continue;
-                $child_link_url = trim($child->link, '/');
+        foreach($child->children ?? [] as $child){
+            if (!isset($child->link))
+                continue;
 
-                if ($child_link_url == $request_url)
-                    return "active";
-            }
+            $child_link_url = trim($child->link, '/');
+            $child_link_url = self::removeLocale($child_link_url);
+
+            if ($child_link_url == $request_url)
+                return "active";
         }
 
         return "";

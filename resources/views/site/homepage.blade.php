@@ -143,7 +143,7 @@
                 slidesToScroll: 1,
                 dots: true,
                 arrows: true,
-                rtl: {{$language == "en"}},
+                rtl: {{$rtl}},
                 prevArrow: $(".hero-arrows-prev"),
                 nextArrow: $(".hero-arrows-next"),
                 appendDots: $(".hero-dots-container"),
@@ -161,7 +161,7 @@
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 centerMode: false,
-                rtl: {{$language == "en"}},
+                rtl: {{$rtl}},
                 responsive: [
                     {
                         breakpoint: 991.88888,
@@ -184,7 +184,7 @@
             $(".clints-reviews-slider").slick({
                 infinite: true,
                 dots: false,
-                rtl: {{$language == "en"}},
+                rtl: {{$rtl}},
                 slidesToShow: 2.5,
                 slidesToScroll: 1,
                 arrows: true,

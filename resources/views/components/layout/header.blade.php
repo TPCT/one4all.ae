@@ -1,4 +1,3 @@
-@php use App\Settings\Site; @endphp
 <x-layout.top-header-menu></x-layout.top-header-menu>
 <div class="navigation-container">
     <div class="main-navigation--container"></div>
@@ -31,7 +30,7 @@
                         </div>
                         <a
                                 class="m-0 ms-2 navbar-brand logo text-center d-flex align-items-center"
-                                href="./home.html"
+                                href="{{route('home.index')}}"
                         >
                             <img
                                     id="logo-img"
@@ -47,10 +46,10 @@
                                 <li class="@if($child->has_children()) has-sub @endif">
                                     @if($child->has_children())
                                         <span class="submenu-button">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </span>
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
                                     @endif
-                                    <a href="{{$child->link}}" class="main-link @if(!$loop->index) active @endif">
+                                    <a href="{{$child->link}}" class="main-link {{\App\Helpers\Utilities::getActiveLink($child)}}">
                                         @if ($child->has_children())
                                             <i class="fa-solid fa-chevron-down"></i>
                                         @endif

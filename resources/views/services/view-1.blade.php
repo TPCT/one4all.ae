@@ -21,7 +21,7 @@
                 </div>
                 <div class="price">
                     <span>@lang('site.SERVICE_' . $service->id . "_PRICE")</span>
-                    <h2>{{$service->price}} @lang('site.SERVICE' . $service->id . "_CURRENCY")</h2>
+                    <h2>{{$service->price}} @lang('site.SERVICE_' . $service->id . "_CURRENCY")</h2>
                 </div>
                 <a href="">
                     @lang('site.SUBSCRIBE_NOW')
@@ -74,7 +74,7 @@
                 dots: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                rtl: true,
+                rtl: {{$rtl}},
                 arrows: true,
                 prevArrow: $(".recommendations-arrows-prev"),
                 nextArrow: $(".recommendations-arrows-next"),
