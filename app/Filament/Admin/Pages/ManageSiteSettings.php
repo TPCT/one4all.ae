@@ -106,9 +106,20 @@ class ManageSiteSettings extends SettingsPage
                                         ->label(__("Telegram")),
                                 ])
                                 ->columnSpan(1)
-                                ->columns(1)
+                                ->columns(1),
+                            Forms\Components\Grid::make(2)
+                                ->schema([
+                                    Forms\Components\Section::make()
+                                        ->schema([
+                                            TextInput::make('promo_code')
+                                                ->label(__("Promo Code"))
+                                        ])
+                                        ->columnSpan(1)
+                                        ->columns(1)
+                                ])
+                                ->columnSpan(2)
                         ])
-                        ->columnSpanFull()
+                        ->columnSpanFull(),
                 ])
             ]);
     }

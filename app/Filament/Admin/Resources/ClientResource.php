@@ -71,42 +71,34 @@ class ClientResource extends Resource
                 return self::$model::orderBy('created_at', 'desc');
             })
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->name(__("Name"))
+                Tables\Columns\TextColumn::make('full_name')
+                    ->label(__("Name"))
                     ->getStateUsing(function (Client $client) {
-                        return $client->name;
+                        return $client->first_name . " " . $client->last_name;
                     })
                     ->searchable(),
-                Tables\Columns\TextColumn::make('identifier')
-                    ->name(__('Identifier'))
+                Tables\Columns\TextColumn::make('email')
+                    ->label(__('Email'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label(__('Phone'))
                     ->getStateUsing(function(Client $record){
-                        return $record->phone ?? $record->email;
+                        return $record->country_code . $record->phone;
                     })
                     ->searchable(query: function ($query, $search) {
-                        $query->where('email', 'like', "%{$search}%");
                         return $query->orWhere('phone', 'LIKE', "%{$search}%");
                     }),
-                Tables\Columns\TextColumn::make('mobile_type')
-                    ->name(__("Mobile Type"))
-                    ->badge()
-                    ->getStateUsing(function ($record) {
-                        return $record->mobile_type ?? "----";
-                    }),
                 Tables\Columns\TextColumn::make('active')
-                    ->name('Active')
+                    ->label('Active')
                     ->badge(function (Client $record) {
-                        if ($record->deleted_at)
-                            return "danger";
                         if ($record->active == 0)
-                            return "warning";
+                            return "danger";
                         return "success";
                     })
                     ->formatStateUsing(function(Client $record) {
-                        if ($record->deleted_at)
-                            return __("Deleted");
                         if ($record->active == 0)
-                            return "In-completed Login";
-                        return "Active";
+                            return __("Banned");
+                        return __("Active");
                     })
                     ->getStateUsing(function(Client $record) {
                         return $record->active;
@@ -117,28 +109,9 @@ class ClientResource extends Resource
             ])
             ->poll('60s')
             ->filters([
-                Tables\Filters\TrashedFilter::make(),
-                Tables\Filters\Filter::make('mobile_type')
-                    ->label(__('Mobile type'))
-                    ->form([
-                        Select::make('mobile_type')
-                            ->native(false)
-                            ->options([
-                                Client::ANDROID => __('Android'),
-                                Client::IOS => __('iOS'),
-                            ])
-                            ->searchable()
-                            ->preload()
-                    ])
-                    ->query(function (Builder $query, $data){
-                        return $query->when($data['mobile_type'], function ($builder) use ($data){
-                           $builder->where('mobile_type', $data['mobile_type']);
-                        });
-                    }),
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(__('Delete')),
-                Tables\Actions\RestoreAction::make(__("Restore"))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -62,6 +62,13 @@ use OwenIt\Auditing\Auditable;
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereViewType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service withTranslation(?string $locale = null)
+ * @property int $has_form
+ * @property int|null $slider_id
+ * @property int $one_time_payment
+ * @property-read Slider|null $slider
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereHasForm($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereOneTimePayment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereSliderId($value)
  * @mixin \Eloquent
  */
 class Service extends Model implements \OwenIt\Auditing\Contracts\Auditable

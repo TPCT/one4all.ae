@@ -152,8 +152,6 @@ class BranchResource extends Resource
                     ->badge()
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make('trashed')
-                    ->native(false),
                 Tables\Filters\Filter::make('merchant_id')
                     ->label(__('Merchant'))
                     ->form([

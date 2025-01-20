@@ -12,17 +12,14 @@ class Client extends BaseWidget
     {
         return [
             Stat::make(__("Clients"), function (){
-                return \App\Models\Client::withTrashed()->count();
+                return \App\Models\Client::count();
             })->icon('bi-person-fill'),
             Stat::make(__("Active Clients"), function(){
                 return \App\Models\Client::where('active', true)->count();
             })->icon('bi-person-fill'),
-            Stat::make(__("Inactive Clients"), function(){
-                return \App\Models\Client::where('active', false)->count();
-            })->icon('bi-person-fill'),
             Stat::make(__("Banned Clients"), function(){
-                return \App\Models\Client::onlyTrashed()->count();
-            })->icon('eva-person-delete'),
+                return \App\Models\Client::where('active', false)->count();
+            })->icon('bi-person-fill')
         ];
     }
 }

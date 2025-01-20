@@ -172,7 +172,10 @@ class BlockResource extends Resource
                                             ->label(__('Youtube Video')),
                                     ])
                                     ->visible(function (Forms\Get $get){
-                                        return $get('data.dropdown_id', true) == Dropdown::whereSlug('homepage-about-us-section')?->first()?->id;
+                                        return in_array($get('data.dropdown_id', true), [
+                                            Dropdown::whereSlug('homepage-about-us-section')?->first()?->id,
+                                            Dropdown::whereSlug('about-us-page')->first()?->id,
+                                        ]);
                                     })
                                     ->columnSpanFull(),
 

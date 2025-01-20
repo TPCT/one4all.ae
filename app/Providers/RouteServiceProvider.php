@@ -35,8 +35,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('api')
-                ->prefix('/{locale?}/api')
-                ->where(['locale' => implode('|', array_keys(config('app.locales')))])
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')

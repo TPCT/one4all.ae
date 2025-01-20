@@ -18,7 +18,7 @@ class HeaderImage extends Component
         public ?string $color = null,
         public ?string $html = null,
         public ?string $url = null,
-        public array $breadcrumb = []
+        public array $breadcrumbs = []
     )
     {
     }

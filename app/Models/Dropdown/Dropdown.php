@@ -66,6 +66,10 @@ use OwenIt\Auditing\Auditable;
  * @property int $admin_id
  * @method static \Illuminate\Database\Eloquent\Builder|Dropdown whereAdminId($value)
  * @property-read \Awcodes\Curator\Models\Media|null $cover_image
+ * @property string|null $account_type
+ * @property int|null $lout_amount
+ * @method static \Illuminate\Database\Eloquent\Builder|Dropdown whereAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Dropdown whereLoutAmount($value)
  * @mixin \Eloquent
  */
 class Dropdown extends Model implements \OwenIt\Auditing\Contracts\Auditable
@@ -75,11 +79,24 @@ class Dropdown extends Model implements \OwenIt\Auditing\Contracts\Auditable
 
     public const BLOCK_CATEGORY = "Block Category";
     public const CONSULTATION_CATEGORY = "Consultation Category";
+    public const CASHBACK_CATEGORY = "Cashback Category";
+
+    public const ACCOUNT_TYPE_1 = "ACCOUNT_TYPE_1";
+    public const ACCOUNT_TYPE_2 = "ACCOUNT_TYPE_2";
+
+    public static function getAccountTypes(){
+        return [
+            self::ACCOUNT_TYPE_1 => __("site." . self::ACCOUNT_TYPE_1),
+            self::ACCOUNT_TYPE_2 => __("site." . self::ACCOUNT_TYPE_2),
+        ];
+    }
+
     public static function getCategories(): array
     {
         return [
             self::BLOCK_CATEGORY => __(self::BLOCK_CATEGORY),
             self::CONSULTATION_CATEGORY => __(self::CONSULTATION_CATEGORY),
+            self::CASHBACK_CATEGORY => __(self::CASHBACK_CATEGORY),
         ];
     }
 

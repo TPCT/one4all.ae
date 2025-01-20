@@ -1,8 +1,8 @@
-#whatsapp{
+#whatsapp, #phone{
     padding-right: 0;
     padding-left: 54px;
 }
-.arabic-version #whatsapp{
+.arabic-version #whatsapp, .arabic-version #phone{
     padding-right: 54px;
     padding-left: 0;
 }
@@ -39,4 +39,17 @@
     height: 300px;
     object-fit: cover;
     margin-bottom: 1rem;
+}
+
+.iti__arrow{
+    margin-left: 10px;
+}
+
+.arabic-version .iti__arrow{
+    margin-left: 0;
+    margin-right: 10px
+}
+
+.error{
+    font-size: 0.7rem;
 }

@@ -1,28 +1,21 @@
-@push('style')
-    <style>
-        .Header-section::before{
-            background: {{$color}} !important
-        }
-    </style>
-@endpush
-
-<section class="Header-section">
-    <div class="container">
-        <picture class="pattern">
-            <img src="{{asset('/Assets/Mask group.png')}}" alt="" class="mw-100 w-100">
-        </picture>
-        <div class="Header-section-content">
-            <x-layout.bread-crumb></x-layout.bread-crumb>
-            <div>
-                <h1>{{$title}}</h1>
-                {!! $description !!}
-                {!! $html !!}
-            </div>
-        </div>
-        @if ($image)
-            <picture>
-                <img src="{{$image->thumbnail_url}}" alt="" srcset="">
-            </picture>
-        @endif
+<section class="main-stars-header pt-3" style="background-image: url('{{$image?->url}}')">
+    <div class="container main-stars-header-content">
+        <h1>{{$title}}</h1>
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="pt-2">
+            <ol class="breadcrumb d-flex align-items-center gap-2">
+                @foreach($breadcrumbs as $breadcrumb => $url)
+                    @if ($loop->last)
+                        <li class="breadcrumb-item active fw-bold">{{$breadcrumb}}</li>
+                    @else
+                        <li class="breadcrumb-item" aria-current="page">
+                            <a href="{{$url}}">
+                                {{$breadcrumb}}
+                            </a>
+                        </li>
+                        <p class="text-white mb-0">/</p>
+                    @endif
+                @endforeach
+            </ol>
+        </nav>
     </div>
 </section>

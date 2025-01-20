@@ -73,11 +73,8 @@ class DropdownResource extends Resource
                             TextInput::make($tab->makeName('title'))
                                 ->label(__("Title"))
                                 ->maxLength(255)
-
-                            ->live(onBlur: true, debounce: false)
-                            ->multiLingual()
-                            ->unique(ignoreRecord: true)
-                            ->required(),
+                                ->live(onBlur: true, debounce: false)
+                                ->required(),
 
                             \App\Filament\Components\TiptapEditor::make($tab->makeName('description'))
                                 ->maxLength(255)
@@ -109,6 +106,25 @@ class DropdownResource extends Resource
                                ->required()
                                ->live()
                                ->native(false),
+
+                           Select::make('account_type')
+                               ->label(__("Account Type"))
+                               ->options(Dropdown::getAccountTypes())
+                               ->searchable()
+                               ->preload()
+                               ->required()
+                               ->native(false)
+                               ->visible(function (Forms\Get $get){
+                                   return $get('data.category', true) == Dropdown::CASHBACK_CATEGORY;
+                               }),
+
+                           TextInput::make('lout_amount')
+                                ->label(__("Lout Amount"))
+                                ->integer()
+                                ->required()
+                                ->visible(function (Forms\Get $get){
+                                   return $get('data.category', true) == Dropdown::CASHBACK_CATEGORY;
+                                }),
 
                            Forms\Components\DatePicker::make('published_at')
                                ->label(__("Published At"))

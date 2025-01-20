@@ -9,6 +9,10 @@
 @endpush
 
 @section('content')
+    <x-layout.header-image :model="$service" :breadcrumbs="[
+                __('site.HOME') => route('site.index'),
+                $service->title => route('services.show', ['service' => $service])
+    ]"/>
     <section class="recommendations-1st-section position-relative">
         <div class="container">
             <div

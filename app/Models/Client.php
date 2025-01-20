@@ -77,22 +77,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereAlternativePhone($value)
  * @mixin \Eloquent
  */
-class Client extends \Illuminate\Foundation\Auth\User implements JWTSubject, \OwenIt\Auditing\Contracts\Auditable
+class Client extends \Illuminate\Foundation\Auth\User implements \OwenIt\Auditing\Contracts\Auditable
 {
-    use HasFactory, Notifiable, SoftDeletes, Auditable;
+    use HasFactory, Notifiable, Auditable;
     protected $guarded = [];
     protected $hidden = ['id', 'created_at', 'updated_at', 'deleted_at'];
-
-    public const IOS = "ios";
-    public const ANDROID = "android";
-
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 }

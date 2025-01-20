@@ -40,6 +40,7 @@ class Site extends Settings
     public ?string $linkedin_link;
     public ?string $telegram_link;
     public ?string $youtube_link;
+    public ?string $promo_code;
     public ?int $default_page_size;
     public ?string $contact_us_mailing_list;
 

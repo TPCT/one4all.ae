@@ -123,6 +123,9 @@ class ServiceResource extends Resource
                                 Checkbox::make('promote_to_homepage')
                                     ->label(__('Promote To Homepage')),
 
+                                Checkbox::make('one_time_payment')
+                                    ->label(__('One Time Payment')),
+
                                 Checkbox::make('has_form')
                                     ->label(__('Has Form'))
                                     ->visible(function (Forms\Get $get){

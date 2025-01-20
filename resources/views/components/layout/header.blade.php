@@ -30,7 +30,7 @@
                         </div>
                         <a
                                 class="m-0 ms-2 navbar-brand logo text-center d-flex align-items-center"
-                                href="{{route('home.index')}}"
+                                href="{{route('site.index')}}"
                         >
                             <img
                                     id="logo-img"
