@@ -76,6 +76,19 @@ class AppServiceProvider extends ServiceProvider
             }));
         }
 
+        \Config::set('paypal.mode', app(Site::class)->paypal_mode ? "live" : "sandbox");
+        \Config::set('paypal.' . config('paypal.mode') . '.app_id', app(Site::class)->paypal_app_id);
+        \Config::set('paypal.' . config('paypal.mode') . '.client_secret', app(Site::class)->paypal_client_secret);
+        \Config::set('paypal.' . config('paypal.mode') . '.client_id', app(Site::class)->paypal_client_id);
+
+        \Config::set('mail.mailers.smtp.host', app(Site::class)->smtp_server);
+        \Config::set('mail.mailers.smtp.port', app(Site::class)->smtp_port);
+        \Config::set('mail.from.address', app(Site::class)->smtp_from_address);
+        \Config::set('mail.from.name', app(Site::class)->smtp_from_name);
+        \Config::set('mail.mailers.smtp.encryption', app(Site::class)->smtp_encryption);
+        \Config::set('mail.mailers.smtp.username', app(Site::class)->smtp_username);
+        \Config::set('mail.mailers.smtp.password', app(Site::class)->smtp_password);
+
         view()->share('language', app()->getLocale());
     }
 }

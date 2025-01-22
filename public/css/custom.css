@@ -53,3 +53,100 @@
 .error{
     font-size: 0.7rem;
 }
+
+.error-404{
+    height: 50vh;
+}
+
+.floating-wa{
+    left: 2%;
+    right: unset;
+}
+
+.arabic-version .floating-wa{
+    left: unset;
+    right: 2%;
+}
+
+.personal-login{
+    width: fit-content;
+}
+
+.personal-login img{
+    width: 90px;
+    height: 60px;
+    object-fit: contain;
+}
+.personal-login p{
+    text-wrap: nowrap;
+}
+
+#cssmenu.small-screen #menu-button{
+    position: absolute;
+    left: 1rem;
+    border: unset;
+}
+.arabic-version #cssmenu.small-screen #menu-button{
+    left: unset;
+    right: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .mobile-personal {
+        position: absolute;
+        width: unset;
+    }
+    
+    @media screen and (max-width: 400px) {
+        .mobile-personal{
+            left: 40px;
+            top: 22.5px;
+        }
+        .arabic-version .mobile-personal{
+            right: 40px;
+            left: unset;
+        }
+    }
+    
+    @media screen and (min-width: 401px) and (max-width: 767px) {
+        .mobile-personal{
+            left: 50px;
+            top: 42.5px;
+        }
+        .arabic-version .mobile-personal{
+            right: 50px;
+            left: unset;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+        .mobile-personal{
+            left: 80px;
+            top: 40px;
+        }
+        .arabic-version .mobile-personal{
+            right: 80px;
+            left: unset;
+        }
+    }
+    
+    @media screen and (min-width: 993px) and (max-width: 1200px) {
+        .personal-login{
+            position: absolute;
+            left: 80px;
+            top: 35px;
+        }
+        .arabic-version .personal-login{
+            right: 80px;
+            left: unset;
+        }
+    }
+}
+
+.popup-header{
+    display: block !important;
+}
+
+.popup-title{
+    font-size: min(37px, 5vw)
+}

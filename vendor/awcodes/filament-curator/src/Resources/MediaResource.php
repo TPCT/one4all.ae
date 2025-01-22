@@ -74,11 +74,11 @@ class MediaResource extends Resource
     public static function getNavigationBadge(): ?string
     {
         return CuratorPlugin::get()->getNavigationCountBadge() ?
-            (Filament::hasTenancy() && Config::get('curator.is_tenant_aware')) ?
+            (Filament::hasTenancy() && Config::get('curator.is_tenant_aware') ?
                 static::getEloquentQuery()
                     ->where(Config::get('curator.tenant_ownership_relationship_name') . '_id', Filament::getTenant()->id)
                     ->count()
-            : number_format(static::getModel()::count())
+            : number_format(static::getModel()::count()))
             : null;
     }
 
@@ -113,7 +113,7 @@ class MediaResource extends Resource
                                             }),
                                     ]),
                                 Forms\Components\Tabs\Tab::make(trans('curator::forms.sections.curation'))
-                                    ->visible(fn ($record) => is_media_resizable($record->ext) && config('curator.tabs.display_curation'))
+                                    ->visible(fn ($record) => is_media_resizable($record->type) && config('curator.tabs.display_curation'))
                                     ->schema([
                                         Forms\Components\Repeater::make('curations')
                                             ->label(trans('curator::forms.sections.curation'))

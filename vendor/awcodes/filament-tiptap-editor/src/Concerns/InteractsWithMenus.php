@@ -10,11 +10,11 @@ trait InteractsWithMenus
 
     protected array | Closure | null $floatingMenuTools = null;
 
-    protected ?bool $shouldShowBubbleMenus = null;
+    protected bool | Closure | null $shouldShowBubbleMenus = null;
 
-    protected ?bool $shouldShowFloatingMenus = null;
+    protected bool | Closure | null $shouldShowFloatingMenus = null;
 
-    protected ?bool $shouldShowToolbarMenus = null;
+    protected bool | Closure | null $shouldShowToolbarMenus = null;
 
     public function disableBubbleMenus(bool | Closure | null $condition = true): static
     {

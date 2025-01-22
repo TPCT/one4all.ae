@@ -115,6 +115,9 @@ trait Translatable
     public function fill(array $attributes)
     {
         foreach ($attributes as $key => $values) {
+            if ($this->isWrapperAttribute($key)) {
+                $this->fill($values);
+            }
             if (
                 $this->getLocalesHelper()->has($key)
                 && is_array($values)
@@ -179,7 +182,7 @@ trait Translatable
         $modelName = $this->getTranslationModelName();
 
         /** @var Model $translation */
-        $translation = new $modelName();
+        $translation = new $modelName;
         $translation->setAttribute($this->getLocaleKey(), $locale);
         $translation->setAttribute($this->getTranslationRelationKey(), $this->getKey());
         $this->translations->add($translation);
@@ -280,6 +283,11 @@ trait Translatable
         return in_array($key, $this->translatedAttributes);
     }
 
+    public function isWrapperAttribute(string $key): bool
+    {
+        return $key === config('translatable.translations_wrapper');
+    }
+
     public function replicateWithTranslations(?array $except = null): Model
     {
         $newInstance = $this->replicate($except);
@@ -347,6 +355,7 @@ trait Translatable
     {
         $dirtyAttributes = $translation->getDirty();
         unset($dirtyAttributes[$this->getLocaleKey()]);
+        unset($dirtyAttributes[$this->getTranslationRelationKey()]);
 
         return count($dirtyAttributes) > 0;
     }

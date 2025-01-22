@@ -9,29 +9,37 @@ export const getYoutubeEmbedUrl = (nocookie = false) => {
 export const getEmbedURLFromYoutubeURL = (options) => {
   const { url, controls, nocookie, startAt } = options;
 
-  // if is already an embed url, return it
+  let id = null;
+
+  // Already an embed URL
   if (url.includes("/embed/")) {
     return url;
   }
 
-  // if is a youtu.be url, get the id after the /
+  // Extract the video ID for youtu.be URLs
   if (url.includes("youtu.be")) {
-    const id = url.split("/").pop();
-
-    if (!id) {
-      return null;
-    }
-    return `${getYoutubeEmbedUrl(nocookie)}${id}`;
+    id = url.split("/").pop();
   }
 
-  const videoIdRegex = /v=([-\w]+)/gm;
-  const matches = videoIdRegex.exec(url);
+  // Extract the video ID for /shorts/ URLs
+  if (url.includes("/shorts/")) {
+    id = url.split("/shorts/").pop();
+  }
 
-  if (!matches || !matches[1]) {
+  // Extract the video ID for standard YouTube URLs (?v=)
+  if (!id) {
+    const videoIdRegex = /v=([-\w]+)/gm;
+    const matches = videoIdRegex.exec(url);
+    if (matches && matches[1]) {
+      id = matches[1];
+    }
+  }
+
+  if (!id) {
     return null;
   }
 
-  let outputUrl = `${getYoutubeEmbedUrl(nocookie)}${matches[1]}`;
+  let outputUrl = `${getYoutubeEmbedUrl(nocookie)}${id}`;
 
   const params = [];
 

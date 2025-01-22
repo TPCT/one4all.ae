@@ -1,4 +1,5 @@
 <x-layout.top-header-menu></x-layout.top-header-menu>
+
 <div class="navigation-container">
     <div class="main-navigation--container"></div>
     <header class="main-navigation--container">
@@ -15,19 +16,28 @@
                             id="cssmenu"
                             class="head_btm_menu d-flex justify-content-xl-between justify-content-end w-100"
                     >
-                        <div class="auth-mobile">
-                            <div class="nav-item">
-                                <a class="nav-link px-2" href="./login-ar.html"
-                                >@lang('site.LOGIN')</a
-                                >
-                            </div>
+                        @if ($client)
                             <a
-                                    href="./register-ar.html"
-                                    class="main-btn d-flex align-items-center"
+                                   href="{{route('profile.edit')}}" class="mobile-personal p-3 py-0 d-flex align-items-center gap-3 bg-light shadow-sm rounded-1 text-decoration-none text-dark"
                             >
-                                @lang('site.REGISTER')
+                                <p>@lang('site.HELLO_USER') {{$client->first_name . " " . $client->last_name}}</p>
                             </a>
-                        </div>
+                        @else
+                            <div class="auth-mobile">
+                                <div class="nav-item">
+                                    <a class="nav-link px-2" href="{{route('auth.login')}}"
+                                    >@lang('site.LOGIN')</a
+                                    >
+                                </div>
+                                <a
+                                        href="{{route('auth.register')}}"
+                                        class="main-btn d-flex align-items-center"
+                                >
+                                    @lang('site.REGISTER')
+                                </a>
+                            </div>
+                        @endif
+
                         <a
                                 class="m-0 ms-2 navbar-brand logo text-center d-flex align-items-center"
                                 href="{{route('site.index')}}"
@@ -71,26 +81,32 @@
 
                         <div class="navigation-last-content"></div>
                     </nav>
-                    <ul
-                            class="navbar-nav flex-row navbar-nav-two gap-4 pe-0 mb-2 mb-lg-0"
-                    >
-                        <li class="nav-item mb-2">
-                            <a
-                                   class="nav-link px-2"
-                                   href="./login-ar.html"
-                            >
-                                @lang('site.LOGIN')
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a
-                                href="./register-ar.html"
-                                class="main-btn d-flex align-items-center"
-                            >
-                                @lang('site.REGISTER')
-                            </a>
-                        </li>
-                    </ul>
+                    @if ($client)
+                        <a href="{{route('profile.edit')}}" class="personal-login p-3 py-1 d-flex align-items-center gap-3 bg-light shadow-sm rounded-5 text-decoration-none text-dark">
+                            <p>@lang('site.HELLO_USER') {{$client->first_name . " " . $client->last_name}}</p>
+                        </a>
+                    @else
+                        <ul
+                                class="navbar-nav flex-row navbar-nav-two gap-4 pe-0 mb-2 mb-lg-0"
+                        >
+                            <li class="nav-item mb-2">
+                                <a
+                                        class="nav-link px-2"
+                                        href="{{route('auth.login')}}"
+                                >
+                                    @lang('site.LOGIN')
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a
+                                        href="{{route('auth.register')}}"
+                                        class="main-btn d-flex align-items-center"
+                                >
+                                    @lang('site.REGISTER')
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>

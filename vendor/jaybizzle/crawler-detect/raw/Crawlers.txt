@@ -201,6 +201,7 @@ Burf Search
 Butterfly\/
 BuzzSumo
 CAAM\/[0-9]
+caam dot crwlr at gmail dot com
 CakePHP
 Calculon
 Canary%20Mail
@@ -1000,6 +1001,7 @@ ROI Hunter
 RPT-HTTPClient
 RSSMix\/
 RSSOwl
+RuxitSynthetic
 RyowlEngine
 safe-agent-scanner
 SalesIntelligent

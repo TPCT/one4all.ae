@@ -39,6 +39,21 @@
             <span class="sr-only">{{ trans('filament-tiptap-editor::editor.color.input_label') }}</span>
         </label>
 
+        @if(filled(config('filament-tiptap-editor.preset_colors')))
+        <div class="mt-2 flex flex-wrap justify-start gap-2">
+            @foreach(config('filament-tiptap-editor.preset_colors') as $name => $value)
+                <span
+                    wire:key="{{ $name }}"
+                    x-tooltip.raw="{{ $name }}"
+                    class="rounded-full w-5 h-5 cursor-pointer"
+                    style="background-color:{{ $value }};"
+                    x-on:click="setState('{{ $value }}');"
+                >
+            </span>
+            @endforeach
+        </div>
+        @endif
+
         <div class="w-full flex gap-2 mt-2">
             <x-filament::button
                 x-on:click="editor().chain().focus().setColor(state).run(); $dispatch('close-panel')"

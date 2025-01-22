@@ -37,6 +37,8 @@ return [
     //    'media_action' => Awcodes\Curator\Actions\MediaAction::class,
     'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
     'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
+    'grid_builder_action' => FilamentTiptapEditor\Actions\GridBuilderAction::class,
+    'oembed_action' => FilamentTiptapEditor\Actions\OEmbedAction::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -96,4 +98,19 @@ return [
     'extensions_script' => null,
     'extensions_styles' => null,
     'extensions' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | PresetColors
+    |--------------------------------------------------------------------------
+    |
+    | Possibility to define presets colors in ColorPicker.
+    | Only hexadecimal value
+    'preset_colors' => [
+        'primary' => '#f59e0b',
+        //..
+    ]
+    |
+    */
+    'preset_colors' => [],
 ];

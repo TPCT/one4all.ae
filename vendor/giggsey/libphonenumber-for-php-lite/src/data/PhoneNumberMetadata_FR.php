@@ -1,4 +1,5 @@
 <?php
+
 /**
  * libphonenumber-for-php-lite data file
  * This file has been @generated from libphonenumber data
@@ -32,7 +33,7 @@ return [
         'example' => '891123456',
     ],
     'sharedCost' => [
-        'pattern' => '8(?:1[01]|2[0156]|4[02]|84)\\d{6}',
+        'pattern' => '8(?:1[01]|2[0156]|4[024]|84)\\d{6}',
         'example' => '884012345',
     ],
     'personalNumber' => [

@@ -15,7 +15,7 @@ class LanguageSwitcher extends Component
 
     public function __construct()
     {
-        $this->route = request()->route()->getName() ?: "site.index";
+        $this->route = request()->route()?->getName() ?: "site.index";
     }
 
     /**

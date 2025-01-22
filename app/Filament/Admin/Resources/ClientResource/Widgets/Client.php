@@ -17,9 +17,6 @@ class Client extends BaseWidget
             Stat::make(__("Active Clients"), function(){
                 return \App\Models\Client::where('active', true)->count();
             })->icon('bi-person-fill'),
-            Stat::make(__("Banned Clients"), function(){
-                return \App\Models\Client::where('active', false)->count();
-            })->icon('bi-person-fill')
         ];
     }
 }

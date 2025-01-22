@@ -41,6 +41,19 @@ class Site extends Settings
     public ?string $telegram_link;
     public ?string $youtube_link;
     public ?string $promo_code;
+    public ?string $smtp_server;
+    public ?string $smtp_port;
+    public ?string $smtp_encryption;
+    public ?string $smtp_username;
+    public ?string $smtp_password;
+    public ?string $smtp_from_address;
+    public ?string $smtp_from_name;
+
+    public ?string $paypal_mode;
+    public ?string $paypal_client_id;
+    public ?string $paypal_client_secret;
+    public ?string $paypal_app_id;
+
     public ?int $default_page_size;
     public ?string $contact_us_mailing_list;
 

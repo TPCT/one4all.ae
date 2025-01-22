@@ -99,6 +99,13 @@ If you are using the `heading` tool in your editor you can also generate a table
 {!! tiptap_converter()->asToc($post->content, maxDepth: 3) !!}
 ```
 
+Alternatively, you can use & extend the `table-of-contents` blade component to generate the table of contents.
+
+```blade
+<!-- This will generate the TOC as a nested array, and use it as a parameter in the contents table -->
+<x-filament-tiptap-editor::table-of-contents :headings="tiptap_converter()->asTOC($page->body, array: true)" />
+```
+
 ## Config
 
 The plugin will work without publishing the config, but should you need to change any of the default settings you can publish the config file with the following Artisan command:
@@ -206,7 +213,7 @@ TiptapEditor::make('content')
 
 ## Overrides
 
-The Link and Media modals are built using Filament Form Component Actions. This means it is easy enough to swap them out with your own implementations.
+The Link, Media and Grid Builder modals are built using Filament Form Component Actions. This means it is easy enough to swap them out with your own implementations.
 
 ### Link Modal
 
@@ -218,7 +225,25 @@ See `vendor/awcodes/filament-tiptap-editor/src/Actions/LinkAction.php` for imple
 
 You may override the default Media modal with your own Action and assign to the `media_action` key in the config file. Make sure the default name for your action is `filament_tiptap_media`.
 
+The Media Modal can make use of 3 attributes not exposed by default:
+
+- `srcset` is used for selecting a series of responsive images to display for different browser viewports. [Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)
+- `sizes` goes alongside `srcset` to specify sizing rules for responsive images. [Docs](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes)
+- `media` provides support for an arbitrary ID value to better integrate with Media stored within a Database.
+
 See `vendor/awcodes/filament-tiptap-editor/src/Actions/MediaAction.php` for implementation.
+
+### Grid Builder Modal
+
+You may override the default Grid Builder modal with your own Action and assign to the `grid_builder_action` key in the config file. Make sure the default name for your action is `filament_tiptap_grid`.
+
+See `vendor/awcodes/filament-tiptap-editor/src/Actions/GridBuilderAction.php` for implementation.
+
+### OEmbed Modal
+
+You may override the default OEmbed modal with your own Action and assign to the `oembed_action` key in the config file. Make sure the default name for your action is `filament_tiptap_oembed`.
+
+See `vendor/awcodes/filament-tiptap-editor/src/Actions/OEmbedAction.php` for implementation.
 
 ### Initial height of editor field
 
@@ -228,6 +253,22 @@ You can add extra input attributes to the field with the `extraInputAttributes()
 TiptapEditor::make('content')
     ->extraInputAttributes(['style' => 'min-height: 12rem;']),
 ```
+
+## Colors preset
+
+By default, the ColorPicker shows a picker and a field to set hexadecimal color to selected text. Registering specific colors in config file, you can choose one of them directly in ColorPicker
+To do, simply set your custom colors in config file ```preset_colors``` key
+
+    
+```php
+'preset_colors' => [
+    'primary' => '#f59e0b',
+    'secondary' => '#14b8a6',
+    'red' => '#ef4444',
+    //..
+]
+```
+
 
 ## Bubble and Floating Menus
 
@@ -282,6 +323,13 @@ TiptapEditor::make('content')
 
 > **Note**
 > To use custom blocks you must store your content as JSON.
+
+```php
+use FilamentTiptapEditor\Enums\TiptapOutput;
+
+TiptapEditor::make('content')
+    ->output(FilamentTiptapEditor\TiptapOutput::Json);
+```
 
 There are 3 components you need to create a custom block for Tiptap Editor.
 
@@ -465,6 +513,33 @@ If you are using any of the tools that require a modal (e.g. Insert media, Inser
 </form>
 
 {{ $this->modal }}
+```
+
+### Placeholders
+
+You can easily set a placeholder, the Filament way:
+
+```php
+TiptapEditor::make('content')
+    ->placeholder('Write something...')
+```
+
+You can define specific placeholders for each node type using the `->nodePlaceholders()` method. This method accepts an associative array, where the keys are the node type names, and the values are the corresponding placeholder texts.
+
+```php
+TiptapEditor::make('content')
+    ->nodePlaceholders([
+        'paragraph' => 'Start writing your paragraph...',
+        'heading' => 'Insert a heading...',
+    ])
+```
+
+The `->showOnlyCurrentPlaceholder()` method allows you to control whether placeholders are shown for all nodes simultaneously or only for the currently active node.
+
+```php
+TiptapEditor::make('content')
+    // All nodes will immediately be displayed, instead of only the selected node
+    ->showOnlyCurrentPlaceholder(false)
 ```
 
 ## Custom Extensions

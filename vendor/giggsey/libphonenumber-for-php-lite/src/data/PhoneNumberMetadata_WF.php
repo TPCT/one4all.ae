@@ -1,4 +1,5 @@
 <?php
+
 /**
  * libphonenumber-for-php-lite data file
  * This file has been @generated from libphonenumber data
@@ -10,7 +11,7 @@ return [
     'id' => 'WF',
     'countryCode' => 681,
     'generalDesc' => [
-        'pattern' => '(?:40|72)\\d{4}|8\\d{5}(?:\\d{3})?',
+        'pattern' => '(?:40|72|8\\d{4})\\d{4}|[89]\\d{5}',
         'posLength' => [
             6,
             9,
@@ -53,8 +54,10 @@ return [
         ],
     ],
     'voip' => [
+        'pattern' => '9[23]\\d{4}',
+        'example' => '921234',
         'posLength' => [
-            -1,
+            6,
         ],
     ],
     'pager' => [
@@ -85,7 +88,7 @@ return [
             'pattern' => '(\\d{2})(\\d{2})(\\d{2})',
             'format' => '$1 $2 $3',
             'leadingDigitsPatterns' => [
-                '[478]',
+                '[47-9]',
             ],
             'nationalPrefixFormattingRule' => '',
             'domesticCarrierCodeFormattingRule' => '',

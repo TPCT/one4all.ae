@@ -160,15 +160,17 @@
 
                                     @endforeach
                                 </ul>
-                                <div
-                                        class="package-price-container d-flex align-items-center justify-content-between"
-                                >
-                                    <div class="package-price d-flex align-items-center gap-2">
-                                        <h3>{{$package->price}}</h3>
-                                        <p>@lang('site.PACKAGE_CURRENCY')</p>
+                                @if ($has_button)
+                                    <div
+                                            class="package-price-container d-flex align-items-center justify-content-between"
+                                    >
+                                        <div class="package-price d-flex align-items-center gap-2">
+                                            <h3>{{$package->price}}</h3>
+                                            <p>@lang('site.PACKAGE_CURRENCY')</p>
+                                        </div>
+                                        <a href="{{route('payment.process', ['type' => 'packages', 'model' => $package->id])}}" class="main-btn"> @lang('site.SUBSCRIBE_NOW') </a>
                                     </div>
-                                    <a href="" class="main-btn"> @lang('site.SUBSCRIBE_NOW') </a>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach

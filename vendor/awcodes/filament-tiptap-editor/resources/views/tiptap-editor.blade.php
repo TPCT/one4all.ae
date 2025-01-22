@@ -8,6 +8,9 @@
     $mergeTags = $getMergeTags();
     $shouldSupportBlocks = $shouldSupportBlocks();
     $shouldShowMergeTagsInBlocksPanel = $shouldShowMergeTagsInBlocksPanel();
+    $customDocument = $getCustomDocument();
+    $nodePlaceholders = $getNodePlaceholders();
+    $showOnlyCurrentPlaceholder = $getShowOnlyCurrentPlaceholder();
 @endphp
 
 <x-dynamic-component
@@ -30,7 +33,7 @@
                 <div
                     wire:ignore
                     x-ignore
-                    ax-load="visible"
+                    ax-load
                     ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('tiptap', 'awcodes/tiptap-editor') }}"
                     class="relative z-0 tiptap-wrapper rounded-md bg-white dark:bg-gray-900 focus-within:ring focus-within:ring-primary-500 focus-within:z-10"
                     x-bind:class="{ 'tiptap-fullscreen': fullScreenMode }"
@@ -43,6 +46,9 @@
                         floatingMenuTools: @js($floatingMenuTools),
                         placeholder: @js($getPlaceholder()),
                         mergeTags: @js($mergeTags),
+                        customDocument: @js($customDocument),
+                        nodePlaceholders: @js($nodePlaceholders),
+                        showOnlyCurrentPlaceholder: @js($showOnlyCurrentPlaceholder)
                     })"
                     x-init="$nextTick(() => { init() })"
                     x-on:click.away="blur()"
@@ -60,7 +66,6 @@
                     x-on:update-block.window="updateBlock($event)"
                     x-on:open-block-settings.window="openBlockSettings($event)"
                     x-on:delete-block.window="deleteBlock()"
-                    x-on:open-modal.window="handleOpenModal()"
                     x-on:locale-change.window="updateLocale($event)"
                     x-trap.noscroll="fullScreenMode"
                 >
@@ -79,7 +84,9 @@
                                             @elseif ($tool === '-')
                                                 <div class="border-t border-gray-950/10 dark:border-white/20 w-full"></div>
                                             @elseif (is_array($tool))
+                                                @if(array_key_exists('button', $tool) && !is_null($tool['button']))
                                                 <x-dynamic-component component="{{ $tool['button'] }}" :state-path="$statePath" />
+                                                @endif
                                             @elseif ($tool === 'blocks')
                                                 @if ($blocks && $shouldSupportBlocks)
                                                     <x-filament-tiptap-editor::tools.blocks :blocks="$blocks" :state-path="$statePath" />
@@ -101,7 +108,7 @@
                         </template>
                     @endif
 
-                    @if (! $isBubbleMenusDisabled())
+                    @if (! $isDisabled && ! $isBubbleMenusDisabled())
                     <template x-if="editor()">
                         <div>
                             <div x-ref="bubbleMenu" class="tiptap-editor-bubble-menu-wrapper">

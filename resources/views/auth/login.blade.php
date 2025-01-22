@@ -36,6 +36,7 @@
                         <div class="form-group">
                             <label class="mb-2">@lang('site.LOGIN_EMAIL')</label>
                             <input
+                                    name="email"
                                     type="email"
                                     class="form-control"
                                     id="exampleInputEmail1"
@@ -43,11 +44,15 @@
                                     placeholder="@lang('site.LOGIN_EMAIL_PLACEHOLDER')"
                             />
                         </div>
+                        @error('email')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <div class="form-group">
                             <label class="mb-2">@lang('site.LOGIN_PASSWORD')</label>
                             <input
+                                    name="password"
                                     type="password"
                                     class="form-control"
                                     id="exampleInputEmail1"
@@ -56,12 +61,13 @@
                             />
                         </div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-6">
                         <div class="form-check mb-3">
                             <input
                                     class="form-check-input"
                                     type="checkbox"
                                     value=""
+                                    name="remember"
                                     id="flexCheckDefault"
                             />
                             <label class="form-check-label" for="flexCheckDefault">
@@ -70,9 +76,9 @@
                         </div>
                     </div>
                     <div
-                            class="col-lg-10 mb-3 d-flex align-items-center justify-content-end \"
+                            class="col-lg-6 mb-3 d-flex align-items-center justify-content-end \"
                     >
-                        <a href="#">
+                        <a href="{{route('auth.reset-password')}}">
                             <p>@lang('site.FORGET_PASSWORD')</p>
                         </a>
                     </div>
@@ -82,7 +88,7 @@
                 </button>
                 <p class="text-center">
                     @lang('site.REGISTER_LOGIN_PAGE_DESCRIPTION')
-                    <a href="./login.html">@lang('site.REGISTER')</a>
+                    <a href="{{route('auth.register')}}">@lang('site.REGISTER')</a>
                 </p>
             </form>
         </div>

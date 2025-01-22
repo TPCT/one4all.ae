@@ -18,7 +18,7 @@ class Crawlers extends AbstractProvider
      *
      * @var array
      */
-    protected $data = array(
+    protected $data = [
         ' YLT',
         '^Aether',
         '^Amazon Simple Notification Service Agent$',
@@ -222,6 +222,7 @@ class Crawlers extends AbstractProvider
         'Butterfly\/',
         'BuzzSumo',
         'CAAM\/[0-9]',
+        'caam dot crwlr at gmail dot com',
         'CakePHP',
         'Calculon',
         'Canary%20Mail',
@@ -559,7 +560,7 @@ class Crawlers extends AbstractProvider
         'http-request\/',
         'HTTP-Tiny',
         'HTTP::Lite',
-        'http:\/\/www.neomo.de\/', //'Francis [Bot]'
+        'http:\/\/www.neomo.de\/', // 'Francis [Bot]'
         'HttpComponents',
         'httphr',
         'HTTPie',
@@ -1021,6 +1022,7 @@ class Crawlers extends AbstractProvider
         'RPT-HTTPClient',
         'RSSMix\/',
         'RSSOwl',
+        'RuxitSynthetic',
         'RyowlEngine',
         'safe-agent-scanner',
         'SalesIntelligent',
@@ -1429,5 +1431,5 @@ class Crawlers extends AbstractProvider
         'ZoteroTranslationServer',
         'ZyBorg',
         '[a-z0-9\-_]*(bot|crawl|archiver|transcoder|spider|uptime|validator|fetcher|cron|checker|reader|extractor|monitoring|analyzer|scraper)',
-    );
+    ];
 }

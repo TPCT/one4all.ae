@@ -11,6 +11,7 @@ use App\Models\Package\Package;
 use App\Models\Service\Service;
 use App\Models\Slider\Slider;
 use App\Models\Testimonial;
+use Carbon\Carbon;
 
 class SiteController extends Controller
 {
@@ -26,6 +27,13 @@ class SiteController extends Controller
             ?->first();
         $services = Service::where('promote_to_homepage', 1)->latest()->limit(10)->get();
 
+        $has_button = true;
+        if (auth()->guard('clients')->check()) {
+            $client = auth()->guard('clients')->user();
+            $package = $client->packages()->latest()->first();
+            if ($package && Carbon::parse($package->pivot->created_at)->addMonths($package->months) > Carbon::today())
+                $has_button = false;
+        }
         $packages = Package::active()->latest()->limit(3)->get();
 
         $faqs_section = Dropdown::active()->whereCategory(Dropdown::BLOCK_CATEGORY)
@@ -60,6 +68,7 @@ class SiteController extends Controller
             'testimonials_section' => $testimonials_section,
             'testimonials' => $testimonials,
             'newsletter_section' => $newsletter_section,
+            'has_button' => $has_button,
         ]);
     }
 

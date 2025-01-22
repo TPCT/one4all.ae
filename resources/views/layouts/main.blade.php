@@ -43,6 +43,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/css/styles.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/css/arabic-styles.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/css/animate.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/css/home-login.css')}}"/>
 
         <script src="{{asset('/js/wow.js')}}"></script>
 
@@ -67,6 +68,7 @@
         <script type="text/javascript" src="{{asset('/js/main.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/footer.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/light-dark-mode.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/js/popup.js')}}"></script>
     </head>
 
     <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}}">
@@ -88,5 +90,39 @@
         {!! NoCaptcha::renderJs() !!}
 
         @stack('script')
+
+        @if ($message = session('success'))
+            <script>
+                $(function(){
+                    const popup = new Popup({
+                        id: "board",
+                        titleColor: "#000",
+                        textColor: "#000",
+                        closeColor: "#000",
+                        title: `<div class='d-flex flex-column align-items-center'><img class='check' src='{{asset('/assets/imgs/popup/CheckCircle.svg')}}'/>@lang('site.PAYMENT_SUCCESS_POP_UP_TITLE')</div>`,
+                        backgroundColor: "#FFF",
+                        content: "",
+                        showImmediately: true
+                    });
+                })
+            </script>
+        @endif
+
+        @if ($message = session('service') || $message = session('package'))
+            <script>
+                $(function(){
+                    const popup = new Popup({
+                        id: "board",
+                        titleColor: "#000",
+                        textColor: "#000",
+                        closeColor: "#000",
+                        title: `<div class='d-flex flex-column align-items-center'><img class='check' src='{{asset('/assets/imgs/popup/Vector.svg')}}'/>@lang('site.PAYMENT_FAILED_POP_UP_TITLE')</div>`,
+                        backgroundColor: "#FFF",
+                        content: "",
+                        showImmediately: true
+                    });
+                })
+            </script>
+        @endif
     </body>
 </html>

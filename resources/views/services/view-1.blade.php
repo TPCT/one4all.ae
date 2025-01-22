@@ -27,12 +27,14 @@
                     <span>@lang('site.SERVICE_' . $service->id . "_PRICE")</span>
                     <h2>{{$service->price}} @lang('site.SERVICE_' . $service->id . "_CURRENCY")</h2>
                 </div>
-                <a href="">
-                    @lang('site.SUBSCRIBE_NOW')
-                    <picture>
-                        <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt=""/>
-                    </picture>
-                </a>
+                @if ($has_button)
+                    <a href="{{route('payment.process', ['model' => $service, 'type' => 'services'])}}">
+                        @lang('site.SUBSCRIBE_NOW')
+                        <picture>
+                            <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt=""/>
+                        </picture>
+                    </a>
+                @endif
             </div>
             <picture class="recommendations-img-box wow fadeInLeft">
                 <x-curator-glider
@@ -73,6 +75,8 @@
 @push('script')
     <script>
         $(document).ready(function () {
+
+
             $(".recommendations-slider").slick({
                 infinite: true,
                 dots: false,

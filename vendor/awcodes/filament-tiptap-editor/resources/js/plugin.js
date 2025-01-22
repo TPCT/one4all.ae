@@ -159,6 +159,9 @@ export default function tiptap({
    floatingMenuTools = [],
    placeholder = null,
    mergeTags = [],
+   customDocument = null,
+   nodePlaceholders = [],
+   showOnlyCurrentPlaceholder = true,
 }) {
     let editor = null;
 
@@ -182,8 +185,11 @@ export default function tiptap({
                 return tool.id;
             })
 
+
             let extensions = [
-                Document,
+                customDocument ? Document.extend({
+                    content: customDocument
+                }) : Document ,
                 Text,
                 Paragraph,
                 Dropcursor,
@@ -191,18 +197,26 @@ export default function tiptap({
                 HardBreak,
                 History,
                 TextStyle,
-                TiptapBlock,
                 DragAndDropExtension,
                 ClassExtension,
                 IdExtension,
                 StyleExtension,
                 StatePath.configure({
                     statePath: statePath
-                })
+                }),
+                TiptapBlock,
             ];
 
-            if (placeholder && (!disabled)) {
-                extensions.push(Placeholder.configure({placeholder}));
+            if ((placeholder || nodePlaceholders) && (!disabled)) {
+                extensions.push(
+                  Placeholder.configure({
+                      showOnlyCurrent: showOnlyCurrentPlaceholder,
+                      placeholder: ({ node }) => {
+                          const nodeSpecificPlaceholder = nodePlaceholders?.[node.type.name];
+                          return nodeSpecificPlaceholder || placeholder || '';
+                      },
+                  })
+                );
             }
 
             if (tools.length) {
@@ -223,6 +237,16 @@ export default function tiptap({
                     },
                     shouldShow: ({state, from, to}) => {
                         if (
+                            isActive(state, 'oembed') ||
+                            isActive(state, 'vimeo') ||
+                            isActive(state, 'youtube') ||
+                            isActive(state, 'video') ||
+                            isActive(state, 'tiptapBlock')
+                        ) {
+                            return false;
+                        }
+
+                        if (
                             isActive(state, 'link') ||
                             isActive(state, 'table')
                         ) {
@@ -231,16 +255,6 @@ export default function tiptap({
 
                         if (from !== to) {
                             return true;
-                        }
-
-                        if (
-                            isActive(state, 'oembed') ||
-                            isActive(state, 'vimeo') ||
-                            isActive(state, 'youtube') ||
-                            isActive(state, 'video') ||
-                            isActive(state, 'tiptapBlock')
-                        ) {
-                            return false;
                         }
                     },
                 }))
@@ -255,7 +269,7 @@ export default function tiptap({
                             interactive: true,
                             appendTo: this.$refs.element,
                             zIndex: 10,
-                        },
+                        }
                     }))
 
                     this.floatingMenuTools.forEach((tool) => {
@@ -301,8 +315,6 @@ export default function tiptap({
             return extensions;
         },
         init: function() {
-            this.modalId = this.$el.closest('[x-ref="modalContainer"]')?.getAttribute('wire:key');
-
             let existing = this.$refs.element.querySelector('.tiptap');
             if (existing) {
                 existing.remove();
@@ -314,25 +326,11 @@ export default function tiptap({
             let sortableEl = this.$el.parentElement.closest("[x-sortable]");
             if (sortableEl) {
                 window.Sortable.utils.on(sortableEl, "start", () => {
-                    let editors = document.querySelectorAll('.tiptap-wrapper');
-
-                    if (editors.length === 0) return;
-
-                    editors.forEach((editor) => {
-                        editor._x_dataStack[0].editor().setEditable(false);
-                        editor._x_dataStack[0].editor().options.element.style.pointerEvents = 'none';
-                    });
+                    sortableEl.classList.add('sorting')
                 });
 
                 window.Sortable.utils.on(sortableEl, "end", () => {
-                    let editors = document.querySelectorAll('.tiptap-wrapper');
-
-                    if (editors.length === 0) return;
-
-                    editors.forEach((editor) => {
-                        editor._x_dataStack[0].editor().setEditable(true);
-                        editor._x_dataStack[0].editor().options.element.style.pointerEvents = 'all';
-                    });
+                    sortableEl.classList.remove('sorting')
                 });
             }
 
@@ -345,65 +343,38 @@ export default function tiptap({
             });
         },
         initEditor(content) {
-            const _this = this;
-
-            if (editor) {
-                content = editor.getJSON();
-                editor = null;
-            }
-
-            editor = new Editor({
-                element: _this.$refs.element,
-                extensions: _this.getExtensions(),
-                editable: !_this.disabled,
-                content: content,
-                editorProps: {
-                    handlePaste(view, event, slice) {
-                        slice.content.descendants(node => {
-                            if (node.type.name === 'tiptapBlock') {
-                                node.attrs.statePath = _this.statePath
-                                node.attrs.data = JSON.parse(node.attrs.data)
-                            }
-                        });
-                    }
-                },
-                onCreate({editor}) {
-                    if (
-                        _this.$store.previous &&
-                        editor.commands.getStatePath() === _this.$store.previous.statePath
-                    ) {
-                        editor.chain().focus()
-                            .setContent(_this.$store.previous.editor.getJSON())
-                            .setTextSelection(_this.$store.previous.editor.state.selection)
-                            .run();
-
+            if (! this.$el.querySelector('.tiptap')) {
+                const _this = this;
+                editor = new Editor({
+                    element: _this.$refs.element,
+                    extensions: _this.getExtensions(),
+                    editable: !_this.disabled,
+                    content: content,
+                    editorProps: {
+                        handlePaste(view, event, slice) {
+                            slice.content.descendants(node => {
+                                if (node.type.name === 'tiptapBlock') {
+                                    node.attrs.statePath = _this.statePath
+                                    node.attrs.data = JSON.parse(node.attrs.data)
+                                }
+                            });
+                        }
+                    },
+                    onUpdate({editor}) {
+                        _this.state = editor.isEmpty ? null : editor.getJSON();
                         _this.updatedAt = Date.now();
-                    }
-                },
-                onUpdate({editor}) {
-                    _this.updatedAt = Date.now();
-                    _this.state = editor.isEmpty ? null : editor.getJSON();
-                },
-                onSelectionUpdate() {
-                    _this.updatedAt = Date.now();
-                },
-                onBlur() {
-                    _this.updatedAt = Date.now();
-                },
-                onFocus() {
-                    _this.updatedAt = Date.now();
-                },
-            });
-        },
-        handleOpenModal() {
-            if (!this.modalId) return;
-
-            this.$nextTick(() => {
-                this.$store.previous = {
-                    statePath: this.statePath,
-                    editor: editor
-                };
-            })
+                    },
+                    onSelectionUpdate() {
+                        _this.updatedAt = Date.now();
+                    },
+                    onBlur() {
+                        _this.updatedAt = Date.now();
+                    },
+                    onFocus() {
+                        _this.updatedAt = Date.now();
+                    },
+                });
+            }
         },
         isActive(type, opts = {}) {
             return editor.isActive(type, opts)
@@ -471,10 +442,10 @@ export default function tiptap({
 
             if (media) {
                 const src = media?.url || media?.src;
-                const imageTypes = ['jpg', 'jpeg', 'svg', 'png', 'webp', 'gif'];
+                const imageTypes = ['jpg', 'jpeg', 'svg', 'png', 'webp', 'gif', 'avif', 'jxl', 'heic'];
 
                 const regex = /.*\.([a-zA-Z]*)\??/;
-                const match = regex.exec(src);
+                const match = regex.exec(src.toLowerCase());
 
                 if (match !== null && imageTypes.includes(match[1])) {
                     editor
@@ -487,6 +458,9 @@ export default function tiptap({
                             width: media?.width,
                             height: media?.height,
                             lazy: media?.lazy,
+                            srcset: media?.srcset,
+                            sizes: media?.sizes,
+                            media: media?.media,
                         })
                         .run();
                 } else {
@@ -551,7 +525,7 @@ export default function tiptap({
             editor
                 .chain()
                 .focus()
-                .extendMarkRange('link')
+                .setTextSelection({from: link.coordinates[0].$from.pos, to: link.coordinates[0].$to.pos})
                 .setLink({
                     href: link.href,
                     id: link.id ?? null,

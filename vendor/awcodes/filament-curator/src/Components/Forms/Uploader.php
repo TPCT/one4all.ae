@@ -99,9 +99,9 @@ class Uploader extends FileUpload
 
             $storeMethod = $component->getVisibility() === 'public' ? 'storePubliclyAs' : 'storeAs';
 
-            if (is_media_resizable($extension)) {
+            if (is_media_resizable($file->getMimeType())) {
                 if (in_array(config('livewire.temporary_file_upload.disk'), config('curator.cloud_disks')) && config('livewire.temporary_file_upload.directory') !== null) {
-                    $content = Storage::disk($component->getDiskName())->get($file->path());
+                    $content = $file->get();
                 } else {
                     $content = $file->getRealPath();
                 }

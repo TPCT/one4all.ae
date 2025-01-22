@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\BoothVoucher\BoothVoucher;
 use App\Models\ClientNotification\ClientNotification;
 use App\Models\Offer\Offer;
+use App\Models\Package\Package;
+use App\Models\Service\Service;
 use App\Models\Voucher\Voucher;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -82,4 +84,12 @@ class Client extends \Illuminate\Foundation\Auth\User implements \OwenIt\Auditin
     use HasFactory, Notifiable, Auditable;
     protected $guarded = [];
     protected $hidden = ['id', 'created_at', 'updated_at', 'deleted_at'];
+
+    public function services(){
+        return $this->belongsToMany(Service::class, 'client_services', 'client_id', 'service_id');
+    }
+
+    public function packages(){
+        return $this->belongsToMany(Package::class, 'client_packages', 'client_id', 'package_id');
+    }
 }

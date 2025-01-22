@@ -8,7 +8,10 @@ use Symfony\Component\Process\Process;
 
 class Shiki
 {
-    protected string $defaultTheme;
+    /**
+     * @var string|array<string, string> Can be a single theme or an array with a light and a dark theme.
+     */
+    protected mixed $defaultTheme;
 
     private static ?string $customWorkingDirPath = null;
 
@@ -17,10 +20,13 @@ class Shiki
         static::$customWorkingDirPath = $path;
     }
 
+    /**
+     * @param string|array<string, string>|null $theme Can be a single theme or an array with a light and a dark theme.
+     */
     public static function highlight(
         string $code,
         ?string $language = null,
-        ?string $theme = null,
+        mixed $theme = null,
         ?array $highlightLines = null,
         ?array $addLines = null,
         ?array $deleteLines = null,
@@ -41,19 +47,17 @@ class Shiki
     {
         $shikiResult = $this->callShiki('languages');
 
-        $languageProperties = json_decode($shikiResult, true);
-
-        $languages = array_map(
-            fn ($properties) => $properties['id'],
-            $languageProperties
-        );
+        $languages = json_decode($shikiResult, true);
 
         sort($languages);
 
         return $languages;
     }
 
-    public function __construct(string $defaultTheme = 'nord')
+    /**
+     * @param string|array<string, string> $defaultTheme Can be a single theme or an array with a light and a dark theme.
+     */
+    public function __construct(mixed $defaultTheme = 'nord')
     {
         $this->defaultTheme = $defaultTheme;
     }
@@ -67,7 +71,11 @@ class Shiki
 
     public function languageIsAvailable(string $language): bool
     {
-        return in_array($language, $this->getAvailableLanguages());
+        $shikiResult = $this->callShiki('aliases');
+
+        $aliases = json_decode($shikiResult, true);
+
+        return in_array($language, $aliases);
     }
 
     public function themeIsAvailable(string $theme): bool
@@ -75,7 +83,7 @@ class Shiki
         return in_array($theme, $this->getAvailableThemes());
     }
 
-    public function highlightCode(string $code, string $language, ?string $theme = null, ?array $options = []): string
+    public function highlightCode(string $code, string $language, mixed $theme = null, ?array $options = []): string
     {
         $theme = $theme ?? $this->defaultTheme;
 
@@ -93,10 +101,12 @@ class Shiki
 
     protected function callShiki(...$arguments): string
     {
+        $home = getenv("HOME");
         $command = [
             (new ExecutableFinder())->find('node', 'node', [
                 '/usr/local/bin',
                 '/opt/homebrew/bin',
+                $home . '/n/bin', // support https://github.com/tj/n
             ]),
             'shiki.js',
             json_encode(array_values($arguments)),

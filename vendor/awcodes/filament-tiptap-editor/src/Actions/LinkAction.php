@@ -80,7 +80,7 @@ class LinkAction extends Action
                                 'accent' => trans('filament-tiptap-editor::link-modal.labels.button_theme.accent'),
                             ]),
                     ]),
-            ])->action(function (TiptapEditor $component, $data) {
+            ])->action(function (TiptapEditor $component, $data, $arguments) {
                 $component->getLivewire()->dispatch(
                     event: 'insertFromAction',
                     type: 'link',
@@ -93,6 +93,7 @@ class LinkAction extends Action
                     referrerpolicy: $data['referrerpolicy'],
                     as_button: $data['as_button'],
                     button_theme: $data['as_button'] ? $data['button_theme'] : '',
+                    coordinates: $arguments['coordinates'],
                 );
 
                 $component->state($component->getState());
@@ -100,6 +101,7 @@ class LinkAction extends Action
                 if ($action->getArguments()['href'] !== '') {
                     return [
                         $action->makeModalSubmitAction('remove_link', [])
+                            ->label(trans('filament-tiptap-editor::link-modal.buttons.remove'))
                             ->color('danger')
                             ->extraAttributes(function () use ($action) {
                                 return [

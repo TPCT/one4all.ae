@@ -54,7 +54,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentAstrotomicTranslatablePlugin::make(),
-                TranslationManagerPlugin::make(),
                 CuratorPlugin::make()
                     ->label('Media')
                     ->navigationGroup("CMS")

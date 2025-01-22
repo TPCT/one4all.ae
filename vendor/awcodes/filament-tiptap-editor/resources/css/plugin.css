@@ -14,13 +14,17 @@
                     height: 100%;
                     grid-template-rows: auto 1fr;
 
-                    textarea {
+                    .source_code_editor * {
                         height: 100% !important;
                     }
                 }
             }
         }
     }
+}
+
+.sorting .tiptap-wrapper {
+    pointer-events: none;
 }
 
 .tiptap-wrapper.tiptap-fullscreen {
@@ -575,14 +579,6 @@
         border-radius: theme("borderRadius.DEFAULT");
         position: relative;
 
-        button {
-            position: absolute;
-            z-index: 1;
-            top: 0.125rem;
-            right: 0.25rem;
-            color: theme("colors.gray.400");
-        }
-
         summary {
             padding: 0.375rem 0.5rem;
             font-weight: 700;
@@ -684,7 +680,8 @@
     font-family: theme("fontFamily.mono") monospace;
 }
 
-.tiptap-editor p.is-editor-empty:first-child::before {
+.tiptap-editor p.is-editor-empty:first-child::before,
+.tiptap-wrapper .is-empty::before {
     content: attr(data-placeholder);
     float: left;
     height: 0;

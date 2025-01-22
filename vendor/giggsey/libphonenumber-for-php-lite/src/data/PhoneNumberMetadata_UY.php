@@ -1,4 +1,5 @@
 <?php
+
 /**
  * libphonenumber-for-php-lite data file
  * This file has been @generated from libphonenumber data
@@ -23,7 +24,7 @@ return [
         ],
     ],
     'fixedLine' => [
-        'pattern' => '(?:1(?:770|9(?:20|87))|(?:2\\d|4[2-7])\\d\\d)\\d{4}',
+        'pattern' => '(?:1(?:770|9(?:20|[89]7))|(?:2\\d|4[2-7])\\d\\d)\\d{4}',
         'example' => '21231234',
         'posLength' => [
             8,

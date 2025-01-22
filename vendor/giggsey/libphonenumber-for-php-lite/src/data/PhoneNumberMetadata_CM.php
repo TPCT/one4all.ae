@@ -1,4 +1,5 @@
 <?php
+
 /**
  * libphonenumber-for-php-lite data file
  * This file has been @generated from libphonenumber data
@@ -24,7 +25,7 @@ return [
         ],
     ],
     'mobile' => [
-        'pattern' => '(?:24[23]|6[25-9]\\d)\\d{6}',
+        'pattern' => '(?:24[23]|6(?:[25-9]\\d|40))\\d{6}',
         'example' => '671234567',
         'posLength' => [
             9,

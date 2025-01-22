@@ -8,8 +8,6 @@ use Filament\Forms\Components\Concerns\HasExtraInputAttributes;
 use Filament\Forms\Components\Concerns\HasPlaceholder;
 use Filament\Forms\Components\Field;
 use Filament\Support\Concerns\HasExtraAlpineAttributes;
-use FilamentTiptapEditor\Actions\GridBuilderAction;
-use FilamentTiptapEditor\Actions\OEmbedAction;
 use FilamentTiptapEditor\Actions\SourceAction;
 use FilamentTiptapEditor\Concerns\CanStoreOutput;
 use FilamentTiptapEditor\Concerns\HasCustomActions;
@@ -50,6 +48,12 @@ class TiptapEditor extends Field
     protected bool $shouldCollapseBlocksPanel = false;
 
     protected bool $shouldShowMergeTagsInBlocksPanel = true;
+
+    protected string | Closure | null $customDocument = null;
+
+    protected array | Closure | null $nodePlaceholders = null;
+
+    protected array | bool | null $showOnlyCurrentPlaceholder = false;
 
     protected array $gridLayouts = [
         'two-columns',
@@ -167,8 +171,8 @@ class TiptapEditor extends Field
 
         $this->registerActions([
             SourceAction::make(),
-            OEmbedAction::make(),
-            GridBuilderAction::make(),
+            fn (): Action => $this->getOEmbedAction(),
+            fn (): Action => $this->getGridBuilderAction(),
             fn (): Action => $this->getLinkAction(),
             fn (): Action => $this->getMediaAction(),
             fn (): Action => $this->getInsertBlockAction(),
@@ -198,6 +202,10 @@ class TiptapEditor extends Field
 
         foreach ($content as $k => $block) {
             if ($block['type'] === 'tiptapBlock') {
+                if (is_string($block['attrs']['data'])) {
+                    $block['attrs']['data'] = $this->parseDataAsString($block['attrs']['data']);
+                }
+
                 $instance = $this->getBlock($block['attrs']['type']);
                 $orderedAttrs = [
                     'preview' => $instance->getPreview($block['attrs']['data'], $component),
@@ -224,12 +232,7 @@ class TiptapEditor extends Field
         foreach ($content as $k => $block) {
             if ($block['type'] === 'tiptapBlock') {
                 if (is_string($block['attrs']['data'])) {
-                    $data = Str::of(json_decode('"' . $block['attrs']['data'] . '"'))
-                        ->after('JSON.parse(\'')
-                        ->beforeLast('\')')
-                        ->toString();
-
-                    $content[$k]['attrs']['data'] = json_decode($data, true);
+                    $content[$k]['attrs']['data'] = $this->parseDataAsString($block['attrs']['data']);
                 }
                 unset($content[$k]['attrs']['statePath']);
                 unset($content[$k]['attrs']['preview']);
@@ -242,6 +245,16 @@ class TiptapEditor extends Field
         $document['content'] = $content;
 
         return $document;
+    }
+
+    public function parseDataAsString(string $data): array
+    {
+        $data = Str::of(json_decode('"' . $data . '"'))
+            ->after('JSON.parse(\'')
+            ->beforeLast('\')')
+            ->toString();
+
+        return json_decode($data, true);
     }
 
     public function getInsertBlockAction(): Action
@@ -384,6 +397,57 @@ class TiptapEditor extends Field
         $this->shouldDisableStylesheet = true;
 
         return $this;
+    }
+
+    public function customDocument(string | Closure | null $customDocument): static
+    {
+        $this->customDocument = $customDocument;
+
+        return $this;
+    }
+
+    public function getCustomDocument(): ?string
+    {
+        return $this->evaluate($this->customDocument);
+    }
+
+    /**
+     * Set placeholders for specific node types.
+     *
+     * You can provide an associative array where the keys are the node type names and the
+     * values are the corresponding placeholders. For instance:
+     *
+     * ['heading' => 'What’s the title?', 'paragraph' => 'Start writing here...']
+     *
+     * @return $this
+     */
+    public function nodePlaceholders(array | Closure | null $nodePlaceholders): static
+    {
+        $this->nodePlaceholders = $nodePlaceholders;
+
+        return $this;
+    }
+
+    public function getNodePlaceholders(): ?array
+    {
+        return $this->evaluate($this->nodePlaceholders);
+    }
+
+    /**
+     * Show placeholder decorations only in currently selected node.
+     *
+     * @return $this
+     */
+    public function showOnlyCurrentPlaceholder(bool | Closure | null $showOnlyCurrent): static
+    {
+        $this->showOnlyCurrentPlaceholder = $showOnlyCurrent;
+
+        return $this;
+    }
+
+    public function getShowOnlyCurrentPlaceholder(): ?bool
+    {
+        return $this->evaluate($this->showOnlyCurrentPlaceholder);
     }
 
     public function shouldDisableStylesheet(): bool

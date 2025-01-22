@@ -7,16 +7,20 @@ use App\Exports\MerchantExport;
 use App\Filament\Admin\Resources\ClientResource\Pages;
 use App\Filament\Admin\Resources\ClientResource\RelationManagers;
 use App\Models\Client;
+use App\Models\Package\Package;
+use Carbon\Carbon;
 use Filament\Actions\DeleteAction;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class ClientResource extends Resource
@@ -88,20 +92,31 @@ class ClientResource extends Resource
                     ->searchable(query: function ($query, $search) {
                         return $query->orWhere('phone', 'LIKE', "%{$search}%");
                     }),
-                Tables\Columns\TextColumn::make('active')
-                    ->label('Active')
-                    ->badge(function (Client $record) {
-                        if ($record->active == 0)
-                            return "danger";
-                        return "success";
+                Tables\Columns\TextColumn::make('packages')
+                    ->label(__('Packages'))
+                    ->getStateUsing(function (Client $client) {
+                        $package = $client->packages()->latest()->withPivot('created_at')->first();
+                        if ($package && Carbon::parse($package->pivot->created_at)->addMonths($package->months) > Carbon::now())
+                            return $package->title;
+                        return "------";
+                    }),
+                Tables\Columns\TextColumn::make('services')
+                    ->label(__('Services'))
+                    ->limit(25)
+                    ->html()
+                    ->getStateUsing(function (Client $client) {
+                        return $client->services()
+                            ->withPivot('created_at')
+                            ->where(function (Builder $query) {
+                                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->format('Y-m-d'));
+                            })
+                            ->get()->pluck('title')->toArray() ?: ['---------'];
                     })
-                    ->formatStateUsing(function(Client $record) {
-                        if ($record->active == 0)
-                            return __("Banned");
-                        return __("Active");
-                    })
-                    ->getStateUsing(function(Client $record) {
-                        return $record->active;
+                    ->extraAttributes(function ($state){
+                        return [
+                            'x-tooltip.html' => new HtmlString(),
+                            'x-tooltip.raw' => new HtmlString(implode('<br> ', $state ?? [])),
+                        ];
                     }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('Created At'))
@@ -109,6 +124,29 @@ class ClientResource extends Resource
             ])
             ->poll('60s')
             ->filters([
+                Tables\Filters\Filter::make('subscription')
+                    ->form([
+                        Forms\Components\Checkbox::make('active_packages')
+                            ->label(__('Active Packages')),
+                        Forms\Components\Checkbox::make('active_services')
+                            ->label(__('Active Services')),
+                    ])
+                    ->query(function (Builder $query, $data) {
+                        $query->when($data['active_packages'], function (Builder $query) {
+                            $query->whereHas('packages', function (Builder $query) {
+                                $query->where(function ($query) {
+                                    $query->where('expires_at', '>', Carbon::now());
+                                });
+                            });
+                        })
+                        ->when($data['active_services'], function (Builder $query) {
+                            $query->whereHas('services', function (Builder $query) {
+                                $query->where(function ($query) {
+                                    $query->where('expires_at', '>', Carbon::now());
+                                });
+                            });
+                        });
+                    })
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(__('Delete')),

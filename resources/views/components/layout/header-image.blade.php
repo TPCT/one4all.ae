@@ -1,4 +1,4 @@
-<section class="main-stars-header pt-3" style="background-image: url('{{$image?->url}}')">
+<section class="main-stars-header pt-3">
     <div class="container main-stars-header-content">
         <h1>{{$title}}</h1>
         <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="pt-2">

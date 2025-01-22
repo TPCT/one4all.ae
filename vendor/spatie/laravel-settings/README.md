@@ -115,7 +115,7 @@ return [
      */
     'migrations_paths' => [
         database_path('settings'),
-    ]
+    ],
 
     /*
      * When no repository is set for a settings class, the following repository
@@ -407,6 +407,19 @@ As you can see, this method takes a closure as an argument, which makes it possi
 public function up(): void
 {
     $this->migrator->delete('general.timezone');
+}
+```
+
+#### Checking a property if it exists
+
+There might be times when you want to check if a property exists in the database. This can be done as such:
+
+```php
+public function up(): void
+{
+    if ($this->migrator->exists('general.timezone')) {
+        // do something
+    }
 }
 ```
 

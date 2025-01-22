@@ -12,9 +12,18 @@ trait HasFormActionHooks
 
     protected array $additionalData = [];
 
+    protected array $customImportData = [];
+
     public function additionalData(array $data): static
     {
         $this->additionalData = $data;
+
+        return $this;
+    }
+
+    public function customImportData(array $data): static
+    {
+        $this->customImportData = $data;
 
         return $this;
     }

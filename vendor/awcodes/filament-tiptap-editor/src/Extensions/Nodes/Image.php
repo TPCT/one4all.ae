@@ -35,6 +35,23 @@ class Image extends BaseImage
                         : null;
                 },
             ],
+            'srcset' => [
+                'default' => null,
+            ],
+            'sizes' => [
+                'default' => null,
+            ],
+            'media' => [
+                'default' => null,
+                'parseHTML' => fn ($DOMNode) => $DOMNode->getAttribute('data-media-id') ?: null,
+                'renderHTML' => function ($attributes) {
+                    if (! property_exists($attributes, 'media')) {
+                        return null;
+                    }
+
+                    return ['data-media-id' => $attributes->media];
+                },
+            ],
         ];
     }
 }

@@ -71,23 +71,32 @@ class LanguageLineResource extends Resource
                     ->disabled()
                     ->columnSpan(2),
 
-                Section::make('Translations')->schema([
+                Section::make(__('translation-manager::translations.translations-header'))->schema([
                     Repeater::make('translations')->schema([
                         Select::make('language')
                             ->prefixIcon('heroicon-o-language')
                             ->label(__('translation-manager::translations.translation-language'))
-                            ->options(collect(config('translation-manager.available_locales'))->pluck('code', 'code'))
+                            ->options(collect(config('translation-manager.available_locales'))->pluck('name', 'code'))
+                            ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                            ->columnSpanFull()
                             ->required(),
 
                         Textarea::make('text')
                             ->label(__('translation-manager::translations.translation-text'))
+                            ->columnSpanFull()
                             ->required(),
                     ])->columns(2)
                         ->addActionLabel(__('translation-manager::translations.add-translation-button'))
                         ->hiddenLabel()
                         ->defaultItems(0)
                         ->reorderable(false)
-                        ->grid(2)
+                        ->grid([
+                            'default' => 1,
+                            'sm' => 1,
+                            'md' => 2,
+                            'xl' => 3,
+                            '2xl' => 4,
+                        ])
                         ->columnSpan(2)
                         ->maxItems(count(config('translation-manager.available_locales'))),
                 ]),
@@ -113,7 +122,11 @@ class LanguageLineResource extends Resource
         $columns = [
             TextColumn::make('group_and_key')
                 ->label(__('translation-manager::translations.group') . ' & ' . __('translation-manager::translations.key'))
-                ->searchable(['group', 'key'])
+                ->searchable(query: function (Builder $query, string $search): Builder {
+                    return $query
+                        ->where('group', 'like', "%{$search}%")
+                        ->orWhere('key', 'like', "%{$search}%");
+                })
                 ->getStateUsing(function (Model $record) {
                     return $record->group . '.' . $record->key;
                 }),
@@ -184,5 +197,10 @@ class LanguageLineResource extends Resource
         }
 
         return config('translation-manager.navigation_group');
+    }
+
+    public static function getCluster(): ?string
+    {
+        return config('translation-manager.cluster');
     }
 }

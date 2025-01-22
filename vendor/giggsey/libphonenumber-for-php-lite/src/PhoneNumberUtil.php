@@ -361,7 +361,7 @@ class PhoneNumberUtil
         // Put (lower letter -> upper letter) and (upper letter -> upper letter) mappings.
         foreach (static::ALPHA_MAPPINGS as $c => $value) {
             static::$ALL_PLUS_NUMBER_GROUPING_SYMBOLS[strtolower($c)] = $c;
-            static::$ALL_PLUS_NUMBER_GROUPING_SYMBOLS[(string)$c] = (string)$c;
+            static::$ALL_PLUS_NUMBER_GROUPING_SYMBOLS[(string) $c] = (string) $c;
         }
         static::$ALL_PLUS_NUMBER_GROUPING_SYMBOLS += static::ASCII_DIGIT_MAPPINGS;
         static::$ALL_PLUS_NUMBER_GROUPING_SYMBOLS['-'] = '-';
@@ -397,9 +397,9 @@ class PhoneNumberUtil
      */
     public static function getInstance(
         string $baseFileLocation = self::META_DATA_FILE_PREFIX,
-        array $countryCallingCodeToRegionCodeMap = null,
-        MetadataLoaderInterface $metadataLoader = null,
-        MetadataSourceInterface $metadataSource = null
+        ?array $countryCallingCodeToRegionCodeMap = null,
+        ?MetadataLoaderInterface $metadataLoader = null,
+        ?MetadataSourceInterface $metadataSource = null
     ): PhoneNumberUtil {
         if (static::$instance === null) {
             if ($countryCallingCodeToRegionCodeMap === null) {
@@ -1628,7 +1628,7 @@ class PhoneNumberUtil
          *
          * We have to remove the leading zeroes ourself though
          */
-        if ((int)$normalizedNationalNumber === 0) {
+        if ((int) $normalizedNationalNumber === 0) {
             $normalizedNationalNumber = '0';
         } else {
             $normalizedNationalNumber = ltrim($normalizedNationalNumber, '0');
@@ -1896,7 +1896,7 @@ class PhoneNumberUtil
             // so, we remove the country calling code, and do some checks on the validity of the number
             // before and after.
             $defaultCountryCode = $defaultRegionMetadata->getCountryCode();
-            $defaultCountryCodeString = (string)$defaultCountryCode;
+            $defaultCountryCodeString = (string) $defaultCountryCode;
             $normalizedNumber = $fullNumber;
             if (str_starts_with($normalizedNumber, $defaultCountryCodeString)) {
                 $potentialNationalNumber = substr($normalizedNumber, mb_strlen($defaultCountryCodeString));
@@ -2062,7 +2062,7 @@ class PhoneNumberUtil
         }
         $numberLength = strlen($fullNumber);
         for ($i = 1; $i <= static::MAX_LENGTH_COUNTRY_CODE && $i <= $numberLength; $i++) {
-            $potentialCountryCode = (int)substr($fullNumber, 0, $i);
+            $potentialCountryCode = (int) substr($fullNumber, 0, $i);
             if (isset($this->countryCallingCodeToRegionCodeMap[$potentialCountryCode])) {
                 $nationalNumber .= substr($fullNumber, $i);
                 return $potentialCountryCode;
@@ -2577,6 +2577,9 @@ class PhoneNumberUtil
         $regionCode = $this->getRegionCodeForCountryCode($countryCode);
         // Metadata cannot be null because the country calling code is valid.
         $metadataForRegion = $this->getMetadataForRegionOrCallingCode($countryCode, $regionCode);
+        // Strip any extension
+        $this->maybeStripExtension($formattedNumber);
+        // Append the formatted extension
         $this->maybeAppendFormattedExtension(
             $number,
             $metadataForRegion,
@@ -2969,7 +2972,7 @@ class PhoneNumberUtil
      *                               and the number is not in international format (does not start
      *                               with +)
      */
-    public function parse(string $numberToParse, ?string $defaultRegion = null, PhoneNumber $phoneNumber = null, bool $keepRawInput = false): PhoneNumber
+    public function parse(string $numberToParse, ?string $defaultRegion = null, ?PhoneNumber $phoneNumber = null, bool $keepRawInput = false): PhoneNumber
     {
         if ($phoneNumber === null) {
             $phoneNumber = new PhoneNumber();
@@ -3364,8 +3367,8 @@ class PhoneNumberUtil
      */
     protected function isNationalNumberSuffixOfTheOther(PhoneNumber $firstNumber, PhoneNumber $secondNumber): bool
     {
-        $firstNumberNationalNumber = trim((string)$firstNumber->getNationalNumber());
-        $secondNumberNationalNumber = trim((string)$secondNumber->getNationalNumber());
+        $firstNumberNationalNumber = trim((string) $firstNumber->getNationalNumber());
+        $secondNumberNationalNumber = trim((string) $secondNumber->getNationalNumber());
         return str_ends_with($firstNumberNationalNumber, $secondNumberNationalNumber) ||
         str_ends_with($secondNumberNationalNumber, $firstNumberNationalNumber);
     }
@@ -3450,6 +3453,12 @@ class PhoneNumberUtil
      *        length (obviously includes the length of area codes for fixed line numbers), it will
      *        return false for the subscriber-number-only version.
      * </ol>
+     * There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+     * method: if a number is possible only in a certain region among several regions that share the
+     * same country calling code, this method will consider only the "main" region. For example,
+     * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+     * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
+     *
      * @param PhoneNumber $number the number that needs to be checked
      * @return int a ValidationResult object which indicates whether the number is possible
      */
@@ -3479,6 +3488,12 @@ class PhoneNumberUtil
      *        length (obviously includes the length of area codes for fixed line numbers), it will
      *        return false for the subscriber-number-only version.
      * </ol>
+     *
+     * There is a known <a href="https://issuetracker.google.com/issues/335892662">issue</a> with this
+     * method: if a number is possible only in a certain region among several regions that share the
+     * same country calling code, this method will consider only the "main" region. For example,
+     * +1310xxxx are valid numbers in Canada. However, they are not possible in the US. As a result,
+     * this method will return IS_POSSIBLE_LOCAL_ONLY for +1310xxxx.
      *
      * @param PhoneNumber $number the number that needs to be checked
      * @param int $type the PhoneNumberType we are interested in

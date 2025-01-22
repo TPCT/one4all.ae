@@ -46,7 +46,9 @@
             <img src="{{asset('/assets/imgs/home/bg-coin.png')}}" alt="" />
         </div>
         <div class="container">
-            <form>
+            <form method="post">
+                @csrf
+                <input type="hidden" name="whatsapp_country" id="whatsapp_country">
                 <div
                         class="head-form mb-5 d-flex flex-column align-items-center pt-5 wow fadeInUp"
                 >
@@ -61,11 +63,15 @@
                                     type="text"
                                     class="form-control"
                                     id="full-name"
-                                    name="full_name"
+                                    name="name"
+                                    value="{{old('name')}}"
                                     aria-describedby="@lang('site.CONSULTATION_FULL_NAME_PLACEHOLDER')"
                                     placeholder="@lang('site.CONSULTATION_FULL_NAME_PLACEHOLDER')"
                             />
                         </div>
+                        @error('name')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <div class="form-group">
@@ -73,12 +79,16 @@
                             <input
                                     type="email"
                                     class="form-control"
-                                    name="email"
                                     id="email"
+                                    name="email"
+                                    value="{{old('email')}}"
                                     aria-describedby="@lang('site.CONSULTATION_EMAIL_PLACEHOLDER')"
                                     placeholder="@lang('site.CONSULTATION_EMAIL_PLACEHOLDER')"
                             />
                         </div>
+                        @error('email')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <div class="form-group d-flex flex-column">
@@ -86,12 +96,16 @@
                             <input
                                     type="tel"
                                     class="form-control"
-                                    name="whatsapp"
                                     id="whatsapp"
+                                    name="whatsapp"
+                                    value="{{old('whatsapp')}}"
                                     aria-describedby="@lang('site.CONSULTATION_WHATSAPP_PLACEHOLDER')"
                                     placeholder="@lang('site.CONSULTATION_WHATSAPP_PLACEHOLDER')"
                             />
                         </div>
+                        @error('whatsapp')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <div class="form-group">
@@ -99,25 +113,33 @@
                             <input
                                     type="date"
                                     class="form-control"
-                                    name="date"
                                     id="date"
+                                    name="date"
+                                    value="{{old('date')}}"
+                                    min="{{Carbon\Carbon::today()->format('Y-m-d')}}"
                                     aria-describedby="@lang('site.CONSULTATION_DATE_PLACEHOLDER')"
                                     placeholder="@lang('site.CONSULTATION_DATE_PLACEHOLDER')"
                             />
                         </div>
+                        @error('date')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <div class="form-group">
                             <label class="mb-2">@lang('site.CONSULTATION_TIME')</label>
-                            <input
-                                    type="time"
-                                    class="form-control"
-                                    name="time"
-                                    id="time"
-                                    aria-describedby="@lang('site.CONSULTATION_TIME_PLACEHOLDER')"
-                                    placeholder="@lang('site.CONSULTATION_TIME_PLACEHOLDER')"
-                            />
+                            <select class="form-select form-control w-100" name="time">
+                                @for($i = 1; $i <= 12; $i++)
+                                    <option value="{{$i}} PM" @selected(old('time') == $i)>@lang('site.CLOCK') {{$i}} @lang('site.PM')</option>
+                                @endfor
+                                @for($i = 1; $i <= 12; $i++)
+                                    <option value="{{$i}} AM" @selected(old('time') == $i)>@lang('site.CLOCK') {{$i}} @lang('site.AM')</option>
+                                @endfor
+                            </select>
                         </div>
+                        @error('time')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label class="mb-2">@lang('site.CONSULTATION_TYPE')</label>
@@ -128,7 +150,9 @@
                                             class="form-check-input"
                                             type="radio"
                                             name="dropdown_id"
+                                            value="{{$choice->id}}"
                                             id="consultation-type-{{$choice->id}}"
+                                            @checked($choice->id == old('dropdown_id'))
                                     />
                                     <label class="form-check-label" for="consultation-type-{{$choice->id}}">
                                         {{$choice->title}}
@@ -136,6 +160,9 @@
                                 </div>
                             @endforeach
                         </div>
+                        @error('dropdown_id')
+                            <span class="text-danger error">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <div class="form-group">
@@ -146,9 +173,12 @@
                                     id="notes"
                                     rows="7"
                                     placeholder="@lang('site.CONSULTATION_NOTES_PLACEHOLDER')"
-                            ></textarea>
+                            >{{old('notes')}}</textarea>
                         </div>
                     </div>
+                    @error('notes')
+                        <span class="text-danger error">{{$message}}</span>
+                    @enderror
                 </div>
                 <button type="submit" class="main-btn w-100 my-3">
                     <span> @lang('site.CONFIRM_ORDER') </span>
@@ -161,8 +191,15 @@
 @push('script')
     <script>
         const input = document.querySelector("#whatsapp");
-        window.intlTelInput(input, {
+        const phone = window.intlTelInput(input, {
+            initialCountry: "EG",
             loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.1/build/js/utils.js"),
         });
+
+        $("form").one('submit', function (e){
+            e.preventDefault();
+            $("#whatsapp_country").val(phone.getSelectedCountryData().iso2)
+            $(this).submit();
+        })
     </script>
 @endpush
