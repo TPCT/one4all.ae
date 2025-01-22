@@ -100,8 +100,8 @@ class ClientConsultationResource extends Resource implements HasShieldPermission
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('paid')
                     ->badge()
-                    ->color(function ($client){
-                        return $client->paid ? "success" : "danger";
+                    ->color(function ($record){
+                        return $record->paid ? "success" : "danger";
                     })
                     ->formatStateUsing(function ($record){
                         return $record->paid ? __("Paid") : __("Not Paid");

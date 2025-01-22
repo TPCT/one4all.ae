@@ -27,7 +27,7 @@
                 <div class="col-md-6">
                     @if ($package)
                             <div class="badge bg-success p-3 d-flex flex-column align-items-start">
-                                <span class="mb-2">@lang('site.CLIENT_PACKAGE_SUBSCRIPTION') : {{$package->title}}</span>
+                                <span class="mb-2">@lang('site.CLIENT_PACKAGE_SUBSCRIPTION'): {{$package->title}}</span>
                                 <span>@lang('site.EXPIRATION_DATE'): {{\Illuminate\Support\Carbon::parse($package->pivot->expires_at)->toDateString()}}</span>
                             </div>
                     @endif
