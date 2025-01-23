@@ -77,6 +77,20 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereAppleId($value)
  * @property string|null $alternative_phone
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereAlternativePhone($value)
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string $country
+ * @property string|null $remember_token
+ * @property string|null $password
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Package> $packages
+ * @property-read int|null $packages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Service> $services
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereRememberToken($value)
  * @mixin \Eloquent
  */
 class Client extends \Illuminate\Foundation\Auth\User implements \OwenIt\Auditing\Contracts\Auditable

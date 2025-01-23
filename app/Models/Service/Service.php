@@ -77,11 +77,13 @@ class Service extends Model implements \OwenIt\Auditing\Contracts\Auditable
 
     public const VIEW_TYPE_1 = "view-1";
     public const VIEW_TYPE_2 = "view-2";
+    public const VIEW_TYPE_3 = "view-3";
 
     public static function getViewTypes(){
         return [
-            self::VIEW_TYPE_1 => __("View TYPE 1"),
-            self::VIEW_TYPE_2 => __("View TYPE 2"),
+            self::VIEW_TYPE_1 => __("Normal"),
+            self::VIEW_TYPE_2 => __("Consultation Form"),
+            self::VIEW_TYPE_3 => __("Indicator"),
         ];
     }
 
@@ -90,7 +92,7 @@ class Service extends Model implements \OwenIt\Auditing\Contracts\Auditable
 
     public $translationModel = ServiceLang::class;
     public array $translatedAttributes = [
-        'title', 'description', 'content'
+        'title', 'description', 'content', 'youtube_video_id'
     ];
 
     public array $upload_attributes = [

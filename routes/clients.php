@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Clients\CompaniesController;
+use App\Http\Controllers\Clients\IndicatorController;
 use App\Http\Controllers\Clients\PaymentController;
 use App\Http\Controllers\Clients\SiteController;
 use App\Http\Controllers\Clients\ServicesController;
@@ -43,6 +44,12 @@ Route::middleware([
             Route::get('/cashback', 'cashback')->name('services.cashback');
             Route::any('/{service}', 'show')->name('services.show');
     });
+
+    Route::prefix('indicator')
+        ->controller(IndicatorController::class)
+        ->group(function(){
+           Route::get('/', 'index')->name('indicator.index');
+        });
 
     Route::prefix('payment')
         ->controller(PaymentController::class)

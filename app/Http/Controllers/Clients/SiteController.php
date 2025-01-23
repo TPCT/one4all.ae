@@ -25,7 +25,7 @@ class SiteController extends Controller
             )->first()
             ?->blocks()
             ?->first();
-        $services = Service::where('promote_to_homepage', 1)->latest()->limit(10)->get();
+        $services = Service::where('promote_to_homepage', true)->latest()->limit(10)->get();
 
         $has_button = true;
         if (auth()->guard('clients')->check()) {

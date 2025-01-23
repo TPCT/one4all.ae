@@ -150,3 +150,7 @@
 .popup-title{
     font-size: min(37px, 5vw)
 }
+
+.indicator-two .indicator-chart h3, .indicator-three .indicator-chart h3{
+    width: fit-content;
+}

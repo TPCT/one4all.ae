@@ -48,14 +48,14 @@ class Controller extends BaseController
         $rendered_html = view($viewPath, $content)->render();
         if (config('app.env') != "local")
             $rendered_html = str_replace('site.', '', $rendered_html);
-        $html = new \DOMDocument;
+        $html = new \DOMDocument('1.0', 'UTF-8');
         libxml_use_internal_errors(true);
-        $html->loadHTML($rendered_html);
+        $html->loadHTML(mb_convert_encoding($rendered_html, 'HTML-ENTITIES', 'UTF-8'));
         libxml_clear_errors();
         $style = "";
         $this->removeInlineStyle($html->getElementsByTagName('body')->item(0), $style);
         $inline_style_element = $html->createElement('style', $style);
         $html->getElementsByTagName('head')->item(0)->appendChild($inline_style_element);
-        return $html->saveHTML();
+        return html_entity_decode($html->saveHTML());
     }
 }

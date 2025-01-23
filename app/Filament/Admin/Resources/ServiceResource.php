@@ -9,6 +9,7 @@ use App\Filament\Components\FileUpload;
 use App\Filament\Components\TextInput;
 use App\Filament\Components\TinyEditor;
 use App\Helpers\Utilities;
+use App\Models\Dropdown\Dropdown;
 use App\Models\Service;
 use App\Models\Slider\Slider;
 use CactusGalaxy\FilamentAstrotomic\Forms\Components\TranslatableTabs;
@@ -120,17 +121,16 @@ class ServiceResource extends Resource
                                     ->label(__('Price'))
                                     ->required(),
 
-                                Checkbox::make('promote_to_homepage')
-                                    ->label(__('Promote To Homepage')),
-
-                                Checkbox::make('one_time_payment')
-                                    ->label(__('One Time Payment')),
-
-                                Checkbox::make('has_form')
-                                    ->label(__('Has Form'))
+                                TranslatableTabs::make()
+                                    ->localeTabSchema(fn (TranslatableTab $tab) => [
+                                        TextInput::make($tab->makeName('youtube_video_id'))
+                                            ->maxLength(255)
+                                            ->label(__('Youtube Video')),
+                                    ])
                                     ->visible(function (Forms\Get $get){
-                                        return $get('data.view_type', true) == self::$model::VIEW_TYPE_2;
-                                    }),
+                                        return $get('data.view_type', true) == self::$model::VIEW_TYPE_3;
+                                    })
+                                    ->columnSpanFull(),
 
                                 Select::make('slider_id')
                                     ->label(__('Slider'))
@@ -144,6 +144,10 @@ class ServiceResource extends Resource
                                     })
                                     ->native(false)
                                     ->preload(),
+
+                                Checkbox::make('promote_to_homepage')
+                                    ->label(__('Promote To Homepage'))
+                                    ->default(1),
 
                                 Forms\Components\DatePicker::make('published_at')
                                     ->label(__("Published At"))

@@ -42,7 +42,7 @@ class PaymentController
 
     public function success_service_transaction(Service $service, $response){
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            if ($service->has_form) {
+            if ($service->view_type == Service::VIEW_TYPE_2) {
                 ClientConsultation::where('payment_id', $response['id'])->update([
                     'paid' => 1
                 ]);

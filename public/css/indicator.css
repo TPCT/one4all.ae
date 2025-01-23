@@ -1,0 +1,246 @@
+.indicator {
+  background-color: var(--main-section-bg);
+  overflow: hidden;
+}
+.indicator text {
+  font-family: "NotoKufiArabic";
+  fill: #999;
+}
+.indicator text.active {
+  fill: #000;
+}
+.indicator td {
+  direction: ltr;
+  text-align: right;
+  color: #d32a2a;
+}
+.indicator .last-price {
+  color: #000;
+}
+.indicator .last-price span {
+  color: #d32a2a;
+}
+.indicator table {
+  background: linear-gradient(251.22deg, #ffffff 7.72%, #e8f1f8 67.35%);
+  border-radius: 16px;
+  height: 665px;
+  overflow-y: scroll;
+}
+.table > :not(caption) > * > * {
+  background-color: transparent;
+}
+.indicator .gauge-container {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+  /* transform: translate(90px, 90px); */
+}
+.indicator .gauge-container::before {
+  content: "";
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  height: 50%;
+  background: linear-gradient(180deg, #bbe8ff 0%, #f0f2f7 48.96%);
+  z-index: 2;
+  border-radius: 50%;
+}
+.indicator .gauge-container svg {
+  position: relative;
+  z-index: 3;
+}
+.gauge-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  z-index: 1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.indicator .indicator-chart {
+  position: relative;
+}
+.indicator .indicator-chart h3 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+
+  background-color: var(--main-color);
+  padding: 4px 8px;
+}
+.gauge-container-two,
+.gauge-container-three {
+  transform: unset !important;
+  position: relative;
+}
+.indicator-two .indicator-chart h3,
+.indicator-three .indicator-chart h3 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: var(--main-color);
+  padding: 4px 8px;
+  width: 180px;
+  text-align: center;
+}
+#Indicator footer {
+  margin: 0;
+}
+@media (max-width: 575px) {
+  .indicator text {
+    font-size: 12px;
+  }
+}
+@media (min-width: 992px) {
+  .indicator-two .indicator-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #Indicator .navigation-container {
+    background-color: var(--main-section-bg);
+    border-top-right-radius: 100px;
+    border-top-left-radius: 100px;
+  }
+}
+@media (max-width: 575px) {
+  .gauge-container {
+    margin-top: 4rem;
+  }
+}
+.indicator-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+}
+.indicator-links a {
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background-color: #bababa;
+  color: #fff;
+  flex: 0 0 100px;
+  text-align: center;
+}
+.indicator-links a:hover,
+.indicator-links a.active {
+  background-color: var(--main-color);
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .indicator .row {
+    justify-content: center;
+  }
+  .indicator .row .col-lg-4 {
+    width: 100%;
+  }
+  .indicator .indicator-chart {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .indicator .indicator-chart h3 {
+    left: 50%;
+  }
+}
+/* .indicator-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+} */
+@media (min-width: 768px) and (max-width: 992px) {
+  .indicator-two .indicator-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .indicator-two .gauge-container {
+    width: unset;
+  }
+
+  .indicator .gauge-container::before {
+    content: "";
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 50%;
+    background: linear-gradient(180deg, #bbe8ff 0%, #f0f2f7 48.96%);
+    z-index: 2;
+    border-radius: 50%;
+  }
+}
+.indicator-two .gauge-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52%;
+  height: 50%;
+  background: linear-gradient(180deg, #bbe8ff 0%, #f0f2f7 48.96%);
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.dark-mode .indicator .gauge-container::before {
+  background: linear-gradient(180deg, #bbe8ff 0%, #00121b 48.96%);
+}
+.dark-mode .indicator line {
+  stroke: #fff;
+}
+.dark-mode .gauge-container::after {
+  background-color: #fff;
+}
+@media (min-width: 1201px) and (max-width: 1399.8889px) {
+  .indicator-two .gauge-container::before {
+    content: "";
+    position: absolute;
+    top: 53%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(180deg, #bbe8ff 0%, #f0f2f7 48.96%);
+    z-index: 2;
+    border-radius: 50%;
+  }
+}
+@media (max-width: 991px) {
+  .indicator .gauge-container,
+  .indicator-two .gauge-container {
+    overflow: visible;
+  }
+  .indicator-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

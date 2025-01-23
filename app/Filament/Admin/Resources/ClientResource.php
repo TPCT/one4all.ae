@@ -108,7 +108,7 @@ class ClientResource extends Resource
                         return $client->services()
                             ->withPivot('created_at')
                             ->where(function (Builder $query) {
-                                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->format('Y-m-d'));
+                                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->toDateString());
                             })
                             ->get()->pluck('title')->toArray() ?: ['---------'];
                     })

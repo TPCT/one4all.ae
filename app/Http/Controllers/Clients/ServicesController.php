@@ -21,7 +21,7 @@ class ServicesController extends Controller
         if (auth()->guard('clients')->check()){
             $client = auth()->guard('clients')->user();
             $subscription = $client->services()->where('service_id', $service->id)->where(function ($query){
-                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->format('Y-m-d'));
+                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->toDateString());
             })->first();
 
             if ($subscription)
@@ -32,9 +32,11 @@ class ServicesController extends Controller
                 if ($package->services->contains($service->id))
                     $has_button = false;
             }
+
+            if (!$has_button && $service->view_type == Service::VIEW_TYPE_3){}
         }
 
-        if ($service->has_form && \request()->isMethod('POST')){
+        if ($service->view_type == Service::VIEW_TYPE_2 && \request()->isMethod('POST')){
             $data = \request()->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255',
@@ -49,7 +51,8 @@ class ServicesController extends Controller
             $consultation = ClientConsultation::where('date', $data['date'])->where('time', $data['time'])->first();
             if ($consultation){
                 return back()->withErrors([
-                    'date' => __('errors.THIS_DATE_ALREADY_RESERVED')
+                    'date' => __('errors.THIS_DATE_ALREADY_RESERVED'),
+                    'time' => __('errors.THIS_DATE_ALREADY_RESERVED')
                 ])->withInput($data);
             }
 

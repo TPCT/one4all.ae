@@ -69,6 +69,7 @@
         <script type="text/javascript" src="{{asset('/js/footer.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/light-dark-mode.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/popup.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/js/d3.js')}}"></script>
     </head>
 
     <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}}">

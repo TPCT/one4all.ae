@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceLang whereLanguage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceLang whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceLang whereTitle($value)
+ * @property string|null $youtube_video_id
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceLang whereYoutubeVideoId($value)
  * @mixin \Eloquent
  */
 class ServiceLang extends Model implements \OwenIt\Auditing\Contracts\Auditable
