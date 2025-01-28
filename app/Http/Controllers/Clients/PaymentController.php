@@ -54,7 +54,7 @@ class PaymentController
             }
             return redirect()
                 ->route('services.show', ['service' => $service])
-                ->with('success', 'Transaction complete.');
+                ->with('success-payment', 'Transaction complete.');
         }
         return redirect()->route('services.show', ['service' => $service])->with('service', __("site.Something went wrong"));
     }
@@ -67,7 +67,7 @@ class PaymentController
             ]);
             return redirect()
                 ->route('site.index')
-                ->with('success', 'Transaction complete.');
+                ->with('success-payment', 'Transaction complete.');
         }
         return redirect()->route('site.index')->with('package', __("site.Something went wrong"));
     }

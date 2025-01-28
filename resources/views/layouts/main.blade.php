@@ -92,7 +92,7 @@
 
         @stack('script')
 
-        @if ($message = session('success'))
+        @if ($message = session('success-payment'))
             <script>
                 $(function(){
                     const popup = new Popup({
