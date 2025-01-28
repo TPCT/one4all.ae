@@ -12,6 +12,8 @@ use App\Http\Controllers\Clients\AuthController;
 Route::middleware([
     StatusChecker::class,
 ])
+->prefix('/{locale?}/')
+->where(['locale' => implode('|', array_keys(config('app.locales')))])
 ->group(function(){
     Route::prefix('auth')->controller(AuthController::class)->group(function(){
         Route::any('login', 'login')->name('auth.login');
