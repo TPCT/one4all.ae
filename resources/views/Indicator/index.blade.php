@@ -23,7 +23,7 @@
                 @endforeach
             </div>
             <div class="row mt-4">
-                <div class="col-lg-2 d-flex align-items-center">
+                <div class="col-lg-6 d-flex align-items-center">
                     <table class="table">
                         <thead>
                         <tr>
@@ -50,7 +50,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-10 indicator-chart">
+                <div class="col-lg-6 indicator-chart">
                     <h3>@lang('site.SUMMARY')</h3>
                     <div id="gauge-container" class="gauge-container"></div>
                 </div>

@@ -132,12 +132,14 @@ class AuthController extends Controller
 
             if ($data['email']){
                 $client = Client::where('email', $data['email'])->first();
-                $password = \Str::random(8);
-                $client->update(['password' => \Hash::make($password)]);
-                \Mail::to($client->email)->send(new ResetPasswordEmail([
-                    'name' => $client->first_name . ' ' . $client->last_name,
-                    'password' => $password,
-                ]));
+                if ($client){
+                    $password = \Str::random(8);
+                    $client->update(['password' => \Hash::make($password)]);
+                    \Mail::to($client->email)->send(new ResetPasswordEmail([
+                        'name' => $client->first_name . ' ' . $client->last_name,
+                        'password' => $password,
+                    ]));
+                }
             }
             return redirect()->route('auth.login')->with('success', __("site.ACCOUNT_RESET_PASSWORD_DONE_SUCCESSFULLY"));
         }

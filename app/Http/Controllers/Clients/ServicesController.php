@@ -33,7 +33,9 @@ class ServicesController extends Controller
                     $has_button = false;
             }
 
-            if (!$has_button && $service->view_type == Service::VIEW_TYPE_3){}
+            if (!$has_button && $service->view_type == Service::VIEW_TYPE_3){
+                return redirect()->route('indicator.index');
+            }
         }
 
         if ($service->view_type == Service::VIEW_TYPE_2 && \request()->isMethod('POST')){
