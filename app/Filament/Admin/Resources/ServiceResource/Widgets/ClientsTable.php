@@ -5,9 +5,12 @@ namespace App\Filament\Admin\Resources\ServiceResource\Widgets;
 use App\Exports\ClientExport;
 use App\Models\Client;
 use Carbon\Carbon;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\HtmlString;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
@@ -42,43 +45,43 @@ class ClientsTable extends BaseWidget
                     ->searchable(query: function ($query, $search) {
                         return $query->orWhere('phone', 'LIKE', "%{$search}%");
                     }),
-                Tables\Columns\TextColumn::make('packages')
-                    ->label(__('Packages'))
-                    ->getStateUsing(function (Client $client) {
-                        $package = $client->packages()->latest()->withPivot('created_at')->first();
-                        if ($package && Carbon::parse($package->pivot->created_at)->addMonths($package->months) > Carbon::now())
-                            return $package->title;
-                        return "------";
-                    })
             ])
             ->poll('60s')
             ->filters([
-//                Tables\Filters\Filter::make('subscription')
-//                    ->form([
-//                        Forms\Components\Checkbox::make('active_packages')
-//                            ->label(__('Active Packages')),
-//                        Forms\Components\Checkbox::make('active_services')
-//                            ->label(__('Active Services')),
-//                    ])
-//                    ->query(function (Builder $query, $data) {
-//                        $query->when($data['active_packages'], function (Builder $query) {
-//                            $query->whereHas('packages', function (Builder $query) {
-//                                $query->where(function ($query) {
-//                                    $query->where('expires_at', '>', Carbon::now());
-//                                });
-//                            });
-//                        })
-//                            ->when($data['active_services'], function (Builder $query) {
-//                                $query->whereHas('services', function (Builder $query) {
-//                                    $query->where(function ($query) {
-//                                        $query->where('expires_at', '>', Carbon::now());
-//                                    });
-//                                });
-//                            });
-//                    })
+                Tables\Filters\Filter::make('expiration_date')
+                    ->form([
+                        DatePicker::make('expires_at')
+                            ->label(__('Expiration date'))
+                            ->default(Carbon::today())
+                            ->native(false),
+                        Select::make('joined')
+                            ->options([
+                                "0" => __("Not joined"),
+                                "1" => __("Joined"),
+                            ])
+                            ->default("0")
+                            ->label(__('Joined'))
+                            ->searchable()
+                            ->native(false)
+                    ])
+                    ->query(function ($query, $data) {
+                        $query->when($data['expires_at'], function ($query, $expires_at) {
+                            $query->whereHas('services', function ($query) use ($expires_at) {
+                                $query->where('client_services.expires_at', '>=', Carbon::parse($expires_at)->toDateTimeString());
+                            });
+                        });
+                        $query->when($data['joined'], function ($query, $joined) {
+                            $query->where('joined', $joined == "1");
+                        });
+                    })
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(__('Delete')),
+                Tables\Actions\Action::make('joined')
+                    ->label(function ($record) {
+                        return $record->joined ? __('Removed') : __('Joined');
+                    })
+                    ->action(fn($record) => $record->update(['joined' => !$record->joined]))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
