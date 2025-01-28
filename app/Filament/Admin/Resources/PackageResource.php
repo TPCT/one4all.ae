@@ -200,6 +200,16 @@ class PackageResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make(__('View Clients'))
+                        ->icon('bi-person-fill')
+                        ->modalContent(function ($record){
+                            return view('filament.Packages.table', ['record' => $record]);
+                        })
+                        ->modalHeading("")
+                        ->modalCancelAction(false)
+                        ->modalSubmitAction(false),
+                ]),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
             ])
