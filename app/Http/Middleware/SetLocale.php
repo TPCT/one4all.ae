@@ -27,12 +27,10 @@ class SetLocale
             return redirect('/' . $locale . "/" . $request->path());
         }
 
+        dd($locale);
         session()->put('locale', $locale);
         app()->setLocale($locale);
         \URL::defaults(['locale' => $locale]);
-
-        if ($request->get('fallbackPlaceholder'))
-            return redirect('/' . $request->get('fallbackPlaceholder'));
         return $next($request);
     }
 }
