@@ -53,11 +53,15 @@ class PaidClientsTable extends BaseWidget
                     ->query(function ($query, $data) {
                         $query->when($data['created_at'], function ($query, $created_at) {
                             $created_at = Carbon::parse($created_at)->toDateString();
-                            $query->whereHas('services', function ($query) use ($created_at) {
-                                $query->whereDate('client_services.created_at', $created_at);
+                            $query->where(function ($query) use ($created_at) {
+                                $query->whereHas('services', function ($query) use ($created_at) {
+                                    $query->whereDate('client_services.created_at', $created_at);
+                                });
                             });
-                            $query->orWhereHas('packages', function ($query) use ($created_at){
-                                $query->whereDate('client_packages.created_at', $created_at);
+                            $query->orWhere(function ($query) use ($created_at) {
+                                $query->whereHas('packages', function ($query) use ($created_at){
+                                    $query->whereDate('client_packages.created_at', $created_at);
+                                });
                             });
                         });
                     })
