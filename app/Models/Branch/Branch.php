@@ -80,7 +80,7 @@ use OwenIt\Auditing\Auditable;
  */
 class Branch extends Model implements \OwenIt\Auditing\Contracts\Auditable
 {
-    use HasFactory, SoftDeletes, Translatable, Auditable, \App\Helpers\HasTranslations, ApiResponse, HasTimestamps, HasAuthor;
+    use HasFactory, Translatable, Auditable, \App\Helpers\HasTranslations, ApiResponse, HasTimestamps, HasAuthor;
 
     const MALL_TYPE = 1;
     const AVENUE_TYPE = 2;

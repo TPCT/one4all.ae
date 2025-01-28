@@ -2,12 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\BoothVoucher\BoothVoucher;
-use App\Models\ClientNotification\ClientNotification;
-use App\Models\Offer\Offer;
 use App\Models\Package\Package;
 use App\Models\Service\Service;
-use App\Models\Voucher\Voucher;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
