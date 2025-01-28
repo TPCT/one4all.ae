@@ -57,7 +57,7 @@ class ClientsTable extends BaseWidget
                 Tables\Filters\Filter::make('expiration_date')
                     ->form([
                         DatePicker::make('expires_at')
-                            ->label(__('Expiration date'))
+                            ->label(__('Expiration/Subscription date'))
                             ->default(Carbon::today())
                             ->native(false),
                         Select::make('joined')
@@ -73,7 +73,8 @@ class ClientsTable extends BaseWidget
                     ->query(function ($query, $data) {
                         $query->when($data['expires_at'], function ($query, $expires_at) {
                             $query->whereHas('services', function ($query) use ($expires_at) {
-                                $query->where('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
+                                $query->where('client_services.created_at', Carbon::parse($expires_at)->toDateTimeString());
+                                $query->orWhere('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                             });
                         });
                         $query->when($data['joined'], function ($query, $joined) {
