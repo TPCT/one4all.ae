@@ -48,7 +48,7 @@ class ClientsTable extends BaseWidget
                 Tables\Columns\TextColumn::make('expires_at')
                     ->label(__('Expires at'))
                     ->getStateUsing(function (Client $client) use ($service) {
-                        return $client->services()->where('id', $service->id)->withPivot('expires_at')->first()->pivot->expires_at;
+                        return $client->services()->where('service_id', $service->id)->withPivot('expires_at')->first()->pivot->expires_at;
                     })
                     ->date()
             ])
