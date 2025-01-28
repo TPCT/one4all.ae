@@ -105,7 +105,6 @@ class ClientsTable extends BaseWidget
                         $service->pivot->joined = !$service->pivot->joined;
                         $service->pivot->save();
                     }),
-                Tables\Actions\DeleteAction::make(__('Delete')),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
