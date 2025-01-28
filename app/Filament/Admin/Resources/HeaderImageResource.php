@@ -25,7 +25,7 @@ class HeaderImageResource extends Resource
     protected static ?string $model = HeaderImage::class;
 
     protected static ?string $navigationIcon = 'bi-image-fill';
-    protected static bool $shouldRegisterNavigation = false;
+    protected static bool $shouldRegisterNavigation = true;
 
     protected static ?int $navigationSort = 1;
 
