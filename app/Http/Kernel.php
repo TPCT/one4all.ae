@@ -27,7 +27,6 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
         \App\Http\Middleware\EncryptCookies::class,
-        SetLocale::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         StatusChecker::class
