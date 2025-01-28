@@ -16,6 +16,7 @@ class AdminPanelVisitor
      */
     public function handle(Request $request, Closure $next): Response
     {
+        app()->setLocale('en');
         visitor()->visit();
         return $next($request);
     }
