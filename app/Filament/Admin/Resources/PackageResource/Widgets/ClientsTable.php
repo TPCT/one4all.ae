@@ -75,8 +75,8 @@ class ClientsTable extends BaseWidget
                             $query->where(function ($query) use ($expires_at, $package) {
                                 $query->whereHas('packages', function ($query) use ($expires_at, $package) {
                                     $query->where('client_packages.package_id', $package->id);
-                                    $query->whereDate('client_packages.created_at', Carbon::parse($expires_at)->toDateString());
-                                    $query->orWhereDate('client_packages.expires_at', Carbon::parse($expires_at)->toDateString());
+                                    $query->whereDate('client_packages.created_at', $expires_at);
+                                    $query->orWhereDate('client_packages.expires_at', $expires_at);
                                 });
                             });
                         });
