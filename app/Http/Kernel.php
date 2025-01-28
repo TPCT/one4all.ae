@@ -24,8 +24,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Illuminate\Session\Middleware\StartSession::class,
-        SetLocale::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
     ];
 
     /**
@@ -35,6 +33,8 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+            SetLocale::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
