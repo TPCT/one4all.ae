@@ -201,6 +201,33 @@ class PackageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('Add Client')
+                        ->label(__('Add Client'))
+                        ->icon('bi-person-fill')
+                        ->form([
+                            Select::make('client_id')
+                                ->label(__('Client'))
+                                ->options(function ($record){
+                                    return \App\Models\Client::whereDoesntHave('packages', function ($query) use ($record){
+                                        $query->where('package_id', $record->id);
+                                    })->orWhereHas('packages', function ($query) use ($record){
+                                        $query->where('package_id', $record->id);
+                                        $query->where('client_packages.expires_at', '<', Carbon::today()->toDateString());
+                                    })->get()->pluck('email', 'id');
+                                })
+                                ->native(false)
+                                ->searchable()
+                                ->required(),
+                        ])
+                        ->action(function ($data, $record){
+                            $client = \App\Models\Client::find($data['client_id']);
+                            $client->packages()->attach($record->id, [
+                                'expires_at' => Carbon::today()->addMonths($record->months)->toDateString(),
+                            ]);
+                            $client->update([
+                                'joined' => 0
+                            ]);
+                        }),
                     Tables\Actions\Action::make(__('View Clients'))
                         ->icon('bi-person-fill')
                         ->modalContent(function ($record){
