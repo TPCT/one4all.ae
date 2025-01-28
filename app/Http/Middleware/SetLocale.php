@@ -20,14 +20,9 @@ class SetLocale
         ]))
             return $next($request);
 
-        if (in_array($request->segment(1), array_keys(config('app.locales')))){
-            $locale = $request->segment(1);
-            session()->put('locale', $request->segment(1));
-        }else{
+        $locale = $request->segment(1);
+        if (!in_array($locale, array_keys(config('app.locales')))){
             $locale = config('app.locale');
-            if (!session()->has('locale')) {
-                session()->put('locale', $locale);
-            }
             return redirect('/' . $locale . "/" . $request->path());
         }
 
