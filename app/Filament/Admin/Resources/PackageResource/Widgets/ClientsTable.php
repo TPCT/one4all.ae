@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ServiceResource\Widgets;
+namespace App\Filament\Admin\Resources\PackageResource\Widgets;
 
 use App\Exports\ClientExport;
 use App\Models\Client;
@@ -18,11 +18,11 @@ class ClientsTable extends BaseWidget
 
     public function table(Table $table): Table
     {
-        $service = $this->record;
+        $package = $this->record;
         return $table
-            ->query(function() use ($service){
-                return Client::whereHas('services', function ($query) use ($service) {
-                    $query->where('service_id', $service->id);
+            ->query(function() use ($package){
+                return Client::whereHas('packages', function ($query) use ($package) {
+                    $query->where('package_id', $package->id);
                 });
             })
             ->columns([
@@ -45,10 +45,10 @@ class ClientsTable extends BaseWidget
                     }),
                 Tables\Columns\TextColumn::make('expires_at')
                     ->label(__('Expires at'))
-                    ->getStateUsing(function (Client $client) use ($service) {
+                    ->getStateUsing(function (Client $client) use ($package) {
                         return $client
-                            ->services()
-                            ->where('service_id', $service->id)
+                            ->packages()
+                            ->where('package_id', $package->id)
                             ->withPivot('expires_at')
                             ->first()->pivot->expires_at;
                     })
@@ -75,9 +75,9 @@ class ClientsTable extends BaseWidget
                     ->query(function ($query, $data) {
                         $query->when($data['expires_at'], function ($query, $expires_at) {
                             $query->where(function ($query) use ($expires_at) {
-                                $query->whereHas('services', function ($query) use ($expires_at) {
-                                    $query->where('client_services.created_at', Carbon::parse($expires_at)->toDateTimeString());
-                                    $query->orWhere('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
+                                $query->whereHas('packages', function ($query) use ($expires_at) {
+                                    $query->where('client_packages.created_at', Carbon::parse($expires_at)->toDateTimeString());
+                                    $query->orWhere('client_packages.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                                 });
                             });
                         });
