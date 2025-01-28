@@ -5,6 +5,8 @@ namespace App\Filament\Admin\Widgets;
 use App\Models\Client;
 use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Carbon\Carbon;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -38,6 +40,23 @@ class PaidClientsTable extends BaseWidget
                 Tables\Columns\TextColumn::make("email")
                     ->label(__("Email"))
                     ->searchable(),
+            ])
+            ->filters([
+                Tables\Filters\Filter::make('date')
+                    ->form([
+                        DatePicker::make('created_at')
+                            ->label(__('Subscription Date'))
+                            ->date()
+                            ->native(false)
+                    ])
+                    ->query(function ($query) {
+                        $query->whereHas('services', function ($query) {
+                            $query->where('client_services.created_at', '=', Carbon::today()->toDateString());
+                        });
+                        $query->orWhereHas('packages', function ($query) {
+                            $query->where('client_packages.created_at', '=', Carbon::today()->toDateString());
+                        });
+                    })
             ]);
     }
 }
