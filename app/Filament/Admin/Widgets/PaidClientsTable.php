@@ -45,12 +45,12 @@ class PaidClientsTable extends BaseWidget
                             ->native(false)
                     ])
                     ->query(function ($query, $data) {
-                        $query->when($data['date'], function ($query, $date) {
-                            $query->whereHas('services', function ($query) use ($date) {
-                                $query->whereDate('client_services.created_at', '=', $date);
+                        $query->when($data['created_at'], function ($query, $created_at) {
+                            $query->whereHas('services', function ($query) use ($created_at) {
+                                $query->whereDate('client_services.created_at', '=', $created_at);
                             });
-                            $query->orWhereHas('packages', function ($query) use ($date){
-                                $query->whereDate('client_packages.created_at', '=', $date);
+                            $query->orWhereHas('packages', function ($query) use ($created_at){
+                                $query->whereDate('client_packages.created_at', '=', $created_at);
                             });
                         });
                     })
