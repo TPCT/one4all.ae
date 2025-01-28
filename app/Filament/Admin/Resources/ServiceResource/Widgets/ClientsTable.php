@@ -23,6 +23,7 @@ class ClientsTable extends BaseWidget
             ->query(function() use ($service){
                 return Client::whereHas('services', function ($query) use ($service) {
                     $query->where('service_id', $service->id);
+                    $query->where('client_services.expires_at', Carbon::today()->toDateString());
                 });
             })
             ->columns([
@@ -84,8 +85,6 @@ class ClientsTable extends BaseWidget
                         $query->when($data['joined'], function ($query, $joined) {
                             $query->where('joined', $joined == "1");
                         });
-
-                        return $query;
                     })
             ])
             ->actions([

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\ServiceResource\Widgets;
 
+use Carbon\Carbon;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -19,6 +20,7 @@ class ClientsStat extends BaseWidget
                     ->where(function (\Illuminate\Database\Eloquent\Builder $builder) use ($service) {
                         $builder->whereHas('services', function (\Illuminate\Database\Eloquent\Builder $builder) use ($service) {
                             $builder->where('service_id', $service->id);
+                            $builder->where('client_services.expires_at', '>', Carbon::today()->toDateString());
                         });
                     })->count();
             })->icon('bi-person-fill'),
@@ -29,7 +31,8 @@ class ClientsStat extends BaseWidget
                             ->whereDoesntHave('services')
                             ->orWhereHas('services', function (\Illuminate\Database\Eloquent\Builder $builder) use ($service) {
                                 $builder->where('service_id', '!=', $service->id);
-                        });
+                                $builder->where('client_services.expires_at', '<', Carbon::today()->toDateString());
+                            });
                     })->count();
             })->icon('bi-person-fill'),
         ];

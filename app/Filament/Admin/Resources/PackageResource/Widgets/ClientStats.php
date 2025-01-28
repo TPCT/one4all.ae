@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\PackageResource\Widgets;
 
+use Carbon\Carbon;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -19,6 +20,7 @@ class ClientStats extends BaseWidget
                     ->where(function (\Illuminate\Database\Eloquent\Builder $builder) use ($package) {
                         $builder->whereHas('packages', function (\Illuminate\Database\Eloquent\Builder $builder) use ($package) {
                             $builder->where('package_id', $package->id);
+                            $builder->where('client_packages.expires_at', '>', Carbon::today()->toDateString());
                         });
                     })->count();
             })->icon('bi-person-fill'),
@@ -29,6 +31,7 @@ class ClientStats extends BaseWidget
                             ->whereDoesntHave('packages')
                             ->orWhereHas('packages', function (\Illuminate\Database\Eloquent\Builder $builder) use ($package) {
                                 $builder->where('package_id', '!=', $package->id);
+                                $builder->where('client_packages.expires_at', '<', Carbon::today()->toDateString());
                             });
                     })->count();
             })->icon('bi-person-fill'),
