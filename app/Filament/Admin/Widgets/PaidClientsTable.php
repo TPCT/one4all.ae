@@ -68,9 +68,6 @@ class PaidClientsTable extends BaseWidget
                             'x-tooltip.raw' => new HtmlString(implode('<br> ', $state ?? [])),
                         ];
                     }),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('Created At'))
-                    ->since()
             ])
             ->filters([
                 Tables\Filters\Filter::make('date')
