@@ -14,6 +14,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        dd(app()->getLocale());
         view()->share('language', Language::where('locale', app()->getLocale())->exists() ? app()->getLocale() : app(General::class)->default_locale);
         view()->share('rtl', app()->getLocale() == "ar" ? "true" : "false");
     }
