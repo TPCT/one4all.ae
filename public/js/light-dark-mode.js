@@ -3,20 +3,15 @@ $(document).ready(function () {
   const mode = localStorage.getItem("mode");
   if (mode) {
     $("body").addClass(mode);
-    if (mode === "dark-mode") {
-      $("#logo-img").attr("src", "./assets/imgs/home/logo-dark.png");
-    }
   }
 
   $(".main-btn").on("click", function () {
     $("body").removeClass("dark-mode").addClass("light-mode");
     localStorage.setItem("mode", "light-mode");
-    $("#logo-img").attr("src", "./assets/imgs/home/logo.png");
   });
 
   $(".third-btn").on("click", function () {
     $("body").removeClass("light-mode").addClass("dark-mode");
     localStorage.setItem("mode", "dark-mode");
-    $("#logo-img").attr("src", "./assets/imgs/home/logo-dark.png");
   });
 });
