@@ -85,7 +85,6 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
                 AdminPanelVisitor::class,
-                SetLanguage::class
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->authMiddleware([
