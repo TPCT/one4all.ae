@@ -27,7 +27,6 @@ class SetLocale
             return redirect('/' . $locale . "/" . $request->path());
         }
 
-        dd($locale);
         session()->put('locale', $locale);
         app()->setLocale($locale);
         \URL::defaults(['locale' => $locale]);
