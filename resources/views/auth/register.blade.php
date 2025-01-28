@@ -16,12 +16,13 @@
 
     <section class="auth">
         <div class="container">
-            <form method="post">
+            <form method="post" action="{{route('auth.register')}}">
                 @csrf
+                @method('POST')
                 <input type="hidden" name="phone_country" id="phone_country">
                 <div class="head-form mb-5">
-                    <h1>{{$register_page_section->title}}</h1>
-                    {!! $register_page_section->description !!}
+                    <h1>{){$register_page_section->title}}</h1>
+                    {!'! $register_page_section->description !!}
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-3">
