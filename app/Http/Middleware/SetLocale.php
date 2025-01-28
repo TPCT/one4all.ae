@@ -28,6 +28,7 @@ class SetLocale
         }
 
         session()->put('locale', $locale);
+        dd(session()->all());
         app()->setLocale($locale);
         \URL::defaults(['locale' => $locale]);
         return $next($request);
