@@ -17,7 +17,7 @@ class StatusChecker
      */
     public function handle(Request $request, Closure $next): Response
     {
-        foreach ($request->route()->parameters() as $name => $value) {
+        foreach ($request->route()?->parameters() ?? [] as $name => $value) {
             if ($value instanceof Model && !$value->status) {
                 throw new NotFoundHttpException();
             }

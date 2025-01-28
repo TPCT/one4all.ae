@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\StatusChecker;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Kenepa\TranslationManager\Http\Middleware\SetLanguage;
 
@@ -23,6 +24,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        SetLocale::class,
+
     ];
 
     /**
@@ -32,13 +36,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Illuminate\Session\Middleware\StartSession::class,
-            SetLocale::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            StatusChecker::class
         ],
 
         'api' => [

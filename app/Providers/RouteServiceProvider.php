@@ -25,19 +25,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(5)->by($request->phone ?: $request->ip());
-        });
-
-        RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->ip());
-        });
+//        RateLimiter::for('login', function (Request $request) {
+//            return Limit::perMinute(5)->by($request->phone ?: $request->ip());
+//        });
+//
+//        RateLimiter::for('api', function (Request $request) {
+//            return Limit::perMinute(60)->by($request->ip());
+//        });
 
         $this->routes(function () {
             Route::middleware('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web'])
                 ->prefix('/{locale?}/')
                 ->where(['locale' => implode('|', array_keys(config('app.locales')))])
                 ->group(base_path('routes/clients.php'));

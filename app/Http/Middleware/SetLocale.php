@@ -23,6 +23,7 @@ class SetLocale
         $locale = $request->segment(1);
         if (!in_array($locale, array_keys(config('app.locales')))){
             $locale = session('locale', config('app.locale'));
+            session()->put('locale', $locale);
             return redirect('/' . $locale . "/" . $request->path());
         }
 

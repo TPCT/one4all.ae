@@ -8,7 +8,7 @@
             @continue($language == $locale)
             <li>
                 <a
-                        href="{{route($route, array_merge(request()->route()->parameters(), ['locale' => $locale], request()->query()))}}"
+                        href="{{route($route, array_merge(request()->route()?->parameters() ?? [], ['locale' => $locale], request()->query()))}}"
                 >
                     <img src="{{asset(config('app.locales_images.' . $locale))}}" alt="{{config('app.locales.' . $language)}}" srcset=""
                     />
