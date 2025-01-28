@@ -28,9 +28,6 @@ class ClientsTable extends BaseWidget
             ->columns([
                 Tables\Columns\TextColumn::make('full_name')
                     ->label(__("Name"))
-                    ->getStateUsing(function (Client $client) {
-                        return $client->first_name . " " . $client->last_name;
-                    })
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('Email'))
