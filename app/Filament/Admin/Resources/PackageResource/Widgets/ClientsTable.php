@@ -23,7 +23,6 @@ class ClientsTable extends BaseWidget
             ->query(function() use ($package){
                 return Client::whereHas('packages', function ($query) use ($package) {
                     $query->where('package_id', $package->id);
-                    $query->where('client_packages.expires_at', Carbon::today()->toDateString());
                 });
             })
             ->columns([
