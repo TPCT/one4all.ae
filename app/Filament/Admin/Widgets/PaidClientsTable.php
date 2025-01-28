@@ -49,7 +49,7 @@ class PaidClientsTable extends BaseWidget
                             $query->whereHas('services', function ($query) use ($date) {
                                 $query->whereDate('client_services.created_at', '=', $date);
                             });
-                            $query->orWhereHas('packages', function ($query) {
+                            $query->orWhereHas('packages', function ($query) use ($date){
                                 $query->whereDate('client_packages.created_at', '=', $date);
                             });
                         });
