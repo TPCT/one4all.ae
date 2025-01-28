@@ -73,17 +73,21 @@ class ClientsTable extends BaseWidget
                             ->searchable()
                             ->native(false)
                     ])
-                    ->query(function ($query, $data) {
-                        $query->when($data['expires_at'], function ($query, $expires_at) {
-                            $query->where(function ($query) use ($expires_at) {
-                                $query->whereHas('packages', function ($query) use ($expires_at) {
+                    ->query(function ($query, $data) use ($package) {
+                        $query->when($data['expires_at'], function ($query, $expires_at) use ($package) {
+                            $query->where(function ($query) use ($expires_at, $package) {
+                                $query->whereHas('packages', function ($query) use ($expires_at, $package) {
+                                    $query->where('client_packages.package_id', $package->id);
                                     $query->where('client_packages.created_at', Carbon::parse($expires_at)->toDateTimeString());
                                     $query->orWhere('client_packages.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                                 });
                             });
                         });
-                        $query->when($data['joined'], function ($query, $joined) {
-                            $query->where('joined', $joined == "1");
+                        $query->when($data['joined'], function ($query, $joined) use ($package) {
+                            $query->whereHas('packages', function ($query) use ($joined, $package) {
+                                $query->where('client_packages.package_id', $package->id);
+                                $query->where('client_packages.joined', $joined == "1");
+                            });
                         });
 
                         return $query;
@@ -91,10 +95,19 @@ class ClientsTable extends BaseWidget
             ])
             ->actions([
                 Tables\Actions\Action::make('joined')
-                    ->label(function ($record) {
-                        return $record->joined ? __('Remove') : __('Join');
+                    ->label(function ($record) use ($package) {
+                        return $record
+                            ->packages()
+                            ->where('packaged_id', $package->id)
+                            ->first()
+                            ->pivot
+                            ->joined ? __("Remove") : __("Add");
                     })
-                    ->action(fn($record) => $record->update(['joined' => !$record->joined])),
+                    ->action(function ($record) use ($package) {
+                        $package = $record->services()->where('package_id', $package->id)->first();
+                        $package->pivot->joined = !$package->pivot->joined;
+                        $package->pivot->save();
+                    }),
                 Tables\Actions\DeleteAction::make(__('Delete')),
             ])
             ->bulkActions([

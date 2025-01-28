@@ -73,26 +73,39 @@ class ClientsTable extends BaseWidget
                             ->searchable()
                             ->native(false)
                     ])
-                    ->query(function ($query, $data) {
-                        $query->when($data['expires_at'], function ($query, $expires_at) {
-                            $query->where(function ($query) use ($expires_at) {
-                                $query->whereHas('services', function ($query) use ($expires_at) {
+                    ->query(function ($query, $data) use ($service) {
+                        $query->when($data['expires_at'], function ($query, $expires_at) use ($service) {
+                            $query->where(function ($query) use ($expires_at, $service) {
+                                $query->whereHas('services', function ($query) use ($expires_at, $service) {
+                                    $query->where('client_Services.service_id', $service->id);
                                     $query->where('client_services.created_at', Carbon::parse($expires_at)->toDateTimeString());
                                     $query->orWhere('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                                 });
                             });
                         });
-                        $query->when($data['joined'], function ($query, $joined) {
-                            $query->where('joined', $joined == "1");
+                        $query->when($data['joined'], function ($query, $joined) use ($service) {
+                            $query->whereHas('services', function ($query) use ($joined, $service) {
+                                $query->where('client_services.service_id', $service->id);
+                                $query->where('client_services.joined', $joined == "1");
+                            });
                         });
                     })
             ])
             ->actions([
                 Tables\Actions\Action::make('joined')
-                    ->label(function ($record) {
-                        return $record->joined ? __('Remove') : __('Join');
+                    ->label(function ($record) use ($service) {
+                        return $record
+                            ->services()
+                            ->where('service_id', $service->id)
+                            ->first()
+                            ->pivot
+                            ->joined ? __("Remove") : __("Add");
                     })
-                    ->action(fn($record) => $record->update(['joined' => !$record->joined])),
+                    ->action(function ($record) use ($service) {
+                        $service = $record->services()->where('service_id', $service->id)->first();
+                        $service->pivot->joined = !$service->pivot->joined;
+                        $service->pivot->save();
+                    }),
                 Tables\Actions\DeleteAction::make(__('Delete')),
             ])
             ->bulkActions([
