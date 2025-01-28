@@ -22,13 +22,7 @@ class PaidClientsTable extends BaseWidget
     {
         return $table
             ->query(function(){
-                return Client::query()->where(function ($query) {
-                    $query->whereHas('services', function ($query) {
-                        $query->where('client_services.created_at', '=', Carbon::today()->toDateString());
-                    })->orWhereHas('packages', function ($query) {
-                        $query->where('client_packages.created_at', '=', Carbon::today()->toDateString());
-                    });
-                });
+                return Client::query();
             })
             ->columns([
                 Tables\Columns\TextColumn::make('full_name')
@@ -47,6 +41,7 @@ class PaidClientsTable extends BaseWidget
                         DatePicker::make('created_at')
                             ->label(__('Subscription Date'))
                             ->date()
+                            ->default(Carbon::today()->toDateString())
                             ->native(false)
                     ])
                     ->query(function ($query) {
