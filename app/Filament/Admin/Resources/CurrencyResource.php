@@ -128,10 +128,10 @@ class CurrencyResource extends Resource
                     ->toggleable()
                     ->label(__("Status"))
                     ->badge()
-                    ->color(function (District $record){
+                    ->color(function ($record){
                         return $record->status == Utilities::PUBLISHED ? "success" : "danger";
                     })
-                    ->formatStateUsing(function(District $record){
+                    ->formatStateUsing(function($record){
                         return $record->status == Utilities::PUBLISHED ? __("Published") : __("Pending");
                     }),
                 Tables\Columns\TextColumn::make('published_at')
