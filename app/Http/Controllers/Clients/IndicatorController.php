@@ -22,19 +22,21 @@ class IndicatorController extends Controller
         if (!$indicator_service)
             throw new NotFoundHttpException();
 
-        $service = $client->services()->where(function ($query) use ($indicator_service) {
-            $query
-                ->where('client_services.expires_at', '>', Carbon::today()->toDateString())
-                ->where('client_services.service_id', '=', $indicator_service->id);
-        })->first();
-
-        if (!$service){
-            $package = $client->packages()->where(function ($query) {
-                $query->where('client_packages.expires_at', '>', Carbon::today()->toDateString());
+        if ($indicator_service->paid) {
+            $service = $client->services()->where(function ($query) use ($indicator_service) {
+                $query
+                    ->where('client_services.expires_at', '>', Carbon::today()->toDateString())
+                    ->where('client_services.service_id', '=', $indicator_service->id);
             })->first();
 
-            if (!$package || !$package->services->contains($indicator_service->id))
-                return redirect()->route('services.show', ['service' => $indicator_service]);
+            if (!$service) {
+                $package = $client->packages()->where(function ($query) {
+                    $query->where('client_packages.expires_at', '>', Carbon::today()->toDateString());
+                })->first();
+
+                if (!$package || !$package->services->contains($indicator_service->id))
+                    return redirect()->route('services.show', ['service' => $indicator_service]);
+            }
         }
 
         $currencies = Currency::active()->get();

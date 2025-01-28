@@ -150,6 +150,13 @@ class ServiceResource extends Resource
                                     ->label(__('Promote To Homepage'))
                                     ->default(1),
 
+                                Checkbox::make('paid')
+                                    ->label(__('Paid'))
+                                    ->default(1)
+                                    ->visible(function (Forms\Get $get){
+                                        return ($get('data.view_type', true) == self::$model::VIEW_TYPE_3);
+                                    }),
+
                                 Forms\Components\DatePicker::make('published_at')
                                     ->label(__("Published At"))
                                     ->default(Carbon::today())
