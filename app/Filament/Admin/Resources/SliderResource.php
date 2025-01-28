@@ -79,7 +79,6 @@ class SliderResource extends Resource
                                     TinyEditor::make($tab->makeName('description'))
                                         ->maxLength(255)
                                         ->showMenuBar()
-                                        ->required()
                             ]),
                             Forms\Components\Repeater::make('slides')
                                 ->relationship()
