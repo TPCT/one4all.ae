@@ -26,10 +26,16 @@ class PaidClientsTable extends BaseWidget
             })
             ->columns([
                 Tables\Columns\TextColumn::make('full_name')
+                    ->getStateUsing(function ($record){
+                        return $record->first_name.' '.$record->last_name;
+                    })
                     ->label(__("Name"))
                     ->searchable(),
                 TextColumn::make('phone')
                     ->label(__("Phone"))
+                    ->getStateUsing(function ($record){
+                        return $record->country_code . $record->phone;
+                    })
                     ->searchable(),
                 Tables\Columns\TextColumn::make("email")
                     ->label(__("Email"))
