@@ -31,6 +31,8 @@ class SetLocale
         app()->setLocale(session('locale'));
         \URL::defaults(['locale' => session('locale')]);
 
+        dd(app()->getLocale());
+
         if ($request->get('fallbackPlaceholder'))
             return redirect('/' . $request->get('fallbackPlaceholder'));
         return $next($request);
