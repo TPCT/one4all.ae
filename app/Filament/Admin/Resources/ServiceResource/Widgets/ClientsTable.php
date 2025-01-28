@@ -77,7 +77,7 @@ class ClientsTable extends BaseWidget
                         $query->when($data['expires_at'], function ($query, $expires_at) use ($service) {
                             $query->where(function ($query) use ($expires_at, $service) {
                                 $query->whereHas('services', function ($query) use ($expires_at, $service) {
-                                    $query->where('client_Services.service_id', $service->id);
+                                    $query->where('client_services.service_id', $service->id);
                                     $query->where('client_services.created_at', Carbon::parse($expires_at)->toDateTimeString());
                                     $query->orWhere('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                                 });
