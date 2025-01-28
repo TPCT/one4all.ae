@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Exports\ServiceExport;
+use App\Filament\Admin\Resources\ClientResource\Widgets\Client;
 use App\Filament\Admin\Resources\ServiceResource\Pages;
 use App\Filament\Admin\Resources\ServiceResource\RelationManagers;
 use App\Filament\Components\FileUpload;
@@ -225,6 +226,33 @@ class ServiceResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('Add Client')
+                        ->label(__('Add Client'))
+                        ->icon('bi-person-fill')
+                        ->form([
+                            Select::make('client_id')
+                            ->label(__('Client'))
+                            ->options(function ($record){
+                                return \App\Models\Client::whereDoesntHave('services', function ($query) use ($record){
+                                    $query->where('service_id', $record->id);
+                                })->orWhereHas('services', function ($query) use ($record){
+                                    $query->where('service_id', $record->id);
+                                    $query->where('client_services.expires_at', '<', Carbon::today()->toDateString());
+                                })->get()->pluck('email', 'id');
+                            })
+                            ->native(false)
+                            ->searchable()
+                            ->required(),
+                        ])
+                        ->action(function ($data, $record){
+                            $client = \App\Models\Client::find($data['client_id']);
+                            $client->services()->attach($record->id, [
+                                'expires_at' => Carbon::today()->addMonths(1)->toDateString(),
+                            ]);
+                            $client->update([
+                                'joined' => 0
+                            ]);
+                        }),
                     Tables\Actions\Action::make(__('View Clients'))
                         ->icon('bi-person-fill')
                         ->modalContent(function ($record){
