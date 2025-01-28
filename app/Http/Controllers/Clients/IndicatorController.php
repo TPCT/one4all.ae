@@ -52,8 +52,11 @@ class IndicatorController extends Controller
         return $this->view('Indicator.index', [
             'selected_stamp' => $selected_stamp,
             'stamps' => [
-                __(TradingViewIndicators::ONE_MINUTE),
+                __(TradingViewIndicators::FIVE_MINUTES),
                 __(TradingViewIndicators::FIFTEEN_MINUTES),
+                __(TradingViewIndicators::THIRTY_MINUTES),
+                __(TradingViewIndicators::ONE_HOUR),
+                __(TradingViewIndicators::TWO_HOURS),
                 __(TradingViewIndicators::FOUR_HOURS),
                 __(TradingViewIndicators::ONE_DAY),
                 __(TradingViewIndicators::ONE_WEEK),
