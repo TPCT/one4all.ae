@@ -46,6 +46,7 @@ class PaidClientsTable extends BaseWidget
                     ])
                     ->query(function ($query, $data) {
                         $query->when($data['created_at'], function ($query, $created_at) {
+                            $created_at = Carbon::parse($created_at)->toDateString();
                             $query->whereHas('services', function ($query) use ($created_at) {
                                 $query->whereDate('client_services.created_at', '=', $created_at);
                             });
