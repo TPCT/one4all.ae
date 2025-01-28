@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
+use Illuminate\Support\HtmlString;
 
 class PaidClientsTable extends BaseWidget
 {
@@ -40,6 +41,36 @@ class PaidClientsTable extends BaseWidget
                 Tables\Columns\TextColumn::make("email")
                     ->label(__("Email"))
                     ->searchable(),
+
+                Tables\Columns\TextColumn::make('packages')
+                    ->label(__('Packages'))
+                    ->getStateUsing(function (Client $client) {
+                        $package = $client->packages()->latest()->withPivot('created_at')->first();
+                        if ($package && Carbon::parse($package->pivot->created_at)->addMonths($package->months) > Carbon::now())
+                            return $package->title;
+                        return "------";
+                    }),
+                Tables\Columns\TextColumn::make('services')
+                    ->label(__('Services'))
+                    ->limit(25)
+                    ->html()
+                    ->getStateUsing(function (Client $client) {
+                        return $client->services()
+                            ->withPivot('created_at')
+                            ->where(function ($query) {
+                                $query->where('client_services.created_at', '>', Carbon::today()->subMonth()->toDateString());
+                            })
+                            ->get()->pluck('title')->toArray() ?: ['---------'];
+                    })
+                    ->extraAttributes(function ($state){
+                        return [
+                            'x-tooltip.html' => new HtmlString(),
+                            'x-tooltip.raw' => new HtmlString(implode('<br> ', $state ?? [])),
+                        ];
+                    }),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('Created At'))
+                    ->since()
             ])
             ->filters([
                 Tables\Filters\Filter::make('date')
