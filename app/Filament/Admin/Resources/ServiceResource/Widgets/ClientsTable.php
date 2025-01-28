@@ -45,6 +45,12 @@ class ClientsTable extends BaseWidget
                     ->searchable(query: function ($query, $search) {
                         return $query->orWhere('phone', 'LIKE', "%{$search}%");
                     }),
+                Tables\Columns\TextColumn::make('expires_at')
+                    ->label(__('Expires at'))
+                    ->getStateUsing(function (Client $client) use ($service) {
+                        return $client->services->where('id', $service->id)->first()->expires_at;
+                    })
+                    ->date()
             ])
             ->poll('60s')
             ->filters([
@@ -67,7 +73,7 @@ class ClientsTable extends BaseWidget
                     ->query(function ($query, $data) {
                         $query->when($data['expires_at'], function ($query, $expires_at) {
                             $query->whereHas('services', function ($query) use ($expires_at) {
-                                $query->where('client_services.expires_at', '>=', Carbon::parse($expires_at)->toDateTimeString());
+                                $query->where('client_services.expires_at', Carbon::parse($expires_at)->toDateTimeString());
                             });
                         });
                         $query->when($data['joined'], function ($query, $joined) {
@@ -76,12 +82,12 @@ class ClientsTable extends BaseWidget
                     })
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(__('Delete')),
                 Tables\Actions\Action::make('joined')
                     ->label(function ($record) {
-                        return $record->joined ? __('Removed') : __('Joined');
+                        return $record->joined ? __('Remove') : __('Join');
                     })
-                    ->action(fn($record) => $record->update(['joined' => !$record->joined]))
+                    ->action(fn($record) => $record->update(['joined' => !$record->joined])),
+                Tables\Actions\DeleteAction::make(__('Delete')),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
