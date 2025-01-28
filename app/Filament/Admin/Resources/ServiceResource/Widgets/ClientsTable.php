@@ -62,10 +62,10 @@ class ClientsTable extends BaseWidget
                             ->native(false),
                         Select::make('joined')
                             ->options([
-                                "0" => __("Not joined"),
+                                "-1" => __("Not joined"),
                                 "1" => __("Joined"),
                             ])
-                            ->default("0")
+                            ->default("-1")
                             ->label(__('Joined'))
                             ->searchable()
                             ->native(false)
@@ -82,6 +82,8 @@ class ClientsTable extends BaseWidget
                         $query->when($data['joined'], function ($query, $joined) {
                             $query->where('joined', $joined == "1");
                         });
+
+                        return $query;
                     })
             ])
             ->actions([
