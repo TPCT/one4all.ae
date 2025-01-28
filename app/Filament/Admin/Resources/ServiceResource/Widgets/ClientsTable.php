@@ -58,7 +58,7 @@ class ClientsTable extends BaseWidget
                     ->form([
                         DatePicker::make('expires_at')
                             ->label(__('Expiration/Subscription date'))
-                            ->default(Carbon::today())
+                            ->default(null)
                             ->native(false),
                         Select::make('joined')
                             ->options([
