@@ -88,8 +88,7 @@ class BlockResource extends Resource
 
                                     \App\Filament\Components\TinyEditor::make($tab->makeName("content"))
                                         ->label(__("Content"))
-                                        ->showMenuBar()
-                                        ->toolbarSticky(true),
+                                        ->showMenuBar(),
                             ])->columnSpanFull(),
                             Forms\Components\Section::make()->schema([
                                 Forms\Components\Repeater::make('features')

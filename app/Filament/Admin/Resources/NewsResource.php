@@ -89,7 +89,6 @@ class NewsResource extends Resource
                                         ->label(__("Content"))
                                         ->showMenuBar()
                                         ->required()
-                                        ->toolbarSticky(true)
                                 ])->columnSpanFull(),
                         ]),
                         Forms\Components\Section::make()->schema([

@@ -82,6 +82,8 @@ class CompanyResource extends Resource
 
                                     TinyEditor::make($tab->makeName("description"))
                                         ->label(__("Description"))
+                                        ->showMenuBar()
+                                        ->maxLength(255)
                                 ])->columnSpanFull()
                         ])
                         ->columnSpan(2),

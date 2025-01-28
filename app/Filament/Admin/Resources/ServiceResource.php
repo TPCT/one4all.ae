@@ -85,10 +85,13 @@ class ServiceResource extends Resource
                                         ->required(),
 
                                     TinyEditor::make($tab->makeName("description"))
-                                        ->label(__("Description")),
+                                        ->label(__("Description"))
+                                        ->showMenuBar()
+                                        ->maxLength(255),
 
                                     TinyEditor::make($tab->makeName("content"))
                                         ->label(__("Content"))
+                                        ->showMenuBar()
                                 ])->columnSpanFull()
                         ])
                         ->columnSpan(2),

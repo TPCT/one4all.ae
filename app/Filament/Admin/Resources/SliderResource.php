@@ -78,6 +78,7 @@ class SliderResource extends Resource
                                         ->required(),
                                     TinyEditor::make($tab->makeName('description'))
                                         ->maxLength(255)
+                                        ->showMenuBar()
                                         ->required()
                             ]),
                             Forms\Components\Repeater::make('slides')
@@ -110,6 +111,7 @@ class SliderResource extends Resource
                                                         ->required(),
                                                     TinyEditor::make("{$locale}.description")
                                                         ->label(__("Description"))
+                                                        ->showMenuBar()
                                                         ->required()
                                                 ])->visible(fn (Forms\Get $get) => $get('data.category', true) == Slider::HERO_SECTION_SLIDER),
                                                 Forms\Components\Group::make()->schema([

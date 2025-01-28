@@ -84,6 +84,7 @@ class PackageResource extends Resource
                                                 TinyEditor::make($tab->makeName('description'))
                                                     ->label(__("Description"))
                                                     ->maxLength(255)
+                                                    ->showMenuBar()
                                                     ->required(),
                                             ]),
                                 ])->columnSpanFull(),

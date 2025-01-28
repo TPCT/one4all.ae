@@ -76,8 +76,8 @@ class PageResource extends Resource
 
                                         \App\Filament\Components\TinyEditor::make($tab->makeName('content'))
                                             ->label(__("Content"))
-                                            ->showMenuBar()
-                                            ->toolbarSticky(true),
+                                            ->maxLength(255)
+                                            ->showMenuBar(),
                         ])->columnSpanFull(),
                     ])->columnSpan(2),
                     Forms\Components\Grid::make(1)->schema([

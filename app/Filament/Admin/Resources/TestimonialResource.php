@@ -87,8 +87,7 @@ class TestimonialResource extends Resource
 
                             \App\Filament\Components\TinyEditor::make('description')
                                 ->label(__("Description"))
-                                ->showMenuBar()
-                                ->toolbarSticky(true),
+                                ->showMenuBar(),
 
                         ])
                     ])->columnSpan(2),

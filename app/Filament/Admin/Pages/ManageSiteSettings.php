@@ -65,6 +65,7 @@ class ManageSiteSettings extends SettingsPage
                             ->multiple(false)
                             ->label(__("Logo")),
                         TinyEditor::make("footer_description.{$locale}")
+                            ->showMenuBar()
                             ->label(__("Footer Description"))
                             ->columnSpanFull(),
                     ]),
