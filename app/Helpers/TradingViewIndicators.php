@@ -169,6 +169,14 @@ class TradingViewIndicators
         ];
     }
 
+    public static function get_precision($number) {
+        $number = (string) $number;
+        if (str_contains($number, '.')) {
+            return strlen(explode('.', $number)[1]);
+        }
+        return 0; // No decimal found
+    }
+
     public static function moving_averages(array $data){
         $pairs = [];
 
@@ -204,6 +212,8 @@ class TradingViewIndicators
         }
         foreach ($pairs as $pair) {
             $mao = $pair[1] - $pair[0];
+            $precision = self::get_precision($pair[1]);
+            $mao = round($mao, $precision);
             if ($mao > 0)
                 $signals['BUY'] += 1;
             elseif ($mao < 0)
