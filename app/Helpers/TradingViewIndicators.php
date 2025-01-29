@@ -215,7 +215,7 @@ class TradingViewIndicators
         foreach ($pairs as $pair) {
             $mao = $pair[1] - $pair[0];
             $precision = self::get_precision($pair[1]);
-            $mao = round($mao, $precision);
+            $mao = round($mao, $precision-1);
             $maos[] = $mao;
             if ($mao > 0)
                 $signals['BUY'] += 1;
