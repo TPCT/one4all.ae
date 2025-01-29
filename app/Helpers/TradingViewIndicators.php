@@ -197,9 +197,11 @@ class TradingViewIndicators
             'HullMA9'
         ], $data);
 
-        foreach ($data as $value)
+        foreach ($data as $value) {
+            if (!$value)
+                continue;
             $pairs[] = [$value, $close_price];
-
+        }
         foreach ($pairs as $pair) {
             $mao = $pair[1] - $pair[0];
             if ($mao > 0)
