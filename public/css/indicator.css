@@ -282,7 +282,7 @@
   border-radius: 0 16px 16px 0;
 }
 
-.indicator table tr, .indicator table th, .indicator table td{
+.indicator table tr, .indicator table th, .indicator table td, .indicator table thead, .indicator table tbody{
   display: block;
   width: 100%;
 }
