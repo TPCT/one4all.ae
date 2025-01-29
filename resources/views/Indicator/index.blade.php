@@ -48,6 +48,20 @@
                 <div class="col-lg-10 indicator-chart d-flex align-items-center justify-content-center">
                     <div class="tradingview-widget-container">
                         <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                            console.log(storage.getItem("mode"))
+                            {
+                                "interval": "1D",
+                                "width": "100%",
+                                "isTransparent": true,
+                                "height": "100%",
+                                "symbol": "MEXC:PHAUSDT",
+                                "showIntervalTabs": true,
+                                "displayMode": "single",
+                                "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
+                                "colorTheme": "light"
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -56,17 +70,5 @@
 @endsection
 
 @push('script')
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-        {
-            "interval": "1D",
-            "width": "100%",
-            "isTransparent": true,
-            "height": "100%",
-            "symbol": "MEXC:PHAUSDT",
-            "showIntervalTabs": true,
-            "displayMode": "single",
-            "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
-            "colorTheme": "light"
-        }
-    </script>
+
 @endpush
