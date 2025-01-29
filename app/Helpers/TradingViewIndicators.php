@@ -135,19 +135,19 @@ class TradingViewIndicators
             $signals['NEUTRAL'] += 1;
         }
 
-//        if ($data['Recommend.MA'] >= -1 && $data['Recommend.MA'] < -0.5) {
-//            $signals['STRONG_SELL'] += 1;
-//        }elseif ($data['Recommend.MA'] >= -0.5 && $data['Recommend.MA'] < -0.1) {
-//            $signals['SELL'] += 1;
-//        }elseif ($data['Recommend.MA'] >= -0.1 && $data['Recommend.MA'] < 0.1) {
-//            $signals['NEUTRAL'] += 1;
-//        }elseif ($data['Recommend.MA'] > 0.1 && $data['Recommend.MA'] <= 0.5) {
-//            $signals['BUY'] += 1;
-//        }elseif ($data['Recommend.MA'] > 0.5 && $data['Recommend.MA'] < 1) {
-//            $signals['STRONG_BUY'] += 1;
-//        }else{
-//            $signals['NEUTRAL'] += 1;
-//        }
+        if ($data['Recommend.MA'] >= -1 && $data['Recommend.MA'] < -0.5) {
+            $signals['STRONG_SELL'] += 1;
+        }elseif ($data['Recommend.MA'] >= -0.5 && $data['Recommend.MA'] < -0.1) {
+            $signals['SELL'] += 1;
+        }elseif ($data['Recommend.MA'] >= -0.1 && $data['Recommend.MA'] < 0.1) {
+            $signals['NEUTRAL'] += 1;
+        }elseif ($data['Recommend.MA'] > 0.1 && $data['Recommend.MA'] <= 0.5) {
+            $signals['BUY'] += 1;
+        }elseif ($data['Recommend.MA'] > 0.5 && $data['Recommend.MA'] < 1) {
+            $signals['STRONG_BUY'] += 1;
+        }else{
+            $signals['NEUTRAL'] += 1;
+        }
 //
 //        if ($data['Recommend.Other'] >= -1 && $data['Recommend.Other'] < -0.5) {
 //            $signals['STRONG_SELL'] += 1;
