@@ -49,7 +49,7 @@
                     <div class="tradingview-widget-container">
                         <div class="tradingview-widget-container__widget"></div>
                         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                            console.log(storage.getItem("mode"))
+                            console.log(localStorage.getItem("mode"))
                             {
                                 "interval": "1D",
                                 "width": "100%",
