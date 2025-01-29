@@ -54,11 +54,11 @@
                                 "width": "100%",
                                 "isTransparent": true,
                                 "height": "100%",
-                                "symbol": "{{$currency->code}}",
+                                "symbol": "MEXC:PHAUSDT",
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
-                                "locale": "{{$language}}",
-                                "colorTheme": localStorage.getItem("mode") === "light-mode" ? "light" : "dark"
+                                "locale": "ar_AE",
+                                "colorTheme": "light"
                             }
                         </script>
                     </div>
