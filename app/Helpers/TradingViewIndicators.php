@@ -222,7 +222,6 @@ class TradingViewIndicators
                 $signals['NEUTRAL'] += 1;
         }
 
-        dd($pairs);
 
         return [
             'signal' => array_keys($signals, max($signals))[0],
