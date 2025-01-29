@@ -18,7 +18,7 @@
     <div class="indicator">
         <div class="container">
             <div class="row mt-4">
-                <div class="col-lg-2 d-flex align-items-center">
+                <div class="col-md-2 d-flex align-items-center">
                     <table class="table">
                         <thead>
                         <tr>
@@ -45,7 +45,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-10 indicator-chart d-flex align-items-center justify-content-center">
+                <div class="col-md-10 indicator-chart d-flex align-items-center justify-content-center">
                     <div class="tradingview-widget-container">
                         <div class="tradingview-widget-container__widget"></div>
                         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
