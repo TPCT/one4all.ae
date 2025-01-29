@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 <div class="col-lg-6 indicator-chart">
-                    <h3>@lang('site.SUMMARY') {{$currency}}</h3>
+                    <h3>@lang('site.SUMMARY') {{$currency->title}}</h3>
                     <div id="gauge-container" class="gauge-container"></div>
                 </div>
             </div>
