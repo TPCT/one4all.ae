@@ -58,7 +58,7 @@
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
                                 "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
-                                "colorTheme": "light"
+                                "colorTheme": localStorage.get("mode") === "light-mode" ? "light" : "dark"
                             }
                         </script>
                     </div>
