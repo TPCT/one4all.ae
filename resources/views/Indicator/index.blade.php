@@ -29,7 +29,7 @@
                         @foreach($currencies as $loop_currency)
                             <tr>
                                 <th scope="row">
-                                    <a href="?stamp={{$stamp}}&currency={{$loop_currency->code}}" class="text-decoration-none text-dark">
+                                    <a href="?currency={{$loop_currency->code}}" class="text-decoration-none text-dark">
                                         <picture>
                                             <x-curator-glider
                                                     :media="$loop_currency->image_id"
