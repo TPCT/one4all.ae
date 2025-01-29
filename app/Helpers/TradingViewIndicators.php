@@ -90,9 +90,9 @@ class TradingViewIndicators
         $signals['STRONG_SELL'] = $signals['STRONG_SELL'] ?? 0;
 
         if ($signal){
-            if ($signal == "BUY" && $signals[$signal] / $total > 0.3){
+            if ($signal == "BUY" && $signals[$signal] / $total > 0.5){
                 $signal = "STRONG_BUY";
-            }elseif($signal == "SELL" && $signals[$signal] / $total > 0.3){
+            }elseif($signal == "SELL" && $signals[$signal] / $total > 0.5){
                 $signal = "STRONG_SELL";
             }
         }
