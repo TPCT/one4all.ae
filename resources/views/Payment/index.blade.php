@@ -111,8 +111,6 @@
                             <picture>
                                 <x-curator-glider
                                         :media="$gateway->image_id"
-                                        width="50px"
-                                        height="50px"
                                 />
                             </picture>
                             {!! str_replace("[[price]]", $model->price, $gateway->content) !!}
