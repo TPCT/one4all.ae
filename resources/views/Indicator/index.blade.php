@@ -57,7 +57,7 @@
                                 "symbol": "MEXC:PHAUSDT",
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
-                                "locale": "{{app()->getLocale()}}",
+                                "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
                                 "colorTheme": "light"
                             }
                         </script>
