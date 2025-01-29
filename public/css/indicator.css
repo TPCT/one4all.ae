@@ -246,6 +246,7 @@
 
 
 .indicator table {
+  border-radius: 16px 0 0 16px;
   max-height: 500px;
   display: inline;
   overflow-y: scroll;
@@ -273,6 +274,10 @@
 
 @media (max-width: 767px) {
   .indicator table {
-      max-height: 160px;
+      max-height: 250px;
   }
+}
+
+.arabic-version .indicator table{
+  border-radius: 0 16px 16px 0;
 }
