@@ -51,3 +51,4 @@ Thumbs.db
 
 # Project exclude paths
 /storage/app/
+.env
