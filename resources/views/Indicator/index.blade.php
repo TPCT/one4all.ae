@@ -53,6 +53,20 @@
                 <div class="col-lg-6 indicator-chart">
                     <h3>@lang('site.SUMMARY') {{$currency->title}}</h3>
                     <div id="gauge-container" class="gauge-container"></div>
+                    <div class="col-lg-6 indicator-chart mb-4">
+                        <h3>@lang('site.OSCILLATORS')</h3>
+                        <div
+                                id="gauge-container-two"
+                                class="gauge-container gauge-container-two"
+                        ></div>
+                    </div>
+                    <div class="col-lg-6 indicator-chart mb-4">
+                        <h3>@lang('site.MOVING_AVERAGES')</h3>
+                        <div
+                                id="gauge-container-three"
+                                class="gauge-container gauge-container-three"
+                        ></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,20 +74,7 @@
     <div class="indicator indicator-two">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 indicator-chart mb-4">
-                    <h3>@lang('site.OSCILLATORS')</h3>
-                    <div
-                            id="gauge-container-two"
-                            class="gauge-container gauge-container-two"
-                    ></div>
-                </div>
-                <div class="col-lg-6 indicator-chart mb-4">
-                    <h3>@lang('site.MOVING_AVERAGES')</h3>
-                    <div
-                            id="gauge-container-three"
-                            class="gauge-container gauge-container-three"
-                    ></div>
-                </div>
+
             </div>
         </div>
     </div>
