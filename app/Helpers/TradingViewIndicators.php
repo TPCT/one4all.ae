@@ -149,6 +149,7 @@ class TradingViewIndicators
             $signals['NEUTRAL'] += 1;
         }
 
+        dd($data['Recommend.Other']);
         if ($data['Recommend.Other'] >= -1 && $data['Recommend.Other'] < -0.5) {
             $signals['STRONG_SELL'] += 1;
         }elseif ($data['Recommend.Other'] >= -0.5 && $data['Recommend.Other'] < -0.1) {
