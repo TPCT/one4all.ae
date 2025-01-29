@@ -243,3 +243,26 @@
     justify-content: center;
   }
 }
+
+
+.indicator table {
+  max-height: 500px;
+  display: inline;
+  overflow-y: scroll;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.indicator table thead{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 999999999999;
+}
+
+.indicator table tbody{
+  max-height: 500px;
+  overflow: hidden;
+  position: relative;
+}
