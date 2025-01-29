@@ -87,6 +87,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Client whereRememberToken($value)
+ * @property int $joined
+ * @method static \Illuminate\Database\Eloquent\Builder|Client whereJoined($value)
  * @mixin \Eloquent
  */
 class Client extends \Illuminate\Foundation\Auth\User implements \OwenIt\Auditing\Contracts\Auditable

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Clients;
 
+use App\Http\Controllers\Controller;
 use App\Models\ClientConsultation;
 use App\Models\Package\Package;
+use App\Models\PaymentGateway\PaymentGateway;
 use App\Models\Service\Service;
 use Carbon\Carbon;
 use Srmklive\PayPal\Services\PayPal;
 
-class PaymentController
+class PaymentController extends Controller
 {
     private function process_service_transaction(Service $service, $response, $reference_id){
         if (isset($response['id']) && $response['id']) {
@@ -23,21 +25,21 @@ class PaymentController
 
             foreach ($response['links'] as $link) {
                 if ($link['rel'] == 'approve')
-                    return redirect()->away($link['href']);
+                    return $link['href'];
             }
         }
 
-        return redirect()->route('services.show', ['service' => $service])->with('service', __("site.Something went wrong"));
+        return route('services.show', ['service' => $service]);
     }
 
     public function process_package_transaction(Package $package, $response){
         if (isset($response['id']) && $response['id']) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] == 'approve')
-                    return redirect()->away($link['href']);
+                    return $link['href'];
             }
         }
-        return redirect()->route('site.index')->with('package', __("site.Something went wrong"));
+        return route('site.index');
     }
 
     public function success_service_transaction(Service $service, $response){
@@ -98,11 +100,21 @@ class PaymentController
             ]
         ]);
 
+        $payment_gateways = PaymentGateway::active()->get();
+
         switch ($type) {
             case "services":
-                return $this->process_service_transaction($model, $response, request('reference_id'));
+                return $this->view('Payment.index', [
+                    'model' => $model,
+                    'gateways' => $payment_gateways,
+                    'paypal_payment_link' => $this->process_service_transaction($model, $response, request('reference_id'))
+                ]);
             case "packages":
-                return $this->process_package_transaction($model, $response);
+                return $this->view('Payment.index', [
+                    'model' => $model,
+                    'gateways' => $payment_gateways,
+                    'paypal_payment_link' => $this->process_package_transaction($model, $response)
+                ]);
             default:
                 return redirect()->route('site.index')->with('package', __("site.Something went wrong"));
         }

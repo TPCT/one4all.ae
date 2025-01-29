@@ -69,6 +69,8 @@ use OwenIt\Auditing\Auditable;
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereHasForm($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereOneTimePayment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereSliderId($value)
+ * @property int $paid
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePaid($value)
  * @mixin \Eloquent
  */
 class Service extends Model implements \OwenIt\Auditing\Contracts\Auditable
