@@ -3,7 +3,7 @@
     <a href="{{route($route, array_merge(request()->route()?->parameters() ?? [], ['locale' => $locale], request()->query()))}}" class="text-decoration-none text-black">
         <span> {{$language}} </span>
         <picture>
-            <img src="{{asset('/assets/icons/globe.svg')}}" alt="" />
+        <i class="fa-solid fa-globe"></i>
         </picture>
     </a>
 @endforeach
