@@ -25,7 +25,7 @@ class IndicatorController extends Controller
         $currencies = Currency::active()->get();
         $currency = $currencies->where('code', request('currency'))->first() ?? $currencies->first();
 
-        return $this->view('index.php', [
+        return $this->view('Indicator.index', [
             'currency' => $currency,
             'currencies' => $currencies,
         ]);
