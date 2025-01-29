@@ -212,11 +212,11 @@ class TradingViewIndicators
                 continue;
             $pairs[] = [$value, $close_price];
         }
+
         $maos = [];
         foreach ($pairs as $pair) {
-            $pair[0] = (string) $pair[0];
-            $pair[0] = substr($pair[0], 0, strpos('.', $pair[0]) + 1 + $precision);
             $mao = $pair[1] - (float) $pair[0];
+            $mao = (float) (substr($mao, 0, strpos($mao, '.') + 1 + $precision));
             $maos[] = $mao;
             if ($mao > 0)
                 $signals['BUY'] += 1;
