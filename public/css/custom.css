@@ -1,156 +1,228 @@
-#whatsapp, #phone{
-    padding-right: 0;
-    padding-left: 54px;
+#whatsapp,
+#phone {
+  padding-right: 0;
+  padding-left: 54px;
 }
-.arabic-version #whatsapp, .arabic-version #phone{
-    padding-right: 54px;
-    padding-left: 0;
+.arabic-version #whatsapp,
+.arabic-version #phone {
+  padding-right: 54px;
+  padding-left: 0;
 }
-.iti--allow-dropdown .iti__flag-container, .iti--separate-dial-code .iti__flag-container{
-    left: 0;
-    right: auto;
-}
-
-.arabic-version .iti--allow-dropdown .iti__flag-container, .arabic-version .iti--separate-dial-code .iti__flag-container{
-    left: auto;
-    right: 0;
+.iti--allow-dropdown .iti__flag-container,
+.iti--separate-dial-code .iti__flag-container {
+  left: 0;
+  right: auto;
 }
 
-.auth input[type="tel"]{
-    text-align: left;
-}
-.arabic-version .auth input[type="tel"]{
-    text-align: right !important;
+.arabic-version .iti--allow-dropdown .iti__flag-container,
+.arabic-version .iti--separate-dial-code .iti__flag-container {
+  left: auto;
+  right: 0;
 }
 
+.auth input[type="tel"] {
+  text-align: left;
+}
+.arabic-version .auth input[type="tel"] {
+  text-align: right !important;
+}
 
 @media (min-width: 992px) {
-    .arabic-version .iti__country-list {
-        right: 0;
-        left: auto;
-    }
+  .arabic-version .iti__country-list {
+    right: 0;
+    left: auto;
+  }
 
-    .arabic-version .iti__country{
-        direction: ltr !important;
-    }
-}
-
-.home-3rd-section-slider .home-3rd-section-slide > picture img{
-    height: 300px;
-    object-fit: cover;
-    margin-bottom: 1rem;
+  .arabic-version .iti__country {
+    direction: ltr !important;
+  }
 }
 
-.iti__arrow{
-    margin-left: 10px;
+.home-3rd-section-slider .home-3rd-section-slide > picture img {
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
-.arabic-version .iti__arrow{
-    margin-left: 0;
-    margin-right: 10px
+.iti__arrow {
+  margin-left: 10px;
 }
 
-.error{
-    font-size: 0.7rem;
+.arabic-version .iti__arrow {
+  margin-left: 0;
+  margin-right: 10px;
 }
 
-.error-404{
-    height: 50vh;
+.error {
+  font-size: 0.7rem;
 }
 
-.floating-wa{
-    left: 2%;
-    right: unset;
+.error-404 {
+  height: 50vh;
 }
 
-.arabic-version .floating-wa{
-    left: unset;
-    right: 2%;
+.floating-wa {
+  left: 2%;
+  right: unset;
 }
 
-.personal-login{
-    width: fit-content;
+.arabic-version .floating-wa {
+  left: unset;
+  right: 2%;
 }
 
-.personal-login img{
-    width: 90px;
-    height: 60px;
-    object-fit: contain;
-}
-.personal-login p{
-    text-wrap: nowrap;
+.personal-login {
+  width: fit-content;
 }
 
-#cssmenu.small-screen #menu-button{
-    position: absolute;
-    left: 1rem;
-    border: unset;
+.personal-login img {
+  width: 90px;
+  height: 60px;
+  object-fit: contain;
 }
-.arabic-version #cssmenu.small-screen #menu-button{
-    left: unset;
-    right: 1rem;
+.personal-login p {
+  text-wrap: nowrap;
+}
+
+#cssmenu.small-screen #menu-button {
+  position: absolute;
+  left: 1rem;
+  border: unset;
+}
+.arabic-version #cssmenu.small-screen #menu-button {
+  left: unset;
+  right: 1rem;
 }
 
 @media screen and (max-width: 1200px) {
+  .mobile-personal {
+    position: absolute;
+    width: unset;
+  }
+
+  @media screen and (max-width: 400px) {
     .mobile-personal {
-        position: absolute;
-        width: unset;
+      left: 40px;
+      top: 22.5px;
     }
-    
-    @media screen and (max-width: 400px) {
-        .mobile-personal{
-            left: 40px;
-            top: 22.5px;
-        }
-        .arabic-version .mobile-personal{
-            right: 40px;
-            left: unset;
-        }
+    .arabic-version .mobile-personal {
+      right: 40px;
+      left: unset;
     }
-    
-    @media screen and (min-width: 401px) and (max-width: 767px) {
-        .mobile-personal{
-            left: 50px;
-            top: 42.5px;
-        }
-        .arabic-version .mobile-personal{
-            right: 50px;
-            left: unset;
-        }
-    }
+  }
 
-    @media screen and (min-width: 768px) and (max-width: 992px) {
-        .mobile-personal{
-            left: 80px;
-            top: 40px;
-        }
-        .arabic-version .mobile-personal{
-            right: 80px;
-            left: unset;
-        }
+  @media screen and (min-width: 401px) and (max-width: 767px) {
+    .mobile-personal {
+      left: 50px;
+      top: 42.5px;
     }
-    
-    @media screen and (min-width: 993px) and (max-width: 1200px) {
-        .personal-login{
-            position: absolute;
-            left: 80px;
-            top: 35px;
-        }
-        .arabic-version .personal-login{
-            right: 80px;
-            left: unset;
-        }
+    .arabic-version .mobile-personal {
+      right: 50px;
+      left: unset;
     }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    .mobile-personal {
+      left: 80px;
+      top: 40px;
+    }
+    .arabic-version .mobile-personal {
+      right: 80px;
+      left: unset;
+    }
+  }
+
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    .personal-login {
+      position: absolute;
+      left: 80px;
+      top: 35px;
+    }
+    .arabic-version .personal-login {
+      right: 80px;
+      left: unset;
+    }
+  }
 }
 
-.popup-header{
-    display: block !important;
+.popup-header {
+  display: block !important;
 }
 
-.popup-title{
-    font-size: min(37px, 5vw)
+.popup-title {
+  font-size: min(37px, 5vw);
 }
 
-.indicator-two .indicator-chart h3, .indicator-three .indicator-chart h3{
-    width: fit-content;
+.indicator-two .indicator-chart h3,
+.indicator-three .indicator-chart h3 {
+  width: fit-content;
+}
+/* ======== */
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray */
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: var(--main-color); /* Dark gray */
+  border-radius: 5px;
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  overflow-x: hidden;
+}
+html {
+  scrollbar-color: var(--main-color);
+}
+.pricing-card .pricing-offer {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 28%;
+  right: -34%;
+  left: auto;
+  background-color: #ff2929;
+  padding: 0.5rem 5rem;
+  color: #fff;
+  rotate: 45deg;
+}
+.arabic-version .pricing-card .pricing-offer {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: -9%;
+  left: 9%;
+  right: auto;
+  background-color: #ff2929;
+  padding: 0.5rem 5rem;
+  color: #fff;
+  rotate: -45deg;
+}
+@media (max-width: 767.888889px) {
+  .main-stars-header {
+    height: 100px;
+  }
+  .floating-wa {
+    top: 84% !important;
+  }
+}
+body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
+  font-size: 16px;
+}
+#cssmenu li > #sub-cat,
+#cssmenu li > #sub-cat a {
+  color: #000;
+}
+.recommendations-1st-section img {
+  max-width: 100%;
 }
