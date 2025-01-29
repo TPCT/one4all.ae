@@ -49,13 +49,12 @@
                     <div class="tradingview-widget-container">
                         <div class="tradingview-widget-container__widget"></div>
                         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                            console.log(localStorage.getItem("mode"))
                             {
                                 "interval": "1D",
                                 "width": "100%",
                                 "isTransparent": true,
                                 "height": "100%",
-                                "symbol": "MEXC:PHAUSDT",
+                                "symbol": "{{$currency->code}}",
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
                                 "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
