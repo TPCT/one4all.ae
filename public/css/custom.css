@@ -226,3 +226,6 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
 .recommendations-1st-section img {
   max-width: 100%;
 }
+.dark-mode .lang-join-btn a {
+  color: #fff !important;
+}
