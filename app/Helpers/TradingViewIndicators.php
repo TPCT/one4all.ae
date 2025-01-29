@@ -212,11 +212,11 @@ class TradingViewIndicators
                 continue;
             $pairs[] = [$value, $close_price];
         }
-        dd($precision);
         $maos = [];
         foreach ($pairs as $pair) {
             $pair[0] = (string) $pair[0];
             $pair[0] = substr($pair[0], 0, $precision);
+            dd($pair[0]);
             $mao = $pair[1] - (float) $pair[0];
             $maos[] = $mao;
             if ($mao > 0)
