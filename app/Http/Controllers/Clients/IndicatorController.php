@@ -22,6 +22,24 @@ class IndicatorController extends Controller
         if (!$indicator_service)
             throw new NotFoundHttpException();
 
+        $currencies = Currency::active()->get();
+        $currency = $currencies->where('code', request('currency'))->first() ?? $currencies->first();
+
+        return $this->view('index.php', [
+            'currency' => $currency,
+            'currencies' => $currencies,
+        ]);
+    }
+    public function index2(){
+        if (!auth()->guard('clients')->check())
+            return redirect()->route('auth.login');
+
+        $client = auth()->guard('clients')->user();
+        $indicator_service = Service::where('view_type', Service::VIEW_TYPE_3)->first();
+
+        if (!$indicator_service)
+            throw new NotFoundHttpException();
+
         if ($indicator_service->paid) {
             $service = $client->services()->where(function ($query) use ($indicator_service) {
                 $query
