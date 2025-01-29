@@ -272,7 +272,7 @@
 }
 
 @media (max-width: 767px) {
-  .indicator table tbody {
-    max-height: 160px;
+  .indicator table {
+      max-height: 160px;
   }
 }
