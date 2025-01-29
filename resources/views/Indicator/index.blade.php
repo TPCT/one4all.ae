@@ -58,7 +58,7 @@
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
                                 "locale": "{{$language}}",
-                                "colorTheme": localStorage.getItem("mode") == "light-mode" ? "light" : "dark"
+                                "colorTheme": localStorage.getItem("mode") === "light-mode" ? "light" : "dark"
                             }
                         </script>
                     </div>
