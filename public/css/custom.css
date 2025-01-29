@@ -210,7 +210,7 @@ html {
 }
 @media (max-width: 767.888889px) {
   .main-stars-header {
-    height: 100px !important;
+    min-height: 100px !important;
   }
   .floating-wa {
     top: 84% !important;
