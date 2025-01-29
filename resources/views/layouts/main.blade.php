@@ -72,7 +72,7 @@
         <script type="text/javascript" src="{{asset('/js/d3.js')}}"></script>
     </head>
 
-    <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}}">
+    <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}} {{session('mode', 'light') === "dark" ? "dark-mode" : "light-mode" }}">
         <main id="@yield('id')" class="@yield('class')">
             <x-layout.header></x-layout.header>
             <div id="readspeakerDiv">

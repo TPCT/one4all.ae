@@ -29,6 +29,7 @@ Route::prefix('/{locale?}/')
             Route::get('/', 'index')->name('site.index');
             Route::get('/about-us', 'aboutUs')->name('site.about-us');
             Route::get('/newsletter/subscribe', 'newsletter')->name('newsletter.subscribe');
+            Route::get('/mode/{mode}', 'mode')->name('site.mode');
         });
 
         Route::get('/', [SiteController::class, 'index'])->name('site.index');

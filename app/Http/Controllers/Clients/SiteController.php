@@ -99,4 +99,14 @@ class SiteController extends Controller
         Newsletter::create(['email' => $data['email']]);
         return Responses::success([], 200, __("site.newsletter_successfully_added"));
     }
+
+    public function mode($locale, $mode){
+        if ($mode == "dark"){
+            session()->put('mode', 'dark');
+            return back();
+        }
+
+        session()->put('mode', 'light');
+        return back();
+    }
 }
