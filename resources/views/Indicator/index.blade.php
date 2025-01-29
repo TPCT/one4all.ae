@@ -31,17 +31,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($currencies as $currency)
+                            @foreach($currencies as $loop_currency)
                                 <tr>
                                     <th scope="row">
-                                        <a href="?stamp={{$stamp}}&currency={{$currency->code}}" class="text-decoration-none text-dark">
+                                        <a href="?stamp={{$stamp}}&currency={{$loop_currency->code}}" class="text-decoration-none text-dark">
                                             <picture>
                                                 <x-curator-glider
-                                                        :media="$currency->image_id"
+                                                        :media="$loop_currency->image_id"
                                                         class="mw-100"
                                                 />
                                             </picture>
-                                            {{$currency->title}}
+                                            {{$loop_currency->title}}
                                         </a>
                                     </th>
                                 </tr>
@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 <div class="col-lg-6 indicator-chart">
-                    <h3>@lang('site.SUMMARY')</h3>
+                    <h3>@lang('site.SUMMARY') {{$currency}}</h3>
                     <div id="gauge-container" class="gauge-container"></div>
                 </div>
             </div>
