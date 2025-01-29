@@ -281,3 +281,8 @@
 .arabic-version .indicator table{
   border-radius: 0 16px 16px 0;
 }
+
+.indicator table tr, .indicator table th, .indicator table td{
+  display: block;
+  width: 100%;
+}
