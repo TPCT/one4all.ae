@@ -58,7 +58,7 @@
                                 "showIntervalTabs": true,
                                 "displayMode": "single",
                                 "locale": "{{app()->getLocale() == "ar" ? "ar_AE" : "en"}}",
-                                "colorTheme": "light"
+                                "colorTheme": "{{session('mode', 'light')}}"
                             }
                         </script>
                     </div>
