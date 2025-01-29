@@ -214,6 +214,7 @@ class TradingViewIndicators
             $mao = $pair[1] - $pair[0];
             $precision = self::get_precision($pair[1]);
             $mao = round($mao, $precision);
+            dd($mao);
             if ($mao > 0)
                 $signals['BUY'] += 1;
             elseif ($mao < 0)
@@ -221,7 +222,6 @@ class TradingViewIndicators
             else
                 $signals['NEUTRAL'] += 1;
         }
-
 
         return [
             'signal' => array_keys($signals, max($signals))[0],
