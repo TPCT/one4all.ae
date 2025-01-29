@@ -24,6 +24,8 @@ class ContactUsResource extends Resource implements HasShieldPermissions
 
     protected static ?string $model = ContactUs::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
 
     protected static ?string $navigationIcon = 'fas-city';
 
