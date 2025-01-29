@@ -18,27 +18,20 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
     {
-//        RateLimiter::for('login', function (Request $request) {
-//            return Limit::perMinute(5)->by($request->phone ?: $request->ip());
-//        });
-//
-//        RateLimiter::for('api', function (Request $request) {
-//            return Limit::perMinute(60)->by($request->ip());
-//        });
-
         $this->routes(function () {
             Route::middleware('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware(['web'])
-                ->group(base_path('routes/clients.php'));
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
         });
     }
 

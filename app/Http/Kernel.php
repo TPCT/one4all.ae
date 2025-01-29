@@ -2,11 +2,8 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\SetLocale;
-use App\Http\Middleware\StatusChecker;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Kenepa\TranslationManager\Http\Middleware\SetLanguage;
 
 class Kernel extends HttpKernel
 {
@@ -27,6 +24,12 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        SetLocale::class,
+//        \Fahlisaputra\Minify\Middleware\MinifyCss::class,
+//        \Fahlisaputra\Minify\Middleware\MinifyJavascript::class,
+//        \Fahlisaputra\Minify\Middleware\MinifyHtml::class,
     ];
 
     /**
@@ -36,11 +39,10 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Illuminate\Session\Middleware\StartSession::class,
-            SetLocale::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Kenepa\TranslationManager\Http\Middleware\SetLanguage::class,
         ],
 
         'api' => [
@@ -49,6 +51,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
+
     /**
      * The application's middleware aliases.
      *
@@ -57,6 +60,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'set.locale' => SetLocale::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
