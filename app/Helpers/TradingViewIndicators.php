@@ -205,15 +205,16 @@ class TradingViewIndicators
             'HullMA9'
         ], $data);
 
+        $precision = self::get_precision($close_price);
+
         foreach ($data as $value) {
             if (!$value)
                 continue;
             $pairs[] = [$value, $close_price];
         }
-
+        dd($precision);
         $maos = [];
         foreach ($pairs as $pair) {
-            $precision = self::get_precision($pair[1]);
             $pair[0] = (string) $pair[0];
             $pair[0] = substr($pair[0], 0, $precision);
             $mao = $pair[1] - (float) $pair[0];
