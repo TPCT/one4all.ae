@@ -263,7 +263,6 @@
 }
 
 .indicator table tbody{
-  max-height: 500px;
   overflow: hidden;
   position: relative;
 }
