@@ -56,40 +56,6 @@
                     <p>@lang('site.SERVICE_' . $service->id . "_FORM_DESCRIPTION")</p>
                 </div>
                 <div class="row wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="col-lg-6 mb-3">
-                        <div class="form-group">
-                            <label class="mb-2">@lang('site.CONSULTATION_FULL_NAME')</label>
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    id="full-name"
-                                    name="name"
-                                    value="{{old('name')}}"
-                                    aria-describedby="@lang('site.CONSULTATION_FULL_NAME_PLACEHOLDER')"
-                                    placeholder="@lang('site.CONSULTATION_FULL_NAME_PLACEHOLDER')"
-                            />
-                        </div>
-                        @error('name')
-                            <span class="text-danger error">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <div class="form-group">
-                            <label class="mb-2">@lang('site.CONSULTATION_EMAIL')</label>
-                            <input
-                                    type="email"
-                                    class="form-control"
-                                    id="email"
-                                    name="email"
-                                    value="{{old('email')}}"
-                                    aria-describedby="@lang('site.CONSULTATION_EMAIL_PLACEHOLDER')"
-                                    placeholder="@lang('site.CONSULTATION_EMAIL_PLACEHOLDER')"
-                            />
-                        </div>
-                        @error('email')
-                            <span class="text-danger error">{{$message}}</span>
-                        @enderror
-                    </div>
                     <div class="col-lg-12 mb-3">
                         <div class="form-group d-flex flex-column">
                             <label class="mb-2">@lang('site.CONSULTATION_WHATSAPP_NUMBER')</label>

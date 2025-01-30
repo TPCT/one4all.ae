@@ -40,8 +40,6 @@ class ServicesController extends Controller
 
         if ($service->view_type == Service::VIEW_TYPE_2 && \request()->isMethod('POST')){
             $data = \request()->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255',
                 'whatsapp' => 'required|phone',
                 'whatsapp_country' => 'required_with:whatsapp|max:4',
                 'date' => 'required|date|after_or_equal:today',
@@ -58,6 +56,8 @@ class ServicesController extends Controller
                 ])->withInput($data);
             }
 
+            $data['name'] = $client->first_name . ' ' . $client->last_name;
+            $data['email'] = $client->email;
             $data['whatsapp'] = ltrim($data['whatsapp'], '0');
             $phone = new \Propaganistas\LaravelPhone\PhoneNumber($data['whatsapp'], $data['whatsapp_country']);
             unset($data['whatsapp_country']);
