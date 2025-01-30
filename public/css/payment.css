@@ -111,3 +111,7 @@
 .wa-pay{
   width: fit-content;
 }
+
+.title-payment h4{
+  margin-top: 0.5rem;
+}
