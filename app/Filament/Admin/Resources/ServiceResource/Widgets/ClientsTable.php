@@ -97,6 +97,7 @@ class ClientsTable extends BaseWidget
                         return $record
                             ->services()
                             ->where('service_id', $service->id)
+                            ->withPivot('joined')
                             ->first()
                             ->pivot
                             ->joined ? __("Remove") : __("Add");

@@ -96,6 +96,7 @@ class ClientsTable extends BaseWidget
                         return $record
                             ->packages()
                             ->where('packaged_id', $package->id)
+                            ->withPivot('joined')
                             ->first()
                             ->pivot
                             ->joined ? __("Remove") : __("Add");
