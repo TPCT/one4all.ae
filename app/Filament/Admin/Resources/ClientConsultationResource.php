@@ -157,7 +157,8 @@ class ClientConsultationResource extends Resource implements HasShieldPermission
                     ->modalCancelAction(false),
                 Tables\Actions\Action::make('accept')
                     ->label(__("Accept"))
-                    ->action(fn($record) => $record->update(['done' => true])),
+                    ->action(fn($record) => $record->update(['done' => true, 'paid' => true]))
+                    ->visible(fn ($record) => !$record->done),
                 Tables\Actions\DeleteAction::make()
             ])
             ->poll('30s')
