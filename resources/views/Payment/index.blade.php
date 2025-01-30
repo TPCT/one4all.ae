@@ -34,7 +34,7 @@
                     @endif
                 </picture>
                 <h4 class="flex-grow-1">{{$model->title}}</h4>
-                <h4> {{$model->price}} $ </h4>
+                <h4 class="p-2"> {{$model->price}} $ </h4>
             </div>
             <div class="head-payment">
                 <h2>@lang('site.Choose Payment Method')</h2>
