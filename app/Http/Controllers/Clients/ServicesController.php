@@ -33,7 +33,7 @@ class ServicesController extends Controller
                     $has_button = false;
             }
 
-            if ((!$has_button || !$service->paid) && $service->view_type == Service::VIEW_TYPE_3){
+            if ((!$service->paid || !$has_button) && $service->view_type == Service::VIEW_TYPE_3){
                 return redirect()->route('indicator.index');
             }
         }
