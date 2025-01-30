@@ -33,7 +33,8 @@
                         <img src="{{asset('/assets/imgs/payment.png')}}" alt="{{$model->title}}"/>
                     @endif
                 </picture>
-                <h4>{{$model->title}}</h4>
+                <h4 class="flex-grow-1">{{$model->title}}</h4>
+                <h4> {{$model->price}} $ </h4>
             </div>
             <div class="head-payment">
                 <h2>@lang('site.Choose Payment Method')</h2>
