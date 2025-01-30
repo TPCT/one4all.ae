@@ -27,7 +27,7 @@
                         <tbody>
                         @foreach($currencies as $loop_currency)
                             <tr>
-                                <th scope="row">
+                                <td>
                                     <a href="?currency={{$loop_currency->code}}" class="text-decoration-none text-dark">
                                         <picture>
                                             <x-curator-glider
@@ -37,7 +37,7 @@
                                         </picture>
                                         {{$loop_currency->title}}
                                     </a>
-                                </th>
+                                </td>
                             </tr>
 
                         @endforeach
