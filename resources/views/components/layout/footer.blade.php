@@ -35,7 +35,7 @@
     </div>
     <div class="footer-copyright-container">
         <div class="footer-copyright-container-centered">
-            <p>@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year])</p>
+            <p class="d-flex flex-colum align-items-center">@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year, 'url' => '<a href="https://shiftcodes.net">ShiftCodes</a>'])</p>
             <div class="social-media-icons">
                 @if ($twitter)
                     <a href="{{$twitter}}" target="_blank" rel="noopener noreferrer">
