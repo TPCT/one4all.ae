@@ -102,7 +102,7 @@ class ClientsTable extends BaseWidget
                             ->joined ? __("Remove") : __("Add");
                     })
                     ->action(function ($record) use ($package) {
-                        $package = $record->services()->where('package_id', $package->id)->first();
+                        $package = $record->packages()->withPivot('joined')->where('package_id', $package->id)->first();
                         $package->pivot->joined = !$package->pivot->joined;
                         $package->pivot->save();
                     }),
