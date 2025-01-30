@@ -99,3 +99,15 @@
 .tab-content{
   width: 100%;
 }
+
+.recommendations-1st-section .container h2:last-child{
+    padding: unset !important;
+}
+
+#myTab{
+  padding: unset !important;
+}
+
+.wa-pay{
+  width: fit-content;
+}
