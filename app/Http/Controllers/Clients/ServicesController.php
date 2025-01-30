@@ -32,10 +32,10 @@ class ServicesController extends Controller
                 if ($package->services->contains($service->id))
                     $has_button = false;
             }
+        }
 
-            if ((!$service->paid || !$has_button) && $service->view_type == Service::VIEW_TYPE_3){
-                return redirect()->route('indicator.index');
-            }
+        if ((!$service->paid || !$has_button) && $service->view_type == Service::VIEW_TYPE_3){
+            return redirect()->route('indicator.index');
         }
 
         if ($service->view_type == Service::VIEW_TYPE_2 && \request()->isMethod('POST')){
