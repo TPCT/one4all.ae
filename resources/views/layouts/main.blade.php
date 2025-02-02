@@ -55,21 +55,6 @@
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/custom.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/accessibility-tools.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/errors.css')}}"/>
-
-        <script type="text/javascript" src="{{asset('/minify/js/fancybox.umd.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/jquery-3.7.1.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/intlTelInput.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/slick-1.8.1/slick/slick.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/popper.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/carousel.umd.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/owl.carousel.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/menu.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/main.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/footer.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/light-dark-mode.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/popup.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/d3.js')}}"></script>
     </head>
 
     <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}} {{session('mode', 'light') === "dark" ? "dark-mode" : "light-mode" }}">
@@ -89,6 +74,21 @@
             <x-layout.footer></x-layout.footer>
         </main>
         {!! NoCaptcha::renderJs() !!}
+
+        <script type="text/javascript" src="{{asset('/minify/js/fancybox.umd.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/jquery-3.7.1.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/intlTelInput.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/slick-1.8.1/slick/slick.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/popper.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/carousel.umd.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/owl.carousel.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/menu.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/main.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/footer.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/light-dark-mode.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/popup.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/d3.js')}}"></script>
 
         @stack('script')
 
