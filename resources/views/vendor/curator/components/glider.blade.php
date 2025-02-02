@@ -1,7 +1,7 @@
 @if ($media)
     @if (str($media->type)->contains('image'))
         @php
-            $attributes->merge(["quality" => 5, "format" => "webp", "force" => true, "loading" => "lazy"])
+            $attributes = $attributes->merge(["quality" => 5, "format" => "webp", "force" => true, "loading" => "lazy"]);
         @endphp
         <img
             src="{{ $source }}"

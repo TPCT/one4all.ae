@@ -36,10 +36,8 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \Kenepa\TranslationManager\Http\Middleware\SetLanguage::class,
         ],
 
         'api' => [
