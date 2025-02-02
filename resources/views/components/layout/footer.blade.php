@@ -2,7 +2,7 @@
     <div class="container footer-section">
         <div class="footer-item">
             <div class="footer-item-header">
-                <a href="./index.html">
+                <a href="{{route('site.index')}}">
                     <x-curator-glider :media="$logo" class="mw-100 mb-5" />
                 </a>
             </div>
