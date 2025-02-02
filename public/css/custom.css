@@ -230,6 +230,18 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
   color: #fff !important;
 }
 
-.indicator-chart{
+.indicator-chart {
   min-height: 500px !important;
+}
+/* ========== */
+.dark-mode .title-payment {
+  background-color: #020f19 !important;
+}
+.dark-mode .auth form .form-control {
+  background-color: #020f19;
+  color: #fff;
+  border: 1px solid #020f19;
+}
+.dark-mode .auth form .form-control::placeholder {
+  color: #777;
 }
