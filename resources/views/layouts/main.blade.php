@@ -24,7 +24,6 @@
         />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/js/slick-1.8.1/slick/slick-theme.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/intlTelInput.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/fontawesome.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/Layout.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/menu.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/header.css')}}" />

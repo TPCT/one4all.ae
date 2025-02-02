@@ -48,8 +48,8 @@
             </span>
                     <div class="hero-dots-container"></div>
                     <span class="hero-btn-main hero-arrows-next slick-arrow">
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
             </div>
         </section>
