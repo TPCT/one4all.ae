@@ -4,7 +4,7 @@
 
 @section('id', 'Home')
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/home.css')}}">
 @endpush
 
 @section('content')

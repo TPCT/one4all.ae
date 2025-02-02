@@ -4,8 +4,8 @@
 @section('id', 'ContactUs')
 
 @push('style')
-    <link rel="stylesheet" href="{{asset('/css/ContactUs.css')}}"/>
-    <link rel="stylesheet" href="{{asset('/css/RegistrationForm.css')}}" />
+    <link rel="stylesheet" href="{{asset('/minify/css/ContactUs.css')}}"/>
+    <link rel="stylesheet" href="{{asset('/minify/css/RegistrationForm.css')}}" />
 @endpush
 
 @section('content')

@@ -4,7 +4,7 @@
 
 @section('id', 'tradeWithUs')
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/tradeWithUs.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/tradeWithUs.css')}}">
 @endpush
 
 @section('content')

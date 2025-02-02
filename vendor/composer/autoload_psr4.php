@@ -101,6 +101,8 @@ return array(
     'Monarobase\\CountryList\\' => array($vendorDir . '/monarobase/country-list/src'),
     'Mohamedsabil83\\FilamentFormsTinyeditor\\' => array($vendorDir . '/mohamedsabil83/filament-forms-tinyeditor/src'),
     'Mockery\\' => array($vendorDir . '/mockery/mockery/library/Mockery'),
+    'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
+    'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),

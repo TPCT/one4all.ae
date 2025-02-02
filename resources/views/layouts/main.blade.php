@@ -16,60 +16,60 @@
 
         <x-layout.seo></x-layout.seo>
 
-        <link type="text/css" rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}"/>
+        <link type="text/css" rel="stylesheet" href="{{asset('/minify/css/bootstrap.min.css')}}"/>
         <link
                 rel="stylesheet"
                 type="text/css"
-                href="{{asset('/js/slick-1.8.1/slick/slick.css')}}"
+                href="{{asset('/minify/js/slick-1.8.1/slick/slick.css')}}"
         />
-        <link rel="stylesheet" type="text/css" href="{{asset('/js/slick-1.8.1/slick/slick-theme.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/carousel.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/owl.carousel.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/intlTelInput.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/fancybox.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/regular.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/solid.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/brands.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/fontawesome.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/Layout.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/aos.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/menu.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/header.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/navbar.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/footer.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/js/slick-1.8.1/slick/slick-theme.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/carousel.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/owl.carousel.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/intlTelInput.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/fancybox.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/regular.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/solid.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/brands.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/fontawesome.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/Layout.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/aos.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/menu.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/header.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/navbar.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/footer.css')}}" />
 
         @stack('style')
 
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/styles.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/arabic-styles.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/animate.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/home-login.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/styles.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/arabic-styles.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/animate.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/home-login.css')}}"/>
 
-        <script src="{{asset('/js/wow.js')}}"></script>
+        <script src="{{asset('/minify/js/wow.js')}}"></script>
 
         <script>
             new WOW().init();
         </script>
 
 
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/custom.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/accessibility-tools.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/css/errors.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/custom.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/accessibility-tools.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/errors.css')}}"/>
 
-        <script type="text/javascript" src="{{asset('/js/fancybox.umd.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/jquery-3.7.1.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/intlTelInput.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/slick-1.8.1/slick/slick.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/bootstrap/popper.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/bootstrap/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/carousel.umd.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/owl.carousel.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/menu.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/main.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/footer.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/light-dark-mode.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/popup.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/js/d3.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/fancybox.umd.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/jquery-3.7.1.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/intlTelInput.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/slick-1.8.1/slick/slick.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/popper.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/bootstrap/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/carousel.umd.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/owl.carousel.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/menu.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/main.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/footer.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/light-dark-mode.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/popup.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/minify/js/d3.js')}}"></script>
     </head>
 
     <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}} {{session('mode', 'light') === "dark" ? "dark-mode" : "light-mode" }}">

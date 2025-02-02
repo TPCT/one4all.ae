@@ -4,8 +4,8 @@
 
 @section('id', 'login')
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/home.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/authentication.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/home.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/authentication.css')}}">
 @endpush
 
 @section('content')

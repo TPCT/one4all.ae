@@ -5,10 +5,10 @@
 @section('id', 'PersonalConsultation')
 
 @push('style')
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/home.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/home.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/authentication.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/Recommendations.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/personal-consultation.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/Recommendations.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/personal-consultation.css')}}"/>
 @endpush
 
 @section('content')
