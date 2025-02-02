@@ -23,16 +23,8 @@
                 href="{{asset('/minify/js/slick-1.8.1/slick/slick.css')}}"
         />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/js/slick-1.8.1/slick/slick-theme.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/carousel.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/owl.carousel.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/intlTelInput.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/fancybox.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/regular.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/solid.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/brands.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/fontawesome.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/Layout.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/aos.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/menu.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/header.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/navbar.css')}}" />
@@ -53,7 +45,6 @@
 
 
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/custom.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/accessibility-tools.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/errors.css')}}"/>
     </head>
 
@@ -75,20 +66,16 @@
         </main>
         {!! NoCaptcha::renderJs() !!}
 
-        <script type="text/javascript" src="{{asset('/minify/js/fancybox.umd.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/jquery-3.7.1.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/intlTelInput.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/slick-1.8.1/slick/slick.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/bootstrap/popper.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/bootstrap/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/carousel.umd.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/owl.carousel.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/menu.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/main.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/footer.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/light-dark-mode.js')}}"></script>
         <script type="text/javascript" src="{{asset('/minify/js/popup.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/minify/js/d3.js')}}"></script>
 
         @stack('script')
 
