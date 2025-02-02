@@ -9,6 +9,7 @@ use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\StatusChecker;
 use App\Http\Controllers\Clients\AuthController;
 
+
 Route::get('/minify/{any}', [\App\Http\Controllers\MinifyController::class, 'minify'])->name('minify')->where('any', '.*');
 
 Route::prefix('/{locale?}/')
