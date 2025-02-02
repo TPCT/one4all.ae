@@ -1,6 +1,6 @@
-<x-layout.top-header-menu></x-layout.top-header-menu>
 
 <div class="navigation-container">
+    <x-layout.top-header-menu></x-layout.top-header-menu>
     <div class="main-navigation--container"></div>
     <header class="main-navigation--container">
         <div

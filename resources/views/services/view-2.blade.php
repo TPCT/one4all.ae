@@ -6,7 +6,7 @@
 
 @push('style')
     <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/home.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/authentication.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('/minify/cssauthentication.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/Recommendations.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/personal-consultation.css')}}"/>
 @endpush
