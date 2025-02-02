@@ -12,7 +12,8 @@ class MinifyController extends Controller
     public function minify(Request $request, $any)
     {
         $path = public_path($any);
-
+        if (!is_file($path))
+            abort(404);
         // Cache the checksum of the file
         $checksum = Cache::remember("file_checksum:{$path}", 60 * 24 * 365, function () use ($path) {
             return md5_file($path);
