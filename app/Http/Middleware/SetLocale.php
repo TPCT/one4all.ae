@@ -16,7 +16,7 @@ class SetLocale
     public function handle(Request $request, Closure $next): Response
     {
         if (in_array($request->segment(1), [
-            'livewire', 'admin', 'storage'
+            'livewire', 'admin', 'storage', 'minify'
         ]))
             return $next($request);
 
