@@ -221,7 +221,6 @@
                 </div>
                 <div>
                     <picture class="faqs-img-box">
-                        <img src="./assets/imgs/home/faqs-image.png" alt="" />
                         <x-curator-glider
                             :media="$faqs_section->image_id"
                         />
