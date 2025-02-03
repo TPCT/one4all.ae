@@ -91,7 +91,7 @@
                             <form id="newsletter-form" action="{{route('newsletter.subscribe')}}"></form>
                             <div class="d-flex justify-content-between gap-2">
                                 <div class="d-flex flex-column w-100" id="newsletter-email">
-                                    <input form="newsletter-form" name="email" id="newsletter-email" type="email" placeholder="@lang('site.NEWSLETTER_EMAIL_PLACEHOLDER')" required/>
+                                    <input form="newsletter-form" name="email" id="newsletter-email-input" type="email" placeholder="@lang('site.NEWSLETTER_EMAIL_PLACEHOLDER')" required/>
                                     <span class="d-none text-danger" id="newsletter-email-error"></span>
                                 </div>
                                 <button class="border-0" form="newsletter-form">@lang('site.NEWSLETTER_BUTTON_TEXT')</button>
@@ -176,7 +176,7 @@
                 e.preventDefault();
                 let form = $(this);
                 $.ajax({
-                    url: $(this).attr('action') + "?email=" + $("#newsletter-email").val(),
+                    url: $(this).attr('action') + "?email=" + $("#newsletter-email-input").val(),
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
