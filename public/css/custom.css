@@ -40,9 +40,9 @@
 .navigation-container {
   position: sticky;
   top: 0;
-  z-index: 1000; 
-  background-color: #fff; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .home-3rd-section-slider .home-3rd-section-slide > picture img {
@@ -257,7 +257,7 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
   padding: 0.5rem;
   border-radius: 8px;
   border: none;
-  width: 100%; 
+  width: 100%;
 }
 
 #newsletter-form button {
@@ -266,10 +266,34 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
   padding: 0.45rem 2rem;
   border-radius: 8px;
   border: none;
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
 #newsletter-form button:hover {
-  background-color: #16254b; 
+  background-color: #16254b;
+}
+/* ================ */
+
+.toolbar {
+  position: relative;
+  z-index: 10;
+}
+
+.navigation-container {
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.navigation-container.fixed-navbar {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+header.main-navigation--container {
+  background-color: #fff;
 }

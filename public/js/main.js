@@ -90,19 +90,43 @@ $(document).ready(function () {
   });
 });
 
-//navigation container sticky//
+// ===================
+$(document).ready(function () {
+  const $navbar = $(".navigation-container");
+  let lastScrollTop = 0;
 
-let lastScrollTop = 0;
-const navbar = document.querySelector(".toolbar");
+  if ($navbar.length === 0) {
+    console.error("Element with class 'navigation-container' not found.");
+    return;
+  }
 
-window.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop < lastScrollTop) {
-        navbar.style.top = "0";
+  $(window).on("scroll", function () {
+    let currentScroll = $(this).scrollTop();
+
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+      $navbar.css({
+        position: "fixed",
+        top: "0",
+        left: "0",
+        transform: "translateY(-100px)",
+      });
     } else {
-        navbar.style.top = "-100px"; 
-    }
-    lastScrollTop = scrollTop;
-});
+      $navbar.css({
+        position: "fixed",
+        top: "0",
+        left: "0",
+      });
 
+      if (currentScroll <= 0) {
+        $navbar.css({
+          transform: "translateY(0)",
+          position: "relative",
+        });
+      } else {
+        $navbar.css("transform", "translateY(0)");
+      }
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
+});
