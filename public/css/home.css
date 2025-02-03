@@ -707,10 +707,10 @@
   #Home .navigation-container {
     border-top-right-radius: 20px;
   }
-  #Home .hero-section {
+  /* #Home .hero-section {
     border-top-right-radius: 100px;
     border-top-left-radius: 100px;
-  }
+  } */
   .dark-mode #Home .hewader-panel-main {
     background-color: transparent !important;
   }
