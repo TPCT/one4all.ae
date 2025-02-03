@@ -304,3 +304,49 @@ header.main-navigation--container {
 .toolbar {
   background: #fff;
 }
+/* ======= */
+/* home-6th-section  */
+.home-6th-section {
+  padding-block: 3rem;
+}
+.home-6th-section .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  background-color: #0cc1e0;
+  border-radius: 24px;
+  padding: 2rem;
+  width: 60%;
+}
+.home-6th-section button {
+  background-color: #1e3266;
+  color: white;
+  padding: 0.45rem 2rem;
+  border-radius: 8px;
+}
+.home-6th-section input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+@media (max-width: 991.8888888px) {
+  .home-6th-section .container {
+    gap: 1rem;
+  }
+  .home-6th-section .container {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+  .home-6th-section .container img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.888888px) {
+  .home-6th-section .container {
+    width: 90%;
+  }
+}
