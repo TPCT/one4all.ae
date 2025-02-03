@@ -463,3 +463,13 @@
     background-image: unset;
   }
 }
+/* === */
+.footer-copyright-container-centered .web-link {
+  width: unset !important;
+  height: unset !important;
+  border: none !important;
+  border-radius: unset !important;
+}
+.footer-copyright-container-centered .web-link:hover {
+  border: none !important;
+}
