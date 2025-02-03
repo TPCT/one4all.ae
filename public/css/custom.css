@@ -301,3 +301,6 @@ header.main-navigation--container {
   background-color: #fff;
   position: relative !important;
 }
+.toolbar {
+  background: #fff;
+}
