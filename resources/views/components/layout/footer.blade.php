@@ -67,7 +67,7 @@
           </div>
         </div>
           <div class="footer-copyright-container-centered">
-              <p class="d-flex flex-column align-items-center">@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year, 'url' => '<a href="https://shiftcodes.net">ShiftCodes</a>'])</p>
+              <p class="d-flex gap-2 align-items-center">@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year, 'url' => '<a href="https://shiftcodes.net" class="web-link">ShiftCodes</a>'])</p>
               <div class="social-media-icons">
                   @if ($twitter)
                       <a href="{{$twitter}}" target="_blank" rel="noopener noreferrer">
