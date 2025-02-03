@@ -297,3 +297,7 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
 header.main-navigation--container {
   background-color: #fff;
 }
+.navigation-container {
+  background-color: #fff;
+  position: relative !important;
+}

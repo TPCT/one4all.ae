@@ -705,9 +705,6 @@
 /* ========= */
 @media (min-width: 992px) {
   #Home .navigation-container {
-    position: absolute;
-    top: 11%;
-    background-color: transparent;
     border-top-right-radius: 20px;
   }
   #Home .hero-section {
