@@ -294,33 +294,6 @@
             </div>
         </section>
     @endif
-
-    @if($newsletter_section)
-        <section class="home-6th-section">
-            <div class="container">
-                <div class="d-flex justify-content-between flex-column h-100 py-4" id="newsletter-container">
-                    <div>
-                        <h2>{{$newsletter_section->title}}</h2>
-                        <p>
-                            {{$newsletter_section->second_title}}
-                        </p>
-                    </div>
-                    <form class="d-flex justify-content-between gap-2" id="newsletter-form" action="{{route('newsletter.subscribe')}}">
-                        <div class="d-flex flex-column w-100" id="newsletter-email">
-                            <input type="email" placeholder="@lang('site.NEWSLETTER_EMAIL_PLACEHOLDER')" required/>
-                            <span class="d-none text-danger" id="newsletter-email-error"></span>
-                        </div>
-                        <button>@lang('site.NEWSLETTER_BUTTON_TEXT')</button>
-                    </form>
-                </div>
-                <picture>
-                    <x-curator-glider
-                        :media="$newsletter_section->image_id"
-                    />
-                </picture>
-            </div>
-        </section>
-    @endif
 @endsection
 
 @push('script')
