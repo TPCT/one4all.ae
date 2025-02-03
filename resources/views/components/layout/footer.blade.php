@@ -146,12 +146,8 @@
           <p>@lang('site.PAYMENT_METHOD')</p>
           <div class="social-media-icons">
             <a href="#">
-              <i class="fa-brands fa-paypal"></i>
+             <img src="" alt="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/64px-Bitcoin.svg.png" class="mw-100-w-100">
             </a>
-            <a href="#">
-              <i class="fa-brands fa-bitcoin"></i>
-            </a>
-
           </div>
         </div>
         <div class="footer-copyright-container-centered">
