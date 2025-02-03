@@ -394,11 +394,11 @@ header.main-navigation--container {
 }
 /* === */
 .footer-copyright-container-centered .web-link {
-  width: unset;
-  height: unset;
-  border: none;
-  border-radius: unset;
+  width: unset !important;
+  height: unset !important;
+  border: none !important;
+  border-radius: unset !important;
 }
 .footer-copyright-container-centered .web-link:hover {
-  border: none;
+  border: none !important;
 }
