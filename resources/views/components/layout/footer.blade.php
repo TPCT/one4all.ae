@@ -96,10 +96,9 @@
 
             @if($newsletter_section)
                 <section class="home-6th-section">
-                    <div class="container">
                         <div class="d-flex justify-content-between flex-column h-100 py-4" id="newsletter-container">
                             <div>
-                                <h2>{{$newsletter_section->title}}</h2>
+                                <h5>{{$newsletter_section->title}}</h5>
                                 <p>
                                     {{$newsletter_section->second_title}}
                                 </p>
@@ -114,7 +113,6 @@
                                 <button>@lang('site.NEWSLETTER_BUTTON_TEXT')</button>
                             </form>
                         </div>
-                    </div>
                 </section>
             @endif
         </div>
