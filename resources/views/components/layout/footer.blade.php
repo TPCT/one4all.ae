@@ -9,28 +9,6 @@
             <div>
                 {!! $footer_description !!}
             </div>
-            <div class="container d-flex">
-    <div class="d-flex flex-column" id="newsletter-container">
-        <div>
-            <h2>اشترك في أخبارنا</h2>
-            <p>
-                هل سئمت من فقدان تحديثاتنا؟ اشترك في أخبارنا الآن وابق على اطلاع!
-            </p>
-        </div>
-        <form class="d-flex" id="newsletter-form" action="https://ofa01sc2025.shiftcodes.net/ar/newsletter/subscribe">
-            <div class="d-flex flex-column w-50" id="newsletter-email">
-                <input type="email" placeholder="البريد الالكتروني" required=""
-                    style="padding: 0.5rem; border-radius: 8px; border: none; width: 100%;">
-                <span class="d-none text-danger" id="newsletter-email-error"></span>
-            </div>
-            <button style="background-color: #1e3266; color: #fff; padding: 0.45rem 2rem; border-radius: 8px; border: none; cursor: pointer;">
-                تأكيد
-            </button>
-        </form>
-    </div>
-</div>
-
-    </div>
         </div>
         @foreach($menu->links as $index => $child)
             @continue(!$child->status || !$child->has_children())
