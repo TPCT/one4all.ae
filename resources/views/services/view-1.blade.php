@@ -36,11 +36,12 @@
                     </a>
                 @endif
             </div>
-            <picture class="recommendations-img-box wow fadeInLeft">
-                <x-curator-glider
-                        :media="$service->image_id"
-                />
-            </picture>
+            <div class="video wow fadeInLeft">
+            <iframe width="100%" height="450" src="https://www.youtube.com/embed/QhWkpsEbKjY?si=mW0ayDJffABOl-US"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
     @if ($slider)

@@ -294,6 +294,51 @@
             </div>
         </section>
     @endif
+    <Section class="partners my-5">
+      <div class="container">
+        <div class="Home-section-heading d-flex align-items-center text-center wow fadeInUp">
+          <h2 class="text-center ">الشركاء</h2>
+        </div>
+        <div class="partners-slider">
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+          <div class="partner-item">
+            <picture>
+              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
+                alt="">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </Section>
 @endsection
 
 @push('script')
@@ -371,5 +416,49 @@
                 ],
             });
         });
+        
+    </script>
+    <script>
+         $('.partners-slider').slick({
+      arrows: true,
+      prevArrow: `<button class="partners-arrows-prev"><i class="fa-solid fa-chevron-right"></i></button>`,
+      nextArrow: `<button class="partners-arrows-next"><i class="fa-solid fa-chevron-left"></i></button>`,
+      rtl: true,
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+
+
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
     </script>
 @endpush

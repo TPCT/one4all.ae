@@ -350,3 +350,45 @@ header.main-navigation--container {
     width: 90%;
   }
 }
+/* ======== */
+.partners .partner-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.partners picture {
+  display: block;
+  height: 200px;
+  width: 200px;
+}
+.partners .slick-dots li button:before {
+  font-size: 10px;
+  color: #2aabee;
+}
+.partners .slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2aabee;
+  color: #fff;
+  border: none;
+}
+.partners .partners-arrows-next {
+  left: -3rem;
+}
+.partners .partners-arrows-prev {
+  right: -3rem;
+}
+@media (max-width: 991px) {
+  .partners .slick-arrow {
+    display: none !important;
+  }
+}
