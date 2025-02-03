@@ -38,10 +38,10 @@ class MinifyController extends Controller
         });
 
         // Set content and headers
-        $response = response($content['content'], 200, $content['headers']);
+        $response = response(file_get_contents($path), 200, $content['headers']);
 
         // Set Cache-Control, Expires and ETag headers for browser caching
-        $cacheDuration = 60 * 24 * 365; // 1 year in minutes
+        $cacheDuration = 60; // 1 year in minutes
         return $response->header('Cache-Control', "public, max-age=" . ($cacheDuration * 60))
             ->header('Expires', now()->addMinutes($cacheDuration)->toRfc7231String())
             ->header('ETag', $checksum); // ETag for validation
