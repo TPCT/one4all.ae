@@ -37,6 +37,13 @@
     direction: ltr !important;
   }
 }
+.navigation-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+  background-color: #fff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
 
 .home-3rd-section-slider .home-3rd-section-slide > picture img {
   height: 300px;
@@ -244,4 +251,13 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
 }
 .dark-mode .auth form .form-control::placeholder {
   color: #777;
+}
+
+/* navigationsticky */
+.navigation-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+  background-color: #fff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
