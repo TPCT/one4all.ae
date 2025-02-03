@@ -9,6 +9,27 @@
             <div>
                 {!! $footer_description !!}
             </div>
+            <div class="container">
+                <div class="d-flex justify-content-between flex-column py-4" id="newsletter-container">
+                    <div>
+                        <h2>اشترك في أخبارنا</h2>
+                        <p>
+                            هل سئمت من فقدان تحديثاتنا؟ اشترك في أخبارنا الآن وابق على اطلاع!
+                        </p>
+                    </div>
+                    <form class="d-flex justify-content-between gap-2" id="newsletter-form" action="https://ofa01sc2025.shiftcodes.net/ar/newsletter/subscribe">
+                        <div class="d-flex flex-column w-100" id="newsletter-email">
+                            <input type="email" placeholder="البريد الالكتروني" required="">
+                            <span class="d-none text-danger" id="newsletter-email-error"></span>
+                        </div>
+                        <button>تاكيد</button>
+                    </form>
+                </div>
+                <picture>
+                    <img src="/storage/media/ebb2b7dd-e86b-48dc-8b4e-bdd3dda32d6c.png?s=35f949213d42112fdffd61b16401a991" alt="" quality="5" format="webp" force="force" loading="lazy">
+                    </picture>
+            </div>
+    </div>
         </div>
         @foreach($menu->links as $index => $child)
             @continue(!$child->status || !$child->has_children())
@@ -32,7 +53,7 @@
                 </ul>
             </div>
         @endforeach
-    </div>
+
     <div class="footer-copyright-container">
         <div class="footer-copyright-container-centered">
             <p class="d-flex flex-column align-items-center">@lang('site.copyright', ['year' => \Illuminate\Support\Carbon::now()->year, 'url' => '<a href="https://shiftcodes.net">ShiftCodes</a>'])</p>

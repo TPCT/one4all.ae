@@ -92,15 +92,17 @@ $(document).ready(function () {
 
 //navigation container sticky//
 
-window.onscroll = function() { stickyNavigation() };
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navigation-container");
 
-var navbar = document.querySelector(".navigation-container");
-var sticky = navbar.offsetTop;
-
-function stickyNavigation() {
-    if (window.pageYOffset > sticky) {
-        navbar.classList.add("sticky");
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop < lastScrollTop) {
+        navbar.style.top = "0";
     } else {
-        navbar.classList.remove("sticky");
+        navbar.style.top = "-100px"; 
     }
-}
+    lastScrollTop = scrollTop;
+});
+

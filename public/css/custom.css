@@ -257,7 +257,8 @@ body:not(.arabic-version) #cssmenu.head_btm_menu ul li a {
 .navigation-container {
   position: sticky;
   top: 0;
-  z-index: 1000; 
-  background-color: #fff; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  z-index: 1000;
+  background-color: white; 
+  transition: all 0.3s ease-in-out;
 }
