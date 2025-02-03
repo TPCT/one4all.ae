@@ -16,7 +16,7 @@
                 <div class="footer-item-header">
                     <h5>{{$child->title}}</h5>
                     <div class="container">
-                <div class="d-flex justify-content-between flex-column h-100 py-4" id="newsletter-container">
+                <div class="d-flex justify-content-between py-4" id="newsletter-container">
                     <div>
                         <h2>اشترك في أخبارنا</h2>
                         <p>
@@ -31,6 +31,11 @@
                         <button>تاكيد</button>
                     </form>
                 </div>
+                <picture>
+                    <img src="/storage/media/ebb2b7dd-e86b-48dc-8b4e-bdd3dda32d6c.png?s=35f949213d42112fdffd61b16401a991" alt="" quality="5" format="webp" force="force" loading="lazy">
+                    </picture>
+            </div>
+
                 <picture>
                     <img src="/storage/media/ebb2b7dd-e86b-48dc-8b4e-bdd3dda32d6c.png?s=35f949213d42112fdffd61b16401a991" alt="" quality="5" format="webp" force="force" loading="lazy">
                     </picture>
