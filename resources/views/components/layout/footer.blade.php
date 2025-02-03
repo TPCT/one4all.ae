@@ -9,16 +9,16 @@
             <div>
                 {!! $footer_description !!}
             </div>
-            <div class="container">
-                <div class="d-flex justify-content-between flex-column py-4" id="newsletter-container">
+            <div class="container d-flex">
+                <div class="d-flex flex-column" id="newsletter-container">
                     <div>
                         <h2>اشترك في أخبارنا</h2>
                         <p>
                             هل سئمت من فقدان تحديثاتنا؟ اشترك في أخبارنا الآن وابق على اطلاع!
                         </p>
                     </div>
-                    <form class="d-flex justify-content-between gap-2" id="newsletter-form" action="https://ofa01sc2025.shiftcodes.net/ar/newsletter/subscribe">
-                        <div class="d-flex flex-column w-100" id="newsletter-email">
+                    <form class="d-flex " id="newsletter-form" action="https://ofa01sc2025.shiftcodes.net/ar/newsletter/subscribe">
+                        <div class="d-flex flex-column w-50" id="newsletter-email">
                             <input type="email" placeholder="البريد الالكتروني" required="">
                             <span class="d-none text-danger" id="newsletter-email-error"></span>
                         </div>

@@ -93,7 +93,7 @@ $(document).ready(function () {
 //navigation container sticky//
 
 let lastScrollTop = 0;
-const navbar = document.querySelector(".navigation-container");
+const navbar = document.querySelector(".toolbar");
 
 window.addEventListener("scroll", function () {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
