@@ -298,29 +298,6 @@
 
 @push('script')
     <script>
-        $(function (){
-            $("#newsletter-form").on('submit', function (e){
-                e.preventDefault();
-                let form = $(this);
-                $.ajax({
-                    url: $(this).attr('action') + "?email=" + $(this).find('input').val(),
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if (res.success){
-                            form.remove();
-                            $("#newsletter-container").append(`
-                                <div class="d-flex justify-content-center"><span class="text-success">` + res.message + `</span></div>
-                            `);
-                        }else{
-                            $("#newsletter-email-error").text(res.message).removeClass('d-none').addClass('d-flex')
-                        }
-                    },
-                    error: function (res){
-                    }
-                });
-            });
-        });
         $(document).ready(function () {
             $(".hero-section-slider").slick({
                 autoplay: true,
