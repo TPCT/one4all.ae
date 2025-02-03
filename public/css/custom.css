@@ -299,7 +299,7 @@ header.main-navigation--container {
 }
 .navigation-container {
   background-color: #fff;
-  position: relative !important;
+  position: relative;
 }
 .toolbar {
   background: #fff;
