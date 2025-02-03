@@ -25,9 +25,6 @@
                         <button>تاكيد</button>
                     </form>
                 </div>
-                <picture>
-                    <img src="/storage/media/ebb2b7dd-e86b-48dc-8b4e-bdd3dda32d6c.png?s=35f949213d42112fdffd61b16401a991" alt="" quality="5" format="webp" force="force" loading="lazy">
-                    </picture>
             </div>
     </div>
         </div>
