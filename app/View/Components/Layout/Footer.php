@@ -3,6 +3,7 @@
 namespace App\View\Components\Layout;
 
 use App\Models\Branch\Branch;
+use App\Models\Dropdown\Dropdown;
 use App\Models\Menu\Menu;
 use App\Settings\General;
 use App\Settings\Site;
@@ -30,6 +31,11 @@ class Footer extends Component
      */
     public function render(): View|Closure|string
     {
+        $newsletter_section = Dropdown::active()->whereCategory(Dropdown::BLOCK_CATEGORY)
+            ->whereSlug('homepage-newsletter-section')
+            ->first()
+            ?->blocks()
+            ?->first();
         return view('components.layout.footer', [
             'facebook' => app(Site::class)->facebook_link,
             'twitter' => app(Site::class)->twitter_link,
@@ -37,7 +43,8 @@ class Footer extends Component
             'youtube' => app(Site::class)->youtube_link,
             'linkedin' => app(Site::class)->linkedin_link,
             'logo' => app(Site::class)->logo,
-            'footer_description' => app(Site::class)->footer_description[app()->getLocale()]
+            'footer_description' => app(Site::class)->footer_description[app()->getLocale()],
+            'newsletter_section' => $newsletter_section,
         ]);
     }
 }
