@@ -297,8 +297,8 @@
 
     @if (count($our_partners_slider?->slides ?? []))
         <Section class="partners my-5">
-          <div class="container">
-            <div class="Home-section-heading d-flex align-items-center text-center wow fadeInUp">
+          <div class="container wow fadeInUp">
+            <div class="Home-section-heading d-flex align-items-center text-center">
               <h2 class="text-center ">{{$our_partners_slider->title}}</h2>
               {!! $our_partners_slider->description !!}
             </div>
