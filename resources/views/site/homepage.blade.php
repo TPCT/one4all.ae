@@ -294,51 +294,29 @@
             </div>
         </section>
     @endif
-    <Section class="partners my-5">
-      <div class="container">
-        <div class="Home-section-heading d-flex align-items-center text-center wow fadeInUp">
-          <h2 class="text-center ">الشركاء</h2>
-        </div>
-        <div class="partners-slider">
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
+
+    @if (count($our_partners_slider?->slides ?? []))
+        <Section class="partners my-5">
+          <div class="container">
+            <div class="Home-section-heading d-flex align-items-center text-center wow fadeInUp">
+              <h2 class="text-center ">{{$our_partners_slider->title}}</h2>
+              {!! $our_partners_slider->description !!}
+            </div>
+            <div class="partners-slider">
+                @foreach($our_partners_slider->slides as $slide)
+                    <div class="partner-item">
+                        <picture>
+                            <x-curator-glider
+                                :media="$slide->image_id"
+                                class="mw-100 w-100"
+                            />
+                        </picture>
+                    </div>
+                @endforeach
+            </div>
           </div>
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
-          </div>
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
-          </div>
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
-          </div>
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
-          </div>
-          <div class="partner-item">
-            <picture>
-              <img src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png" class="mw-100 w-100"
-                alt="">
-            </picture>
-          </div>
-        </div>
-      </div>
-    </Section>
+        </Section>
+    @endif
 @endsection
 
 @push('script')
@@ -423,7 +401,7 @@
       arrows: true,
       prevArrow: `<button class="partners-arrows-prev"><i class="fa-solid fa-chevron-right"></i></button>`,
       nextArrow: `<button class="partners-arrows-next"><i class="fa-solid fa-chevron-left"></i></button>`,
-      rtl: true,
+      rtl: {{$rtl}},
       dots: true,
       infinite: true,
       speed: 300,

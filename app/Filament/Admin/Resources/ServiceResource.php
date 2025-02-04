@@ -132,7 +132,10 @@ class ServiceResource extends Resource
                                             ->label(__('Youtube Video')),
                                     ])
                                     ->visible(function (Forms\Get $get){
-                                        return $get('data.view_type', true) == self::$model::VIEW_TYPE_3;
+                                        return in_array(
+                                            $get('data.view_type', true),
+                                            [self::$model::VIEW_TYPE_1, self::$model::VIEW_TYPE_3]
+                                        );
                                     })
                                     ->columnSpanFull(),
 

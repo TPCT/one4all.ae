@@ -75,6 +75,7 @@ class Slider extends Model implements \OwenIt\Auditing\Contracts\Auditable
 
     public const HERO_SECTION_SLIDER = "Hero Section Slider";
     public const SERVICE_SLIDER = "Service Slider";
+    public const OUR_PARTNERS = "Our Partners";
 
     public $translationModel = SliderLang::class;
 
@@ -82,6 +83,7 @@ class Slider extends Model implements \OwenIt\Auditing\Contracts\Auditable
         return [
             self::HERO_SECTION_SLIDER => __(self::HERO_SECTION_SLIDER),
             self::SERVICE_SLIDER => __(self::SERVICE_SLIDER),
+            self::OUR_PARTNERS => __(self::OUR_PARTNERS),
         ];
     }
 

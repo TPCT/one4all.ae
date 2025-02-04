@@ -117,6 +117,10 @@ class SliderResource extends Resource
                                                     FileUpload::make("image_id")
                                                         ->label(__("Image")),
                                                 ])->visible(fn (Forms\Get $get) => $get('data.category', true) == Slider::SERVICE_SLIDER),
+                                                Forms\Components\Group::make()->schema([
+                                                    FileUpload::make("image_id")
+                                                        ->label(__("Image")),
+                                                ])->visible(fn (Forms\Get $get) => $get('data.category', true) == Slider::OUR_PARTNERS),
                                             ]);
                                         }
                                         return $tabs;

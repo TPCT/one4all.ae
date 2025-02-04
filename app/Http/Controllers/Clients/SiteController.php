@@ -52,11 +52,7 @@ class SiteController extends Controller
 
         $testimonials = Testimonial::active()->latest()->limit(10)->get();
 
-        $newsletter_section = Dropdown::active()->whereCategory(Dropdown::BLOCK_CATEGORY)
-            ->whereSlug('homepage-newsletter-section')
-            ->first()
-            ?->blocks()
-            ?->first();
+        $our_partners_slider = Slider::active()->whereCategory(Slider::OUR_PARTNERS)->first();
 
         return $this->view('site.homepage', [
             'hero_slider' => $hero_slider,
@@ -67,8 +63,8 @@ class SiteController extends Controller
             'faqs' => $faqs,
             'testimonials_section' => $testimonials_section,
             'testimonials' => $testimonials,
-            'newsletter_section' => $newsletter_section,
             'has_button' => $has_button,
+            'our_partners_slider' => $our_partners_slider,
         ]);
     }
 
