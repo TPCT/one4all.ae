@@ -57,6 +57,7 @@
     <div class="footer-copyright-container">
         @if ($payment_gateways?->count())
             <div class="footer-copyright-container-centered">
+                <p class="d-flex gap-2 align-items-center">@lang('site.PAYMENT_METHODS')</p>
                 <div class="social-media-icons">
                     <a>
                         <picture>
