@@ -428,3 +428,7 @@ header.main-navigation--container {
 header.main-navigation--container{
   padding-top: 15px;
 }
+
+.home-3rd-section-slider .slick-dots li button:before{
+  color: white !important;
+}
