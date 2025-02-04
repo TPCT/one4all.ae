@@ -113,7 +113,7 @@ $(document).ready(function () {
     } else {
       $navbar.css({
         position: "fixed",
-        top: "0",
+        top: "25px",
         left: "0",
       });
 
