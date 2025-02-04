@@ -417,3 +417,6 @@ header.main-navigation--container {
 .dark-mode .toolbar .third-btn {
   color: #fff !important;
 }
+.dark-mode .toolbar .third-btn:hover {
+  color: #000 !important;
+}
