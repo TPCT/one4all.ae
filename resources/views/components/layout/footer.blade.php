@@ -7,9 +7,9 @@
                     <x-curator-glider :media="$logo" class="mw-100 mb-5"/>
                 </a>
             </div>
-            <div>
-                {!! $footer_description !!}
-            </div>
+{{--            <div>--}}
+{{--                {!! $footer_description !!}--}}
+{{--            </div>--}}
 
             @if ($newsletter_section)
                 <div class="home-6th-section p-0" id="newsletter-container">
