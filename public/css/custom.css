@@ -446,5 +446,6 @@ header.main-navigation--container{
 }
 
 .floating-coin-up{
-  top: 0 !important
+  top: 0 !important;
+  z-index: -1;
 }
