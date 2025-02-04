@@ -64,6 +64,9 @@ class ManageSiteSettings extends SettingsPage
                         FileUpload::make("logo")
                             ->multiple(false)
                             ->label(__("Logo")),
+                        FileUpload::make("dark_logo")
+                            ->multiple(false)
+                            ->label(__("Dark Logo")),
                         TinyEditor::make("footer_description.{$locale}")
                             ->showMenuBar()
                             ->label(__("Footer Description"))

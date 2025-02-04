@@ -4,6 +4,7 @@ namespace App\View\Components\Layout;
 
 use App\Models\Client;
 use App\Models\Menu\Menu;
+use App\Settings\Site;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -12,6 +13,7 @@ class Header extends Component
 {
     public ?Menu $menu;
     public ?Client $client;
+    public ?string $logo;
     /**
      * Create a new component instance.
      */
@@ -21,6 +23,7 @@ class Header extends Component
             'category' => Menu::HEADER_MENU,
         ])->active()->first();
         $this->client = \Auth::guard('clients')->user();
+        $this->logo = session('mode') === 'dark' ? app(Site::class)->dark_logo : app(Site::class)->logo;
     }
 
     /**

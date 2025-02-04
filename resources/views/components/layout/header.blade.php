@@ -42,11 +42,10 @@
                                 class="m-0 ms-2 navbar-brand logo text-center d-flex align-items-center"
                                 href="{{route('site.index')}}"
                         >
-                            <img
-                                    id="logo-img"
-                                    class="logo-img mw-100"
-                                    src="{{asset('/assets/imgs/home/logo.png')}}"
-                                    alt=""
+                            <x-curator-glider
+                                :media="$logo"
+                                class="logo-img mw-100"
+                                id="logo-img"
                             />
                         </a>
 

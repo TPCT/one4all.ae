@@ -8,11 +8,11 @@ use Spatie\LaravelSettings\Settings;
 class Site extends Settings
 {
     private array $translatable = [
-        'fav_icon', 'logo', 'mobile_logo', 'footer_logo', 'address', 'footer_description', 'p_o_box'
+        'fav_icon', 'logo', 'dark_logo', 'mobile_logo', 'footer_logo', 'address', 'footer_description', 'p_o_box'
     ];
 
     private array $uploads = [
-        'fav_icon', 'logo', 'mobile_logo', 'footer_logo'
+        'fav_icon', 'logo', 'dark_logo', 'mobile_logo', 'footer_logo'
     ];
 
     public function translatable()
@@ -28,7 +28,7 @@ class Site extends Settings
 
     public ?string $fav_icon;
     public ?string $logo;
-//    public ?string $dark_logo;
+    public ?string $dark_logo;
     public ?array $footer_description;
 
     public ?string $email;
