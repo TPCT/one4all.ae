@@ -15,12 +15,12 @@ class MinifyController extends Controller
         if (!is_file($path))
             abort(404);
         // Cache the checksum of the file
-        $checksum = Cache::remember("file_checksum:{$path}", 60 * 24 * 365, function () use ($path) {
+        $checksum = Cache::remember("file_checksum:{$path}", 60 * 60, function () use ($path) {
             return md5_file($path);
         });
 
         // Cache the file content based on the checksum
-        $content = Cache::remember("file_content:{$checksum}", 60 * 24 * 365, function () use ($path, $any) {
+        $content = Cache::remember("file_content:{$checksum}", 60 * 60, function () use ($path, $any) {
             $extension = pathinfo($any, PATHINFO_EXTENSION);
 
             switch ($extension) {
