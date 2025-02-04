@@ -28,6 +28,7 @@ class Site extends Settings
 
     public ?string $fav_icon;
     public ?string $logo;
+//    public ?string $dark_logo;
     public ?array $footer_description;
 
     public ?string $email;
