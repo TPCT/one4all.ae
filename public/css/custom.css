@@ -402,3 +402,6 @@ header.main-navigation--container {
 .footer-copyright-container-centered .web-link:hover {
   border: none !important;
 }
+.dark-light-btn .main-btn {
+  color: #fff !important;
+}
