@@ -134,7 +134,7 @@ $(document).ready(function () {
       if (currentScroll > lastScrollTop && currentScroll > 100) {
         $navbar.css({
           position: "fixed",
-          top: "20px", // Default top for smaller screens
+          top: "25px", // Default top for smaller screens
           left: "0",
           transform: "translateY(-100px)",
         });
