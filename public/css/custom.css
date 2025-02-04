@@ -420,3 +420,7 @@ header.main-navigation--container {
 .dark-mode .toolbar .third-btn:hover {
   color: #000 !important;
 }
+
+.partners picture{
+  height: auto !important;
+}
