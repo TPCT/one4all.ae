@@ -444,3 +444,7 @@ header.main-navigation--container{
 .hero-section .container {
   padding: 3rem !important;
 }
+
+.floating-coin-up{
+  top: 0 !important
+}
