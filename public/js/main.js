@@ -109,14 +109,14 @@ $(document).ready(function () {
       if (currentScroll > lastScrollTop && currentScroll > 100) {
         $navbar.css({
           position: "fixed",
-          top: "30px",  // Set top to 30px when scrolls down
+          top: "0",  // Set top to 0 when scrolls down
           left: "0",
           transform: "translateY(-100px)",
         });
       } else {
         $navbar.css({
           position: "fixed",
-          top: "30px",  // Ensure top is 30px when scrolling up
+          top: "0",  // Ensure top is 30px when scrolling up
           left: "0",
         });
 
