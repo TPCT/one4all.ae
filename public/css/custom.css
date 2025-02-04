@@ -451,3 +451,7 @@ header.main-navigation--container{
   top: 0 !important;
   z-index: -1;
 }
+
+.tradeWithUs-1st-section{
+  padding-block: 3rem !important;
+}
