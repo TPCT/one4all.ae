@@ -59,7 +59,6 @@
     </div>
     <div class="footer-copyright-container">
         <div class="footer-copyright-container-centered">
-            <p>@lang('site.PAYMENT_METHOD')</p>
             <div class="social-media-icons">
                 <a>
                     <picture>
