@@ -136,7 +136,7 @@
 }
 .dark-mode .toolbar .third-btn {
   background-color: #000;
-  color: #fff;
+  color: #fff !important;
   border-color: #fff;
 }
 .dark-mode .toolbar .third-btn:hover {
