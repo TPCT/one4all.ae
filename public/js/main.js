@@ -122,7 +122,7 @@ $(document).ready(function () {
 
         if (currentScroll <= 0) {
           $navbar.css({
-            transform: "translateY(25px)",
+            transform: "translateY(0px)",
             position: "relative",
           });
         } else {
