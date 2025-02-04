@@ -405,8 +405,14 @@ header.main-navigation--container {
 .dark-light-btn .main-btn {
   color: #fff !important;
 }
+.dark-light-btn .main-btn:hover {
+  color: #000 !important;
+}
 .dark-mode .dark-light-btn .main-btn {
   color: #000 !important;
+}
+.dark-mode .dark-light-btn .main-btn:hover {
+  color: #fff !important;
 }
 .dark-mode .toolbar .third-btn {
   color: #fff !important;
