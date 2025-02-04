@@ -436,3 +436,11 @@ header.main-navigation--container{
 .dark-mode header.main-navigation--container{
    background-color: #020f19 !important
 }
+
+.hero-section {
+  padding-top: 0 !important;
+}
+
+.hero-section .container {
+  padding: 2rem !important;
+}
