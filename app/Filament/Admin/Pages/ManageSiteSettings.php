@@ -66,11 +66,7 @@ class ManageSiteSettings extends SettingsPage
                             ->label(__("Logo")),
                         FileUpload::make("dark_logo")
                             ->multiple(false)
-                            ->label(__("Dark Logo")),
-                        TinyEditor::make("footer_description.{$locale}")
-                            ->showMenuBar()
-                            ->label(__("Footer Description"))
-                            ->columnSpanFull(),
+                            ->label(__("Dark Logo"))
                     ]),
                 Forms\Components\Grid::make()
                     ->columns(1)
