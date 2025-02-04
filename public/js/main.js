@@ -102,28 +102,57 @@ $(document).ready(function () {
 
   $(window).on("scroll", function () {
     let currentScroll = $(this).scrollTop();
+    let windowWidth = $(window).width();
 
-    if (currentScroll > lastScrollTop && currentScroll > 100) {
-      $navbar.css({
-        position: "fixed",
-        top: "30px",
-        left: "0",
-        transform: "translateY(-100px)",
-      });
-    } else {
-      $navbar.css({
-        position: "fixed",
-        top: "0",
-        left: "0",
-      });
-
-      if (currentScroll <= 0) {
+    // Check if screen width is 991px or greater
+    if (windowWidth >= 991) {
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
         $navbar.css({
-          transform: "translateY(25px)",
-          position: "relative",
+          position: "fixed",
+          top: "30px",  // Set top to 30px when scrolls down
+          left: "0",
+          transform: "translateY(-100px)",
         });
       } else {
-        $navbar.css("transform", "translateY(0)");
+        $navbar.css({
+          position: "fixed",
+          top: "30px",  // Ensure top is 30px when scrolling up
+          left: "0",
+        });
+
+        if (currentScroll <= 0) {
+          $navbar.css({
+            transform: "translateY(25px)",
+            position: "relative",
+          });
+        } else {
+          $navbar.css("transform", "translateY(0)");
+        }
+      }
+    } else {
+      // For smaller screens, use the original position values
+      if (currentScroll > lastScrollTop && currentScroll > 100) {
+        $navbar.css({
+          position: "fixed",
+          top: "20px", // Default top for smaller screens
+          left: "0",
+          transform: "translateY(-100px)",
+        });
+      } else {
+        $navbar.css({
+          position: "fixed",
+          top: "0",
+          left: "0",
+        });
+
+        if (currentScroll <= 0) {
+          $navbar.css({
+            transform: "translateY(25px)",
+            position: "relative",
+          });
+        } else {
+          $navbar.css("transform", "translateY(0)");
+        }
       }
     }
 
