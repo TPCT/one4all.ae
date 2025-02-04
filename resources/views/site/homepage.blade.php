@@ -402,7 +402,7 @@
           prevArrow: `<button class="partners-arrows-prev"><i class="fa-solid fa-chevron-right"></i></button>`,
           nextArrow: `<button class="partners-arrows-next"><i class="fa-solid fa-chevron-left"></i></button>`,
           rtl: {{$rtl}},
-          dots: true,
+          dots: false,
           infinite: true,
           speed: 300,
           slidesToShow: 5,
