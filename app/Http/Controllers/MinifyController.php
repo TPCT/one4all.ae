@@ -38,7 +38,7 @@ class MinifyController extends Controller
         });
 
         // Set content and headers
-        $response = response(file_get_contents($path), 200, $content['headers']);
+        $response = response($content['content'], 200, $content['headers']);
 
         // Set Cache-Control, Expires and ETag headers for browser caching
         $cacheDuration = 60; // 1 year in minutes
