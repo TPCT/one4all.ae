@@ -429,6 +429,10 @@ header.main-navigation--container{
   padding-top: 15px;
 }
 
-.home-3rd-section-slider .slick-dots li button:before{
+.dark-mode .home-3rd-section-slider .slick-dots li button:before{
   color: white !important;
+}
+
+.dark-mode header.main-navigation--container{
+   background-color: #020f19 !important
 }
