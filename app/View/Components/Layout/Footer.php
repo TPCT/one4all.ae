@@ -3,8 +3,10 @@
 namespace App\View\Components\Layout;
 
 use App\Models\Branch\Branch;
+use App\Models\Currency;
 use App\Models\Dropdown\Dropdown;
 use App\Models\Menu\Menu;
+use App\Models\PaymentGateway\PaymentGateway;
 use App\Settings\General;
 use App\Settings\Site;
 use Closure;
@@ -36,6 +38,8 @@ class Footer extends Component
             ->first()
             ?->blocks()
             ?->first();
+
+        $payment_gateways = PaymentGateway::active()->limit(5)->get();
         return view('components.layout.footer', [
             'facebook' => app(Site::class)->facebook_link,
             'twitter' => app(Site::class)->twitter_link,
@@ -45,6 +49,7 @@ class Footer extends Component
             'logo' => app(Site::class)->logo,
             'footer_description' => app(Site::class)->footer_description[app()->getLocale()],
             'newsletter_section' => $newsletter_section,
+            'payment_gateways' => $payment_gateways,
         ]);
     }
 }
