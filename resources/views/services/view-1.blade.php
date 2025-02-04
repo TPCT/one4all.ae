@@ -36,12 +36,14 @@
                     </a>
                 @endif
             </div>
-            <div class="video wow fadeInLeft">
-                <iframe width="100%" height="450" src="{{$service->youtube_video_id}}"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+            @if ($service->youtube_video_id)
+                <div class="video wow fadeInLeft">
+                    <iframe width="100%" height="450" src="{{$service->youtube_video_id}}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            @endif
         </div>
     </section>
     @if ($slider)
