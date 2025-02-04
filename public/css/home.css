@@ -104,7 +104,7 @@
 }
 .arabic-version .hero-arrows-dots-container {
   flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .hero-dots-container {
   display: flex;
