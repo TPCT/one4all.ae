@@ -58,25 +58,27 @@
         @endforeach
     </div>
     <div class="footer-copyright-container">
-        <div class="footer-copyright-container-centered">
-            <div class="social-media-icons">
-                <a>
-                    <picture>
-                        <img src="{{asset('/assets/imgs/paypal app.png')}}" alt="" class="mw-100 w-100"/>
-                    </picture>
-                </a>
-                @foreach($payment_gateways as $payment_gateway)
+        @if ($payment_gateways?->count())
+            <div class="footer-copyright-container-centered">
+                <div class="social-media-icons">
                     <a>
                         <picture>
-                            <x-curator-glider
-                                    :media="$payment_gateway->image_id"
-                                    class="mw-100 w-100"
-                            />
+                            <img src="{{asset('/assets/imgs/paypal app.png')}}" alt="" class="mw-100 w-100"/>
                         </picture>
                     </a>
-                @endforeach
+                    @foreach($payment_gateways as $payment_gateway)
+                        <a>
+                            <picture>
+                                <x-curator-glider
+                                        :media="$payment_gateway->image_id"
+                                        class="mw-100 w-100"
+                                />
+                            </picture>
+                        </a>
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endif
         <div class="footer-copyright-container-centered">
             <p class="d-flex gap-2 align-items-center">@lang('site.copyright', ['year' => Carbon::now()->year, 'url' => '<a href="https://shiftcodes.net" class="web-link">ShiftCodes</a>'])</p>
             <div class="social-media-icons">
