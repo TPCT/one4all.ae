@@ -424,3 +424,7 @@ header.main-navigation--container {
 .partners picture{
   height: auto !important;
 }
+
+header.main-navigation--container{
+  padding-top: 15px;
+}
