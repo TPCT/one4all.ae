@@ -121,7 +121,7 @@
 }
 @media (min-width: 992px) {
   #tradingCompanies .navigation-container {
-    position: absolute;
+    position: relative;
     background-color: var(--main-section-bg);
     border-top-right-radius: 100px;
     border-top-left-radius: 100px;

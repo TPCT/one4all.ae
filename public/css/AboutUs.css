@@ -22,7 +22,7 @@
 }
 @media (min-width: 992px) {
   #AboutUs .navigation-container {
-    position: absolute;
+    position: relative;
     background-color: var(--main-section-bg);
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
