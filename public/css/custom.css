@@ -455,3 +455,11 @@ header.main-navigation--container{
 .tradeWithUs-1st-section{
   padding-block: 3rem !important;
 }
+
+picture.hero-main-slide-img{
+  width: 300px;
+}
+
+picture.hero-main-slide-img video{
+  width: 100%;
+}
