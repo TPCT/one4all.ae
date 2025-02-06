@@ -472,3 +472,8 @@ picture.hero-main-slide-img video{
 .home-6th-section button{
   background-color: #229ed9;
 }
+
+
+.footer-item-header a img{
+  width: 50px !important;
+}

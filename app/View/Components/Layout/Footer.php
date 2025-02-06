@@ -46,7 +46,7 @@ class Footer extends Component
             'instagram' => app(Site::class)->instagram_link,
             'youtube' => app(Site::class)->youtube_link,
             'linkedin' => app(Site::class)->linkedin_link,
-            'logo' => app(Site::class)->logo,
+            'logo' => session('mode') === 'dark' ? app(Site::class)->dark_logo : app(Site::class)->logo,
             'footer_description' => app(Site::class)->footer_description[app()->getLocale()],
             'newsletter_section' => $newsletter_section,
             'payment_gateways' => $payment_gateways,
