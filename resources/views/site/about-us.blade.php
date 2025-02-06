@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-    <section class="recommendations-1st-section position-relative">
+    <section class="recommendations-1st-section position-relative container">
         <div class="container">
             <div
                     class="d-flex flex-column justify-content-center h-100 gap-1 wow fadeInRight"
