@@ -10,7 +10,7 @@
 @section('content')
     @if ($hero_slider)
         <section class="hero-section">
-            <div class="container-fluid">
+            <div class="container">
                 <picture class="floating-coin-up">
                     <img src="{{asset('/assets/imgs/home/bg-coin.png')}}" alt="" srcset="" />
                 </picture>
