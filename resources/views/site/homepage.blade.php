@@ -433,6 +433,7 @@
     </script>
     <script>
          $('.partners-slider').slick({
+          autoplay: true,
           arrows: true,
           prevArrow: `<button class="partners-arrows-prev"><i class="fa-solid fa-chevron-right"></i></button>`,
           nextArrow: `<button class="partners-arrows-next"><i class="fa-solid fa-chevron-left"></i></button>`,
