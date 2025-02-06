@@ -382,6 +382,7 @@
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 centerMode: false,
+                autoplay: true,
                 rtl: {{$rtl}},
                 responsive: [
                     {
