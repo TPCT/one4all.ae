@@ -463,3 +463,8 @@ picture.hero-main-slide-img{
 picture.hero-main-slide-img video{
   width: 100%;
 }
+
+.clints-reviews-slide-content picture img{
+    width: 50px;
+    height: 50px;
+}
