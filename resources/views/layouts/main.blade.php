@@ -50,6 +50,21 @@
 
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/custom.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('/minify/css/errors.css')}}"/>
+
+        <script>
+            // Initialize the agent on page load.
+            const fpPromise = import('https://fpjscdn.net/v3/QFoEOc36WOHQcxKDrRKA')
+                .then(FingerprintJS => FingerprintJS.load())
+
+            // Get the visitorId when you need it.
+            fpPromise
+                .then(fp => fp.get())
+                .then(result => {
+                    const visitorId = result.visitorId
+                    console.log(visitorId)
+                })
+        </script>
+
     </head>
 
     <body class="{{app()->getLocale() == "ar" ? "arabic-version" : ""}} {{session('mode', 'light') === "dark" ? "dark-mode" : "light-mode" }}">
