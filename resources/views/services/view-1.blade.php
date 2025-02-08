@@ -34,6 +34,13 @@
                             <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt=""/>
                         </picture>
                     </a>
+                @elseif ($service->link)
+                    <a href="{{$service->link}}">
+                        @lang('site.JOIN_US_NOW')
+                        <picture>
+                            <img src="{{asset('/assets/icons/weui_arrow-filled.svg')}}" alt=""/>
+                        </picture>
+                    </a>
                 @endif
             </div>
             @if ($service->youtube_video_id)

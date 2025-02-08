@@ -125,6 +125,13 @@ class ServiceResource extends Resource
                                     ->label(__('Price'))
                                     ->required(),
 
+                                TextInput::make('link')
+                                    ->maxLength(255)
+                                    ->visible(function (Forms\Get $get){
+                                        return $get('data.view_type', true) == self::$model::VIEW_TYPE_1;
+                                    })
+                                    ->label(__('Link')),
+
                                 TranslatableTabs::make()
                                     ->localeTabSchema(fn (TranslatableTab $tab) => [
                                         TextInput::make($tab->makeName('youtube_video_id'))
