@@ -480,5 +480,13 @@ picture.hero-main-slide-img video{
 
 .arabic-version .form-check{
    display: flex;
-   justify-content: space-between;
+}
+
+.arabic-version .form-check-label{
+  margin-right: 1.5rem
+}
+
+.arabic-version .form-check .form-check-input{
+    margin-left: unset !important;
+    float: unset !important;
 }
