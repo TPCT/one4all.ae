@@ -32,6 +32,8 @@ class ServicesController extends Controller
                 if ($package->services->contains($service->id))
                     $has_button = false;
             }
+        }else{
+            return redirect()->route('auth.login');
         }
 
         if ((!$service->paid || !$has_button) && $service->view_type == Service::VIEW_TYPE_3){
@@ -39,7 +41,6 @@ class ServicesController extends Controller
         }
 
         if ($service->view_type == Service::VIEW_TYPE_2 && \request()->isMethod('POST')){
-            $client = auth()->guard('clients')->user();
             $data = \request()->validate([
                 'whatsapp' => 'required|phone',
                 'whatsapp_country' => 'required_with:whatsapp|max:4',
