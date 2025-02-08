@@ -477,3 +477,8 @@ picture.hero-main-slide-img video{
 .footer-item-header a img{
   width: 50px !important;
 }
+
+.arabic-version .form-check{
+   display: flex;
+   justify-content: space-between;
+}
