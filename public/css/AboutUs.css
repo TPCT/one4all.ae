@@ -32,7 +32,4 @@
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
   }
-  #AboutUs .about-us-video {
-    background-color: var(--main-section-bg);
-  }
 }
