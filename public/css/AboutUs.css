@@ -26,4 +26,5 @@
 }
 #AboutUs .recommendations-1st-section {
   background-color: var(--main-section-bg);
+  padding-block: 2rem !important;
 }
