@@ -336,7 +336,7 @@ select::-ms-expand {
   background-color: black;
 }
 .arabic-version .main-stars-header {
-  background-image: url(../assets/imgs/Login-pag-banner-ar.png);
+  background-image: url(/assets/imgs/Login-pag-banner-ar.png);
 }
 .main-stars-header-content {
   position: relative;
