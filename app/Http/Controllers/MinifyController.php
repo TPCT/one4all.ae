@@ -16,9 +16,10 @@ class MinifyController extends Controller
             abort(404);
         // Cache the checksum of the file
         $checksum = md5_file($path);
+        $cacheDuration = 60 * 60 * 24 * 30 * 12; // 1 year in minutes
 
         // Cache the file content based on the checksum
-        $content = Cache::remember("file_content:{$checksum}", 60 * 60, function () use ($path, $any) {
+        $content = Cache::remember("file_content:{$checksum}", $cacheDuration, function () use ($path, $any) {
             $extension = pathinfo($any, PATHINFO_EXTENSION);
 
             switch ($extension) {
@@ -39,8 +40,7 @@ class MinifyController extends Controller
         $response = response($content['content'], 200, $content['headers']);
 
         // Set Cache-Control, Expires and ETag headers for browser caching
-        $cacheDuration = 60; // 1 year in minutes
-        return $response->header('Cache-Control', "public, max-age=" . ($cacheDuration * 60))
+        return $response->header('Cache-Control', "public, max-age=" . ($cacheDuration))
             ->header('Expires', now()->addMinutes($cacheDuration)->toRfc7231String())
             ->header('ETag', $checksum); // ETag for validation
     }

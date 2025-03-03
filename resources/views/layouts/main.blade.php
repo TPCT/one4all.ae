@@ -61,7 +61,6 @@
                 .then(fp => fp.get())
                 .then(result => {
                     const visitorId = result.visitorId
-                    console.log(visitorId)
                 })
         </script>
 
